@@ -15,7 +15,7 @@
   "tabBar": {
     "color": "#999999",
     "selectedColor": "#333333",
-    "list" : [
+    "list": [
       {
         "pagePath": "pages/bookRoom/bookRoom",
         "text": "订房",
@@ -34,7 +34,6 @@
         "iconPath": "images/myInfoNo.png",
         "selectedIconPath": "images/myInfoYes.png"
       }
-      
     ]
   }
 }

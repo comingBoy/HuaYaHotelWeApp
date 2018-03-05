@@ -1,4 +1,4 @@
-// pages/bookKtv/bookKtv.js
+// pages/bookKTV/bookKTV.js
 Page({
 
   /**
