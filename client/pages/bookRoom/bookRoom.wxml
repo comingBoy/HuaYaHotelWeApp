@@ -32,4 +32,28 @@
     </view>
   </view>
 
+  <!--导航功能-->
+  <view class='navigation'>
+
+    <!--地址-->
+    <view class='address'>
+      <view class='detailAddress'>
+        明光市体育路133号
+      </view>
+      <view class='alias'>
+        体育馆
+      </view>
+    </view>
+    <!--跳转到地图导航-->
+    <view class='toNavigationButton'>
+      <view class='buttonName'>
+        地图/导航
+      </view>
+      <image src='../../images/jump.png' class='jumpButton'>
+      </image>
+    </view>
+  </view>
+
+  <!--选择日期-->
+  
 </view>
