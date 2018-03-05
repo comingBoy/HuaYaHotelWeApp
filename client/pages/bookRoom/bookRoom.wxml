@@ -1,0 +1,35 @@
+<!--pages/bookRoom/bookRoom.wxml-->
+<view class='container'>
+
+  <!--酒店横幅、点击进入酒店相册-->
+  <view class='hotelBanner'>
+
+    <!--酒店图片-->
+    <image class='hotelImg' src='../../images/hotelBanner.jpg' mode='aspectFill'>
+    </image>
+
+    <!--酒店名称-->
+    <view class='hotelName'>
+      华亚大酒店
+    </view>
+
+    <!--酒店信息-->
+    <view class='hotelInfo'>
+      <!--酒店装修时间-->
+      <view class='decorationTime'>
+        2014年装修
+      </view>
+      <!--酒店特征-->
+      <view class='hotelFeature'>
+        亲子酒店
+      </view>
+      <view class='hotelFeature'>
+        商务出行
+      </view>
+    </view>
+    <!--相册数量-->
+    <view>
+    </view>
+  </view>
+
+</view>

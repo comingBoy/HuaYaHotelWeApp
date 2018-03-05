@@ -1,0 +1,33 @@
+/* pages/bookRoom/bookRoom.wxss */
+.hotelBanner{
+  width: 100%;
+}
+
+.hotelImg{
+  width: 100%;
+  height: 300rpx; 
+  filter: brightness(0.75)
+}
+
+.hotelName{
+  position:fixed;
+  font-size:35rpx;
+  top:200rpx;
+  color:white;
+  left:20rpx;
+}
+
+.hotelInfo{
+  display:flex;
+  font-size:23rpx;
+  position:fixed;
+  top:257rpx;
+  color:white;
+  left:20rpx;
+}
+
+.hotelFeature{
+  margin-left:20rpx;
+  border:solid 1rpx white;
+  padding:0 10rpx; 
+}

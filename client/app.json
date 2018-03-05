@@ -1,13 +1,39 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/addCgi/addCgi"
+  "pages": [
+    "pages/bookRoom/bookRoom",
+    "pages/bookKTV/bookKTV",
+    "pages/myInfo/myInfo"
   ],
-  "window":{
-    "backgroundColor":"#F6F6F6",
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "Wafer Quick Start",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "华亚大酒店",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#333333",
+    "list" : [
+      {
+        "pagePath": "pages/bookRoom/bookRoom",
+        "text": "订房",
+        "iconPath": "images/hotelNo.png",
+        "selectedIconPath": "images/hotelYes.png"
+      },
+      {
+        "pagePath": "pages/bookKTV/bookKTV",
+        "text": "KTV",
+        "iconPath": "images/KTVNo.png",
+        "selectedIconPath": "images/KTVYes.png"
+      },
+      {
+        "pagePath": "pages/myInfo/myInfo",
+        "text": "我",
+        "iconPath": "images/myInfoNo.png",
+        "selectedIconPath": "images/myInfoYes.png"
+      }
+      
+    ]
   }
 }
