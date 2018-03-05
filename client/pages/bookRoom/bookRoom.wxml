@@ -5,7 +5,7 @@
   <view class='hotelBanner'>
 
     <!--酒店图片-->
-    <image class='hotelImg' src='../../images/hotelBanner.jpg' mode='aspectFill'>
+    <image class='hotelImg' src='../../images/hotelBanner.jpg' mode='aspectFill' bindtap='previewHotelAlbum'>
     </image>
 
     <!--酒店名称-->
