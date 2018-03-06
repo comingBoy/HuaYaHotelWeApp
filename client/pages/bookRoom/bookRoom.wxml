@@ -5,7 +5,7 @@
   <view class='hotelBanner'>
 
     <!--酒店图片-->
-    <swiper class='hotelImg' autoplay='true' interval='5000'>
+    <swiper class='hotelImg' autoplay='true' interval='7000'>
       <swiper-item wx:for='{{albumUrl}}'>
         <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill' bindtap='previewHotelAlbum' id='{{index}}'></image>
         <!--相册数量及当前编号-->
