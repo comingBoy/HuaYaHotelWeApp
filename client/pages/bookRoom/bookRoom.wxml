@@ -140,7 +140,7 @@
   </view>
 
   <!--酒店详情-->
-  <view class='hotelDetail'>
+  <view class='hotelDetail' bindtap='enterHotelDetail'>
     <!--详情-->
     <view class='detailList'>
       <!--下面代码用wx:for代替-->

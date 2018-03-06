@@ -354,6 +354,14 @@ Page({
     this.setData({
       roomDetail_hiddenRoomDetail: false,
     })
+  },
+  /**
+   * 跳转到酒店详情
+   */
+  enterHotelDetail: function (e) {
+    wx.navigateTo({
+      url: '../hotelDetail/hotelDetail',
+    })
   }
 
 })
