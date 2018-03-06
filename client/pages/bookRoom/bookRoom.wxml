@@ -87,7 +87,7 @@
 
   <!--房间列表-->
   <view class='roomList'>
-    <view class='room' wx:for='{{roomList}}'>
+    <view class='room' wx:for='{{roomList}}' id='{{index}}' style='{{item.beChoosed ? "background-color:#f0f0f0" : ""}}' bindtouchstart='touchRoomStart' bindtouchend='touchRoomEnd' bindtouchmove='touchRoomMove' bindtap='showRoomDetail'>
       <!--预定信息-->
       <view class='bookInfo'>
         <!--房型-->
@@ -145,28 +145,28 @@
         <image class='detailImg' src='../../images/WiFi.png'>
         </image>
         <view class='detailText'>
-          无线上网  
+          无线上网
         </view>
       </view>
       <view class='detail'>
         <image class='detailImg' src='../../images/wired.png'>
         </image>
         <view class='detailText'>
-          有线上网  
+          有线上网
         </view>
       </view>
       <view class='detail'>
         <image class='detailImg' src='../../images/park.png'>
         </image>
         <view class='detailText'>
-          停车场 
+          停车场
         </view>
       </view>
       <view class='detail'>
         <image class='detailImg' src='../../images/luggage.png'>
         </image>
         <view class='detailText'>
-          行李寄存 
+          行李寄存
         </view>
       </view>
     </view>
@@ -180,4 +180,36 @@
     </view>
   </view>
 
+</view>
+
+<!--隐藏界面-->
+
+<!--房间详情界面-->
+<view>
+  <!--背景灰色-->
+  <view class='mask' bindtap='hiddenRoomDetail' hidden='{{hiddenRoomDetail}}'>
+  </view>
+  <!--房间详情-->
+  <view class='roomDetail' hidden='{{hiddenRoomDetail}}' animation='{{showRoomDetailAnimationData}}'>
+    <!--房型名称-->
+    <view class='roomDetail-roomType'>
+      {{roomBeShowed.roomType}}
+    </view>
+    <!--返回按钮-->
+    <image class='roomDetail-return' src='../../images/cancel.png' bindtap='hiddenRoomDetail'></image>
+    <!--房间详细信息-->
+    <scroll-view class='roomDetailInfo'>
+      <!--房间相册-->
+      <swiper class='roomAlbum'>
+        <swiper-item wx:for='{{roomBeShowed.album}}'>
+          <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill'></image>
+          <!--相册数量及当前编号-->
+          <view class='albumNum'>{{index+1}}/{{roomBeShowed.album.length}}</view>
+        </swiper-item>
+      </swiper>
+    </scroll-view>
+    <!--价格及预定按钮-->
+    <view class='bookRoom'>
+    </view>
+  </view>
 </view>
