@@ -1,6 +1,5 @@
 <!--pages/bookRoom/bookRoom.wxml-->
-<view class='container'>
-
+<scroll-view class='container' scroll-y='true' enable-back-to-top='true' scroll-with-animation='true'>
   <!--酒店横幅、点击进入酒店相册-->
   <view class='hotelBanner'>
 
@@ -37,7 +36,7 @@
   </view>
 
   <!--导航功能-->
-  <view class='navigation' bindtap='openMap' >
+  <view class='navigation' bindtap='openMap'>
 
     <!--地址-->
     <view class='address'>
@@ -183,8 +182,7 @@
       </image>
     </view>
   </view>
-
-</view>
+</scroll-view>
 
 <!--隐藏界面-->
 
@@ -202,7 +200,7 @@
     <!--返回按钮-->
     <image class='roomDetail-return' src='../../images/cancel.png' bindtap='hiddenRoomDetail'></image>
     <!--房间详细信息-->
-    <scroll-view class='roomDetailInfo'>
+    <scroll-view class='roomDetailInfo' scroll-y='true'>
       <!--房间相册-->
       <swiper class='roomAlbum'>
         <swiper-item wx:for='{{roomBeShowed.album}}'>
@@ -211,9 +209,47 @@
           <view class='albumNum'>{{index+1}}/{{roomBeShowed.album.length}}</view>
         </swiper-item>
       </swiper>
+      <!--房间设施信息-->
+      <view hidden='{{!roomDetail_hiddenRoomDetail}}' class='roomDetail-roomInfoList'>
+        <view wx:for='{{roomBeShowed.facilities}}' wx:if='{{item.main}}' class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            {{item.name}}
+          </view>
+          <view class='info-value'>
+            {{item.value}}
+          </view>
+        </view>
+        <view class='showMore' bindtap='showMore'>
+          <view class='showMoreText'>
+            显示更多设备
+          </view>
+          <image class='showMoreImg' src='../../images/dropDown.png'>
+          </image>
+        </view>
+      </view>
+      <view hidden='{{roomDetail_hiddenRoomDetail}}' class='roomDetail-roomInfoList'>
+        <view wx:for='{{roomBeShowed.facilities}}' class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            {{item.name}}
+          </view>
+          <view class='info-value'>
+            {{item.value}}
+          </view>
+        </view>
+      </view>
     </scroll-view>
     <!--价格及预定按钮-->
     <view class='bookRoom'>
+      <!--价格-->
+      <view class='roomPrice'>
+        <view style='font-size:30rpx;'>￥</view>
+        <view class='roomPrice-price'>150</view>
+        <view class='roomPrice-discount'>返高端酒店券</view>
+      </view>
+      <!--预定按钮-->
+      <view class='roomDetail-bookButton'>
+        预订
+      </view>
     </view>
   </view>
 </view>

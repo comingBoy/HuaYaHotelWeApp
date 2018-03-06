@@ -14,36 +14,118 @@ Page({
           "../../images/businessBed2.jpg",
           "../../images/businessBed3.jpg",
         ],
+        facilities: [
+          {
+            name: "上网",
+            value: "WIFI",
+            main: true,
+          },
+          {
+            name: "卫浴",
+            value: "独立",
+            main: true,
+          },
+          {
+            name: "窗户",
+            value: "有",
+            main: true,
+          },
+          {
+            name: "可住",
+            value: "2人",
+            main: true,
+          },
+          {
+            name: "面积",
+            value: "25㎡",
+            main: false,
+          },
+          {
+            name: "楼层",
+            value: "7-9层",
+            main: false,
+          },
+          {
+            name: "床型",
+            value: "大床1.8×2.0米1张",
+            main: false,
+          },
+          {
+            name: "早餐",
+            value: "含两份早餐",
+            main: false,
+          },
+        ],
         roomType: "商务大床房",
         area: "25㎡",
         bedType: "大床",
         window: "有窗",
         breakfast: "含双早",
-        internet: "WiFi",
-        bathroom: "独立",
-        peopleNum: "2人",
-        floor: "7-9层",
         beChoosed: false,
       },
       {
+        album: [
+          "../../images/businessBed1.jpg",
+          "../../images/businessBed2.jpg",
+          "../../images/businessBed3.jpg",
+        ],
+        facilities: [
+          {
+            name: "面积",
+            value: "25㎡",
+            main: false,
+          },
+          {
+            name: "床型",
+            value: "单人床1.2x2.0米2张",
+            main: false,
+          },
+          {
+            name: "窗户",
+            value: "有",
+            main: true,
+          },
+          {
+            name: "早餐",
+            value: "含两份早餐",
+            main: false,
+          },
+          {
+            name: "上网",
+            value: "WIFI",
+            main: true,
+          },
+          {
+            name: "卫浴",
+            value: "独立",
+            main: true,
+          },
+          {
+            name: "可住",
+            value: "2人",
+            main: true,
+          },
+          {
+            name: "楼层",
+            value: "6-12层",
+            main: false,
+          },
+        ],
         roomType: "商务标间",
         area: "25㎡",
         bedType: "双床",
         window: "有窗",
         breakfast: "含双早",
-        internet: "WiFi",
-        bathroom: "独立",
-        peopleNum: "2人",
-        floor: "7-9层",
         beChoosed: false,
       }
     ],
     hiddenRoomDetail: true,
     roomBeShowed: null,
+    roomDetail_hiddenRoomDetail: true,
     hotelAlbum: [],
     albumUrl: [],
-    
-    hotelLatitude:32.7886000000,
+
+    hotelLatitude: 32.7886000000,
     hotelLongitude: 118.0047200000
 
   },
@@ -249,19 +331,29 @@ Page({
         showRoomDetailAnimationData: animation
       })
       this.setData({
-        hiddenRoomDetail
+        hiddenRoomDetail,
+        roomDetail_hiddenRoomDetail: true,
       })
     }.bind(this), 200)
   },
   /**
    *打开导航
    */
-  openMap: function(){
+  openMap: function () {
     wx.openLocation({
       latitude: this.data.hotelLatitude,
       longitude: this.data.hotelLongitude,
       name: "华亚大酒店",
       scale: 28
     })
+  },
+  /**
+   * 显示更多设施
+   */
+  showMore: function (e) {
+    this.setData({
+      roomDetail_hiddenRoomDetail: false,
+    })
   }
+
 })
