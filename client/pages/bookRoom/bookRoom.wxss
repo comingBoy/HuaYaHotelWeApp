@@ -232,3 +232,59 @@
   color: #2abeaf;
   align-items: center;
 }
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.roomDetail {
+  width: 100%;
+  height: 810rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  z-index: 1001;
+  background: #fafafa;
+  bottom: 0rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.roomDetail-roomType {
+  text-align: center;
+  padding: 20rpx;
+  font-size: 35rpx;
+  font-weight: 800;
+}
+
+.roomDetail-return {
+  position: absolute;
+  height: 40rpx;
+  width: 40rpx;
+  right: 10px;
+  top: 20rpx;
+}
+
+.roomImg {
+  width: 100%;
+  height: 500rpx;
+}
+
+.albumNum {
+  z-index: 1001;
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  color: white;
+  padding: 0rpx 25rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 25rpx;
+}
