@@ -54,6 +54,85 @@
     </view>
   </view>
 
-  <!--选择日期-->
-  
+  <!--选择入住日期-->
+  <view class='chooseDate'>
+    <view class='showDate'>
+      <view class='checkInDate'>
+        <view style='display:flex;align-items:flex-end;'>
+          入住
+        </view>
+        <view class='date'>
+          3月6日
+        </view>
+        <view style='display:flex;align-items:flex-end;'>
+          今天
+        </view>
+      </view>
+      <view class='checkOutDate'>
+        <view style='display:flex;align-items:flex-end;'>
+          离店
+        </view>
+        <view class='date'>
+          3月7日
+        </view>
+        <view style='display:flex;align-items:flex-end;'>
+          明天
+        </view>
+      </view>
+    </view>
+    <view class='howLong'>
+      共一晚
+    </view>
+  </view>
+
+  <!--房间列表-->
+  <view class='roomList'>
+    <view class='room' wx:for='{{roomList}}'>
+      <!--预定信息-->
+      <view class='bookInfo'>
+        <!--房型-->
+        <view class='roomType'>
+          {{item.roomType}}
+        </view>
+        <!--房间信息-->
+        <view class='roomInfo'>
+          <view class='area'>
+            {{item.area}}
+          </view>
+          <view class='bedType'>
+            {{item.bedType}}
+          </view>
+          <view class='window'>
+            {{item.window}}
+          </view>
+          <view class='breakfast'>
+            {{item.breakfast}}
+          </view>
+        </view>
+        <!--取消规则-->
+        <view class='cancelRule'>
+          入住当天18点前免费取消
+        </view>
+        <!--价格-->
+        <view class='price'>
+          <!--真实价格-->
+          <view style='color:#FB501D'>￥</view>
+          <view class='realPrice'>
+            150
+          </view>
+          <!--优惠方式-->
+          <view class='discontType'>
+            160减10
+          </view>
+        </view>
+      </view>
+      <!--预定按钮-->
+      <view class='bookButton'>
+        <view class='book'>预订</view>
+        <view class='payType'>
+          在线付
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

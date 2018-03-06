@@ -12,9 +12,9 @@
 }
 
 .hotelName {
-  position: fixed;
+  position: absolute;
   font-size: 35rpx;
-  top: 200rpx;
+  top: 195rpx;
   color: white;
   left: 20rpx;
 }
@@ -22,8 +22,8 @@
 .hotelInfo {
   display: flex;
   font-size: 23rpx;
-  position: fixed;
-  top: 257rpx;
+  position: absolute;
+  top: 250rpx;
   color: white;
   left: 20rpx;
 }
@@ -38,12 +38,11 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 15rpx 0rpx;
   border-bottom: solid #f0f0f0 20rpx;
 }
 
 .address {
-  margin-left: 20rpx;
+  padding: 15rpx 20rpx;
   font-size: 28rpx;
 }
 
@@ -63,4 +62,137 @@
   height: 25rpx;
   width: 25rpx;
   margin-left: 20rpx;
+}
+
+.chooseDate {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  border-bottom: solid 3rpx #f0f0f0;
+}
+
+.showDate {
+  display: flex;
+  font-size: 28rpx;
+  color: #a2a2a2;
+  padding: 15rpx 20rpx;
+}
+
+.checkInDate {
+  display: flex;
+  padding-right: 40rpx;
+}
+
+.checkOutDate {
+  display: flex;
+}
+
+.date {
+  font-size: 35rpx;
+  color: black;
+  margin: 0 3rpx;
+}
+
+.howLong {
+  font-size: 26rpx;
+  color: #2abeaf;
+  margin-right: 20rpx;
+}
+
+.roomList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.room {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1rpx #f0f0f0;
+}
+
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 15rpx 25rpx;
+  font-size: 26rpx;
+  color: #a2a2a2;
+}
+
+.roomType {
+  font-size: 35rpx;
+  color: black;
+}
+
+.roomInfo {
+  display: flex;
+  margin: 5rpx 0;
+}
+
+.area {
+  padding-right: 10rpx;
+  border-right: solid 1rpx #a2a2a2;
+}
+
+.bedType {
+  padding: 0 10rpx;
+  border-left: solid 1rpx #a2a2a2;
+  border-right: solid 1rpx #a2a2a2;
+}
+
+.window {
+  padding: 0 10rpx;
+  border-left: solid 1rpx #a2a2a2;
+  border-right: solid 1rpx #a2a2a2;
+}
+
+.breakfast {
+  padding-left: 10rpx;
+  border-left: solid 1rpx #a2a2a2;
+  color: #6db7f1;
+}
+
+.cancelRule {
+  color: #7cc659;
+}
+
+.price {
+  display: flex;
+  margin-top: 15rpx;
+  align-items: flex-end;
+}
+
+.realPrice {
+  color: #fb501d;
+  font-size: 40rpx;
+  margin: 0 10rpx;
+}
+
+.bookButton {
+  margin-right: 25rpx;
+  border: solid 4rpx #ff9e05;
+  border-radius: 10rpx;
+  width: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book {
+  font-size: 30rpx;
+  width: 100%;
+  text-align: center;
+  background-color: #ff9e05;
+  height: 50rpx;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payType {
+  font-size: 25rpx;
+  color: #fb501d;
 }

@@ -5,7 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    roomList:[
+      {
+        roomType: "商务大床房",
+        area: "25㎡",
+        bedType: "大床",
+        window: "有窗",
+        breakfast: "含双早",
+        internet: "WiFi",
+        bathroom: "独立",
+        peopleNum: "2人",
+        楼层: "7-9层",
+      },
+      {
+        roomType: "商务标间",
+        area: "25㎡",
+        bedType: "双床",
+        window: "有窗",
+        breakfast: "含双早",
+        internet: "WiFi",
+        bathroom: "独立",
+        peopleNum: "2人",
+        楼层: "7-9层",
+      }
+    ]
   },
 
   /**
