@@ -81,7 +81,7 @@
       </view>
     </view>
     <view class='howLong'>
-      共一晚
+      共1晚
     </view>
   </view>
 
@@ -135,4 +135,49 @@
       </view>
     </view>
   </view>
+
+  <!--酒店详情-->
+  <view class='hotelDetail'>
+    <!--详情-->
+    <view class='detailList'>
+      <!--下面代码用wx:for代替-->
+      <view class='detail'>
+        <image class='detailImg' src='../../images/WiFi.png'>
+        </image>
+        <view class='detailText'>
+          无线上网  
+        </view>
+      </view>
+      <view class='detail'>
+        <image class='detailImg' src='../../images/wired.png'>
+        </image>
+        <view class='detailText'>
+          有线上网  
+        </view>
+      </view>
+      <view class='detail'>
+        <image class='detailImg' src='../../images/park.png'>
+        </image>
+        <view class='detailText'>
+          停车场 
+        </view>
+      </view>
+      <view class='detail'>
+        <image class='detailImg' src='../../images/luggage.png'>
+        </image>
+        <view class='detailText'>
+          行李寄存 
+        </view>
+      </view>
+    </view>
+    <!--查看具体-->
+    <view class='toHotelDetail'>
+      <view class='buttonName'>
+        详情/电话
+      </view>
+      <image src='../../images/jump.png' class='jumpButton'>
+      </image>
+    </view>
+  </view>
+
 </view>

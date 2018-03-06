@@ -104,7 +104,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-bottom:solid #f0f0f0 20rpx;
+  border-bottom: solid #f0f0f0 20rpx;
 }
 
 .room {
@@ -193,4 +193,42 @@
 .payType {
   font-size: 25rpx;
   color: #fb501d;
+}
+
+.hotelDetail {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: solid #f0f0f0 20rpx;
+}
+
+.detailList {
+  display: flex;
+  padding: 20rpx;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 35rpx;
+  letter-spacing: 1rpx;
+}
+
+.detailImg {
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.detailText {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.toHotelDetail {
+  display: flex;
+  margin-right: 20rpx;
+  font-size: 26rpx;
+  color: #2abeaf;
+  align-items: center;
 }
