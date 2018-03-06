@@ -139,9 +139,10 @@ Page({
     })
   },
 
-  previewHotelAlbum: function () {
+  previewHotelAlbum: function (e) {
+    var index = e.currentTarget.id
     wx.previewImage({
-      current: '',
+      current: this.data.albumUrl[index],
       urls: this.data.albumUrl
     })
   },

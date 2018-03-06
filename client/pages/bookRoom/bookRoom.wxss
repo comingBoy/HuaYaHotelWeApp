@@ -286,4 +286,5 @@
   color: white;
   padding: 0rpx 25rpx;
   background-color: rgba(0, 0, 0, 0.5);
+  font-size: 25rpx;
 }
