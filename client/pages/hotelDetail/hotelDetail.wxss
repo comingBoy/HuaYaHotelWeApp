@@ -1,0 +1,92 @@
+/* pages/hotelDetail/hotelDetail.wxss */
+
+.hotelName {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+
+.name {
+  padding: 15rpx 20rpx;
+  font-size: 35rpx;
+  width: 80%;
+  margin-top: 10rpx;
+}
+
+.telImg {
+  display: flex;
+  margin-right: 20rpx;
+  padding-left: 15rpx;
+  margin-bottom: 10rpx;
+  margin-top: 10rpx;
+  width: 65rpx;
+  height: 65rpx;
+  align-items: center;
+  border-left: solid #f0f0f0 1rpx;
+}
+
+.service {
+  justify-content: space-between;
+  width: 90%;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+
+.label {
+  padding: 15rpx 20rpx;
+  font-size: 30rpx;
+  width: 80%;
+  margin-top: 10rpx;
+}
+
+.serviceDetail {
+  padding: 5rpx 15rpx;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 25rpx;
+}
+
+.serviceDetailBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  padding-bottom: 15rpx;
+}
+
+.serviceImg {
+  width: 50rpx;
+  height: 50rpx;
+  padding-bottom: 10rpx;
+}
+
+.serviceName {
+  font-size: 15rpx;
+  color: #c0c0c0;
+}
+
+.address {
+  justify-content: space-between;
+  width: 90%;
+  border-bottom: solid #f0f0f0 1rpx;
+  padding-bottom: 25rpx;
+}
+
+.introduction {
+  justify-content: space-between;
+  width: 90%;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+.word{
+  
+  width: 50%;
+  font-size: 25rpx;
+  padding-left: 20rpx;
+  
+}
+.word0{
+  padding-left: 174rpx;
+  width: 50%;
+  font-size: 25rpx;
+}

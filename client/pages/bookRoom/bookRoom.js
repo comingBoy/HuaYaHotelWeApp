@@ -144,5 +144,10 @@ Page({
       name: "华亚大酒店",
       scale: 28
     })
+  },
+  enterHotelDetail:function(e){
+    wx.navigateTo({
+      url: '../hotelDetail/hotelDetail',
+    })
   }
 })

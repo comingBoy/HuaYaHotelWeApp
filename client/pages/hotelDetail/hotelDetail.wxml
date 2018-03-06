@@ -1,0 +1,28 @@
+<!--pages/hotelDetail/hotelDetail.wxml-->
+<view class='container'>
+  <view class='hotelName'>
+    <view class='name'>华亚大酒店</view>
+    <image class='telImg' src='../../images/tel.png' bindtap='callHotel'></image>
+  </view>
+  <view class='service'>
+    <view class='label'>可提供的服务</view>
+    <view class='serviceDetail'>
+      <view class='serviceDetailBox' wx:for="{{service}}">
+        <image class='serviceImg' src="{{item.serviceImg}}"></image>
+        <view class='serviceName'>{{item.serviceName}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='address'>
+    <view class='label'>交通信息</view>
+  </view>
+  <view class='introduction'>
+    <view class='label'>酒店介绍</view>
+    <text class='word'>装修时间: 2014年</text>
+    <text class='word0'> 开业时间：2014年\n</text>
+    <text class='word' decode="{{true}}">楼层高度：15层&nbsp;&nbsp;&nbsp;</text> 
+    <text class='word0'>房间总数：138间\n</text>
+    <text class='word' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;</text>
+    <text class='word'>明光华亚大酒店座落于安徽省明光市体育路与104国道交叉口，交通便利，拥有超大型停车场。酒店总建筑面积近20000平方米，集餐饮、会议、客房、商务休闲服务为一体，为广大顾客提供最时尚和最优质的服务。酒店主楼高15层，其中1-5层为餐饮、会务，拥有大小多功能厅8个及风格各异餐饮包间22个；多功能厅配备使用专业进口音响、灯光、多媒体及大屏真彩LED屏，喜宴每桌518元起，高端大气上档次，好吃不贵有面子！可同时接待30—300人会议及1000人用餐，是举行各种喜宴及商务会议的理想场所。6—15层为客房。</text>
+  </view>
+</view>

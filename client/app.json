@@ -1,9 +1,12 @@
 {
   "pages": [
+    
     "pages/bookRoom/bookRoom",
     "pages/uploadImg/uploadImg",
     "pages/bookKTV/bookKTV",
-    "pages/myInfo/myInfo"
+    "pages/myInfo/myInfo",
+    "pages/hotelDetail/hotelDetail"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
