@@ -8,7 +8,11 @@ Page({
    */
   data: {
     hotelAlbum: [],
-    albumUrl: []
+    albumUrl: [],
+    
+    hotelLatitude:32.7886000000,
+    hotelLongitude: 118.0047200000
+
   },
 
   /**
@@ -106,6 +110,15 @@ Page({
     wx.previewImage({
       current: '',
       urls: this.data.albumUrl
+    })
+  },
+
+  openMap: function(){
+    wx.openLocation({
+      latitude: this.data.hotelLatitude,
+      longitude: this.data.hotelLongitude,
+      name: "华亚大酒店",
+      scale: 28
     })
   }
 })
