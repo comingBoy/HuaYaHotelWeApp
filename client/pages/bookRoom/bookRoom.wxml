@@ -33,7 +33,7 @@
   </view>
 
   <!--导航功能-->
-  <view class='navigation'>
+  <view class='navigation' bindtap='openMap' >
 
     <!--地址-->
     <view class='address'>

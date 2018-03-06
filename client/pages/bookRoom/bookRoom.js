@@ -41,7 +41,11 @@ Page({
     hiddenRoomDetail: true,
     roomBeShowed: null,
     hotelAlbum: [],
-    albumUrl: []
+    albumUrl: [],
+    
+    hotelLatitude:32.7886000000,
+    hotelLongitude: 118.0047200000
+
   },
 
   /**
@@ -247,6 +251,16 @@ Page({
         hiddenRoomDetail
       })
     }.bind(this), 200)
-
+  },
+  /**
+   *打开导航
+   */
+  openMap: function(){
+    wx.openLocation({
+      latitude: this.data.hotelLatitude,
+      longitude: this.data.hotelLongitude,
+      name: "华亚大酒店",
+      scale: 28
+    })
   }
 })
