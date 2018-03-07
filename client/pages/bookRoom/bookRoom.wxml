@@ -61,14 +61,14 @@
   <view class='chooseDate' bindtap='showChooseDate'>
     <view class='showDate'>
       <view class='checkInDate'>
-        <view style='display:flex;align-items:fle x-end;'>
+        <view style='display:flex;align-items:flex-end;'>
           入住
         </view>
         <view class='date'>
-          3月6日
+          {{bookDate.checkInDate.month}}月{{bookDate.checkInDate.day}}日
         </view>
         <view style='display:flex;align-items:flex-end;'>
-          今天
+          {{bookDate.checkInDate.whatDay}}
         </view>
       </view>
       <view class='checkOutDate'>
@@ -76,16 +76,16 @@
           离店
         </view>
         <view class='date'>
-          3月7日
+          {{bookDate.checkOutDate.month}}月{{bookDate.checkOutDate.day}}日
         </view>
         <view style='display:flex;align-items:flex-end;'>
-          明天
+          {{bookDate.checkOutDate.whatDay}}
         </view>
       </view>
     </view>
     <view class='howLong'>
       共{{bookDate.manyDays}}晚
-      <image src='../../images/jump.png' class='jumpButton'/>
+      <image src='../../images/jump.png' class='jumpButton' />
     </view>
   </view>
 
@@ -301,15 +301,18 @@
 <view>
   <view class='chooseDateBack' bindtap='hiddenChooseDate' hidden='{{hiddenChooseDate}}'></view>
   <view class='toChooseDate' hidden='{{hiddenChooseDate}}' animation='{{showChooseDateAnimationData}}'>
-    <view class='chooseDateTitle'>
-      选择日期
-    </view>
-    <image src='../../images/cancel2.png' class='cancel2' bindtap='hiddenChooseDate'></image>
-    <view class='week'>
-      <view style='width: {{width/7}}px; text-align:center;' wx:for='{{dayList}}' style='{{item == "日" || item == "六" ? "color:#2db9a9":""}}'>
-        {{item}}
+    <view class='fixedBox'>
+      <view class='chooseDateTitle'>
+        选择日期
+      </view>
+      <image src='../../images/cancel2.png' class='cancel2' bindtap='hiddenChooseDate'></image>
+      <view class='week'>
+        <view style='width: {{width/7}}px; text-align:center;' wx:for='{{dayList}}' style='{{item == "日" || item == "六" ? "color:#2db9a9":""}}'>
+          {{item}}
+        </view>
       </view>
     </view>
+
     <scroll-view class='calendar' scroll-y='true'>
       <view class='month' wx:for='{{dateRange}}' wx:for-index="mindex">
         <view class='ym'>{{item.year}}年{{item.month}}月</view>
@@ -330,5 +333,4 @@
       <button style='color: white; background-color: #06C1AE; width:85%' bindtap='finishChoose'>完成</button>
     </view>
   </view>
-
 </view>
