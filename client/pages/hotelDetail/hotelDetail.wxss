@@ -78,14 +78,14 @@
   width: 90%;
   border-bottom: solid #f0f0f0 1rpx;
 }
-.word{
-  
+
+.word {
   width: 50%;
   font-size: 25rpx;
   padding-left: 20rpx;
-  
 }
-.word0{
+
+.word0 {
   padding-left: 174rpx;
   width: 50%;
   font-size: 25rpx;

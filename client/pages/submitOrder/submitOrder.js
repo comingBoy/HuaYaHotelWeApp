@@ -1,11 +1,13 @@
 // pages/submitOrder/submitOrder.js
+var util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    hiddenInTime: false,
+    hiddenOverTime: false,
   },
 
   /**
@@ -16,6 +18,21 @@ Page({
       room: getApp().globalData.room,
       bookDate: getApp().globalData.bookDate,
     })
+    console.log(this.data.bookDate)
+    var date1 = util.getCurrentDateYMD().ymd + ' ' + util.getCurrentTimeHM() + ":00"
+    var date2 = this.data.bookDate.checkInDate.ymd + ' ' + "18:00:00"
+    var IfInTime = util.ifInOrder(date1, date2)
+    if (IfInTime) {
+      this.setData({
+        hiddenInTime: false,
+        hiddenOverTime: true,
+      })
+    } else {
+      this.setData({
+        hiddenInTime: true,
+        hiddenOverTime: false,
+      })
+    }
   },
 
   /**

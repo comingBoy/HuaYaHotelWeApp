@@ -1,30 +1,49 @@
 <!--pages/submitOrder/submitOrder.wxml-->
 
-<view class='container'>
+<view class='container' style='background-color:#F0F0F0;'>
   <!--订单房间信息-->
-  <view class='roomInfo'>
-    <!--房间类型-->
-    <view class='roomType'>
-      {{room.roomType}}
+  <view class='roomInfoBox'>
+    <view class='roomInfo'>
+      <!--房间类型-->
+      <view class='roomType'>
+        {{room.roomType}}
+      </view>
+      <!--预订时间-->
+      <view class='bookDate'>
+        <view class='checkInDate'>
+          入住:{{bookDate.checkInDate.month}}-{{bookDate.checkInDate.day}}({{bookDate.checkInDate.whatDay}})
+        </view>
+        <view class='checkOutDate'>
+          离店:{{bookDate.checkOutDate.month}}-{{bookDate.checkOutDate.day}}({{bookDate.checkOutDate.whatDay}})
+        </view>
+        <view class='manyDays'>
+          {{bookDate.manyDays}}晚
+        </view>
+
+        <!--房间主要设施-->
+        <view class='roomSimpleDetail'>
+          <text style='font-size:25rpx;' decode="{{true}}">
+        {{room.bedType}}&nbsp;|&nbsp;{{room.breakfast}}&nbsp;|&nbsp;{{room.window}}
+        </text>
+        </view>
+        <!--房间详情-->
+        <view class='roomDetail' bindtap='enterRoomDetail'>
+          <text style='color:#34B8AB;font-size:25rpx;' decode="{{true}}">房间详情</text>
+          <image src='../../images/jump.png' class='jumpImg'></image>
+        </view>
+      </view>
     </view>
-    <!--预订时间-->
-    <view class='bookDate'>
-      <view class='checkInDate'>
-        入住:{{bookDate.checkInDate.month}}-{{bookDate.checkInDate.day}}({{bookDate.checkInDate.whatDay}})
-      </view>
-      <view class='checkOutDate'>
-        离店:{{bookDate.checkOutDate.month}}-{{bookDate.checkOutDate.day}}({{bookDate.checkOutDate.whatDay}})
-      </view>
-      <view class='manyDays'>
-        {{bookDate.manyDays}}晚
-      </view>
-    </view>
-    <!--房间主要设施-->
-    <view class='facilities-main'>
-      <view class='facilities-main-text'>
-      </view>
-      <view>
-      </view>
+    <!--提示信息-->
+    <view class='waringInfo'>
+      <image src='../../images/赞.png' class='label'></image>
+      <text class='word' style='color:#FBAA30;'> 赞！您已选择最便宜的客房</text>
+      <image src='../../images/月亮.png' class='label'></image>
+      <text class='word' style='color:#FBAA30;'>预定成功后，酒店将为你整晚留房</text>
+      <image src='../../images/警告.png' class='label' hidden='{{hiddenOverTime}}'></image>
+      <text class='word' style='color:#78B8EA;'hidden='{{hiddenOverTime}}'>现已过可取消时间，预定成功后不可取消</text>
+      <image src='../../images/确认.png' class='label' hidden='{{hiddenInTime}}'></image>
+      <text class='word' style='color:#78B8EA;' hidden='{{hiddenInTime}}'>放心订！{{bookDate.checkOutDate.month}}月{{bookDate.checkInDate.day}}日18点前可免费取消</text>
     </view>
   </view>
+
 </view>
