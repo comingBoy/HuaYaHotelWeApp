@@ -58,10 +58,10 @@
   </view>
 
   <!--选择入住日期-->
-  <view class='chooseDate'>
+  <view class='chooseDate' bindtap='showChooseDate'>
     <view class='showDate'>
       <view class='checkInDate'>
-        <view style='display:flex;align-items:flex-end;'>
+        <view style='display:flex;align-items:fle x-end;'>
           入住
         </view>
         <view class='date'>

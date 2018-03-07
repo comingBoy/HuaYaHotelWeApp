@@ -699,7 +699,7 @@ Page({
     })
   },
   /**
-   * 跳转到预定界面
+   * 跳转到预订界面
    */
   toSubmitOrder: function(e){
     console.log(e)
