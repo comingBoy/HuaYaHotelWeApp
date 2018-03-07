@@ -6,16 +6,10 @@ var util = require('./utils/util.js')
 App({
     onLaunch: function () {
         qcloud.setLoginUrl(config.service.loginUrl)
-        this.globalData.bookDate = {
-          checkInDate: util.getCurrentDateYMD(),
-          checkOutDate: util.getNextdayDateYMD()
-        }
+
     },
 
     globalData: {
-      bookDate: {
-        checkInDate: '',
-        checkOutDate: ''
-      }
+
     }
 })
