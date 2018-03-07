@@ -4,6 +4,7 @@
     "pages/uploadImg/uploadImg",
     "pages/bookKTV/bookKTV",
     "pages/myInfo/myInfo",
+    "pages/chooseDate/chooseDate",
     "pages/hotelDetail/hotelDetail"
   ],
   "window": {

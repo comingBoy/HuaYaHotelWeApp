@@ -119,15 +119,18 @@ Page({
         beChoosed: false,
       }
     ],
+    bookDate: {
+      checkInDate: '',
+      checkOutDate: ''
+    },
+    currentDate: '',
     hiddenRoomDetail: true,
     roomBeShowed: null,
     roomDetail_hiddenRoomDetail: true,
     hotelAlbum: [],
     albumUrl: [],
-
     hotelLatitude: 32.7886000000,
     hotelLongitude: 118.0047200000
-
   },
 
   /**
@@ -143,7 +146,6 @@ Page({
             albumUrl.push(res.hotelAlbum[i].picture)
           }
           that.setData({
-            hotelAlbum: res.hotelAlbum,
             albumUrl: albumUrl
           })
         } else {
@@ -177,7 +179,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    var currentDate = util.getCurrentDateYMD()
+    var today = currentDate
+    today.ymd = currentDate.year.toString() + '-' + currentDate.month.toString() + '-' + currentDate.day.toString()
+    getApp().globalData.bookDate = util.dealBookDate(getApp().globalData.bookDate)
+    that.setData({
+      bookDate: getApp().globalData.bookDate,
+      currentDate: today
+    })
   },
 
   /**
@@ -226,6 +236,12 @@ Page({
     wx.previewImage({
       current: this.data.albumUrl[index],
       urls: this.data.albumUrl
+    })
+  },
+
+  toChooseDate: function () {
+    wx.navigateTo({
+      url: '../chooseDate/chooseDate',
     })
   },
   /**
