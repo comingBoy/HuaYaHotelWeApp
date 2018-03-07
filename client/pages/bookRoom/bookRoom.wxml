@@ -65,10 +65,10 @@
           入住
         </view>
         <view class='date'>
-          3月6日
+          {{bookDate.checkInDate.month}}月{{bookDate.checkInDate.day}}日
         </view>
         <view style='display:flex;align-items:flex-end;'>
-          今天
+          {{bookDate.checkInDate.whatDay}}
         </view>
       </view>
       <view class='checkOutDate'>
@@ -76,10 +76,10 @@
           离店
         </view>
         <view class='date'>
-          3月7日
+          {{bookDate.checkOutDate.month}}月{{bookDate.checkOutDate.day}}日
         </view>
         <view style='display:flex;align-items:flex-end;'>
-          明天
+          {{bookDate.checkOutDate.whatDay}}
         </view>
       </view>
     </view>
@@ -330,5 +330,4 @@
       <button style='color: white; background-color: #06C1AE; width:85%' bindtap='finishChoose'>完成</button>
     </view>
   </view>
-
 </view>

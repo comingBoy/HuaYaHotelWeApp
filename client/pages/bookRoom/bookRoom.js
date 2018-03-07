@@ -276,13 +276,11 @@ Page({
 
     for (var l = 0; l < dateRange[0].days.length; l++) {
       if (dateRange[0].days[l].day != "") {
-        var checkInDate = dateRange[0].year.toString() + '-' + dateRange[0].month.toString() + '-' + dateRange[0].days[l].day.toString()
         dateRange[0].days[l].choosed = 1
         dateRange[0].days[l].background = 1
         if (dateRange[0].days[l + 1].day == "") {
           for (var n = 0; n < dateRange[1].days.length; n++) {
             if (dateRange[1].days[n].day != "") {
-              var checkOutDate = dateRange[1].year.toString() + '-' + dateRange[1].month.toString() + '-' + dateRange[1].days[n].day.toString()
               dateRange[1].days[n].choosed = 2
               dateRange[1].days[n].background = 1
               break
@@ -290,7 +288,6 @@ Page({
           }
           break
         } else {
-          var checkOutDate = dateRange[0].year.toString() + '-' + dateRange[0].month.toString() + '-' + dateRange[0].days[l + 1].day.toString()
           dateRange[0].days[l + 1].choosed = 2
           dateRange[0].days[l + 1].background = 1
           break
@@ -401,6 +398,73 @@ Page({
   },
 
   hiddenChooseDate: function () {
+    var hiddenChooseDate = true
+    //第1步：创建动画实例
+    var animation = wx.createAnimation({
+      duration: 200,
+      transformOrigin: '50% 100% 0'
+    })
+
+    //第2步：这个动画实例赋给当前动画实例
+    this.animation = animation
+
+    //第3步：执行第一组动画
+    animation.opacity(0).scaleY(0).step();
+
+    // 第4步：导出动画对象赋给数据对象储存 
+    this.setData({
+      showChooseDateAnimationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画 
+    setTimeout(function () {
+      // 执行第二组动画 
+      animation.opacity(1).scaleY(1).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象 
+      this.setData({
+        showChooseDateAnimationData: animation
+      })
+      this.setData({
+        hiddenChooseDate,
+      })
+    }.bind(this), 200)
+
+    //重置住宿时间
+    var that = this
+    var dateRange = JSON.stringify(that.data.originDateRange)
+    dateRange = JSON.parse(dateRange)
+    for (var l = 0; l < dateRange[0].days.length; l++) {
+      if (dateRange[0].days[l].day != "") {
+        dateRange[0].days[l].choosed = 1
+        dateRange[0].days[l].background = 1
+        if (dateRange[0].days[l + 1].day == "") {
+          for (var n = 0; n < dateRange[1].days.length; n++) {
+            if (dateRange[1].days[n].day != "") {
+              dateRange[1].days[n].choosed = 2
+              dateRange[1].days[n].background = 1
+              break
+            }
+          }
+          break
+        } else {
+          dateRange[0].days[l + 1].choosed = 2
+          dateRange[0].days[l + 1].background = 1
+          break
+        }
+      }
+    }
+    var bookDate = {
+      checkInDate: util.getCurrentDateYMD(),
+      checkOutDate: util.getNextdayDateYMD()
+    }
+    bookDate = util.dealBookDate(bookDate)
+    that.setData({
+      bookDate: bookDate,
+      dateRange: dateRange
+    })
+  },
+
+  finishChooseDate: function () {
     var hiddenChooseDate = true
     //第1步：创建动画实例
     var animation = wx.createAnimation({
@@ -559,7 +623,7 @@ Page({
     that.setData({
       bookDate: bookDate
     })
-    that.hiddenChooseDate()
+    that.finishChooseDate()
   },
 
   /**
