@@ -1,0 +1,53 @@
+/* pages/chooseDate/chooseDate.wxss */
+.calendar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FAFAFA;
+}
+
+.week{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #F5F5F5;
+  width: 100%;
+}
+
+.month{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: solid #EBEBEB 2rpx;
+  margin-bottom:10px;
+  background-color: white;
+}
+
+.ym{
+  font-size: 30rpx;
+  white-space: nowrap;
+  text-align:center;
+  width: 100%;
+}
+
+.days{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.day{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 10%;
+}
+
+.finishChoose{
+  position:fixed;
+  bottom:0;
+  width:50%;
+  left:25%;
+}

@@ -1,0 +1,25 @@
+<!--pages/chooseDate/chooseDate.wxml-->
+<view class='calendar'>
+  <view class='week'>
+    <view style='font-size: 30rpx; width: {{width/7}}px; text-align:center;' wx:for='{{dayList}}'>
+      {{item}}
+    </view>
+  </view>
+  <view class='month' wx:for='{{dateRange}}' wx:for-index="mindex">
+    <view class='ym'>{{item.year}}年{{item.month}}月</view>
+    <view class='days'>
+      <view style='display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: {{width/7}}px; height: {{width/7}}px; border-top: solid #EBEBEB 2rpx; background-color: {{item.background == 0 ? "white" : "#06C1AE"}}' wx:for='{{item.days}}' wx:for-index="dindex" data-m='{{mindex}}' data-d='{{dindex}}' bindtap='chooseDate'>
+        <view style='height: {{width/14}}px; font-size: 30rpx; color: {{item.background == 0 ? "balck" : "white"}}'>
+          {{item.day}}
+        </view>
+        <view hidden='{{item.background == 0}}' style='height: {{width/14}}px; font-size: 30rpx; color: {{item.background == 0 ? "balck" : "white"}}'>
+          {{choosedList[item.choosed]}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view hidden='{{!isFinish}}' class='finishChoose'>
+  <button style='color: white; background-color: #06C1AE' bindtap='finishChoose'>确认</button>
+</view>
+

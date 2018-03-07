@@ -55,17 +55,17 @@
   </view>
 
   <!--选择入住日期-->
-  <view class='chooseDate'>
+  <view class='chooseDate' bindtap='toChooseDate'>
     <view class='showDate'>
       <view class='checkInDate'>
         <view style='display:flex;align-items:flex-end;'>
           入住
         </view>
         <view class='date'>
-          3月6日
+          {{bookDate.checkInDate.month}}月{{bookDate.checkInDate.day}}日
         </view>
         <view style='display:flex;align-items:flex-end;'>
-          今天
+          {{bookDate.checkInDate.whatDay}}
         </view>
       </view>
       <view class='checkOutDate'>
@@ -73,15 +73,15 @@
           离店
         </view>
         <view class='date'>
-          3月7日
+          {{bookDate.checkOutDate.month}}月{{bookDate.checkOutDate.day}}日
         </view>
         <view style='display:flex;align-items:flex-end;'>
-          明天
+          {{bookDate.checkOutDate.whatDay}}
         </view>
       </view>
     </view>
     <view class='howLong'>
-      共一晚
+      共{{bookDate.manyDays}}晚
     </view>
   </view>
 

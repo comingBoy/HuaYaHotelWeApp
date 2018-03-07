@@ -31,8 +31,12 @@ Page({
         楼层: "7-9层",
       }
     ],
-    hotelAlbum: [],
-    albumUrl: []
+    albumUrl: [],
+    bookDate: {
+      checkInDate: '',
+      checkOutDate: ''
+    },
+    currentDate: ''
   },
 
   /**
@@ -48,7 +52,6 @@ Page({
             albumUrl.push(res.hotelAlbum[i].picture)
           }
           that.setData({
-            hotelAlbum: res.hotelAlbum,
             albumUrl: albumUrl
           })
         } else {
@@ -82,7 +85,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this
+    var currentDate = util.getCurrentDateYMD()
+    var today = currentDate
+    today.ymd = currentDate.year.toString() + '-' + currentDate.month.toString() + '-' + currentDate.day.toString()
+    getApp().globalData.bookDate = util.dealBookDate(getApp().globalData.bookDate)
+    that.setData({
+      bookDate: getApp().globalData.bookDate,
+      currentDate: today
+    })
   },
 
   /**
@@ -130,6 +141,12 @@ Page({
     wx.previewImage({
       current: '',
       urls: this.data.albumUrl
+    })
+  },
+
+  toChooseDate: function () {
+    wx.navigateTo({
+      url: '../chooseDate/chooseDate',
     })
   }
 })
