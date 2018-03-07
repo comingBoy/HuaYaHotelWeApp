@@ -386,3 +386,25 @@ page {
   height: 35rpx;
   margin-left: 10rpx;
 }
+
+.roomDetailInfoBox {
+  padding: 20rpx 30rpx;
+  font-size: 30rpx;
+  border-bottom: solid 1rpx #f0f0f0;
+}
+
+.roomDetailInfoContent {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+}
+
+.refundImg {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+.refundText {
+  width: 94%;
+}

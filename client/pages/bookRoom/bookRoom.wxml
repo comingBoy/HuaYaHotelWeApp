@@ -237,6 +237,48 @@
           </view>
         </view>
       </view>
+      <!--退款规则-->
+      <view class='roomDetailInfoBox'>
+        <view class='roomDetailInfoTitle'>
+          退款规则
+        </view>
+        <view class='roomDetailInfoList'>
+          <view class='roomDetailInfoContent'>
+            <image src='../../images/refund.png' class='refundImg'></image>
+            <view class='refundText'>
+              <text style='color:#2db9a9'>限时取消</text> 入住日当天18点前可免费取消，逾期不可取消/变更，如未入住，酒店将扣除全额房费
+            </view>
+          </view>
+        </view>
+
+      </view>
+      <!--使用规则-->
+      <view class='roomDetailInfoBox'>
+        <view class='roomDetailInfoTitle'>
+          使用规则
+        </view>
+        <view class='roomDetailInfoList'>
+          <view class='roomDetailInfoContent'>
+            <view style="margin-right: 20rpx;">•</view>
+            <view>
+              直接消费，请携带入住人身份证，凭姓名和预定手机号直接办理入住
+            </view>
+          </view>
+          <view class='roomDetailInfoContent'>
+            <view style="margin-right: 20rpx;">•</view>
+            <view>
+              请在12:00之后入住并于次日14:00之前退房；如需提前入住或延时退房请电话咨询
+            </view>
+          </view>
+          <view class='roomDetailInfoContent'>
+            <view style="margin-right: 20rpx;">•</view>
+            <view>
+              入住需要押金，金额以前台为准
+            </view>
+          </view>
+        </view>
+
+      </view>
     </scroll-view>
     <!--价格及预定按钮-->
     <view class='bookRoom'>
