@@ -92,7 +92,7 @@
   <!--房间列表-->
   <view class='roomList'>
     <view class='room' wx:for='{{roomList}}' id='{{index}}' style='{{item.beChoosed ? "background-color:#f0f0f0" : ""}}' bindtouchstart='touchRoomStart' bindtouchend='touchRoomEnd' bindtouchmove='touchRoomMove' bindtap='showRoomDetail'>
-      <!--预定信息-->
+      <!--预订信息-->
       <view class='bookInfo'>
         <!--房型-->
         <view class='roomType'>
@@ -130,8 +130,8 @@
           </view>
         </view>
       </view>
-      <!--预定按钮-->
-      <view class='bookButton'>
+      <!--预订按钮-->
+      <view class='bookButton' catchtap='toSubmitOrder' data-index='{{index}}' data-src='out'>
         <view class='book'>预订</view>
         <view class='payType'>
           在线付
@@ -262,7 +262,7 @@
           <view class='roomDetailInfoContent'>
             <view style="margin-right: 20rpx;">•</view>
             <view>
-              直接消费，请携带入住人身份证，凭姓名和预定手机号直接办理入住
+              直接消费，请携带入住人身份证，凭姓名和预订手机号直接办理入住
             </view>
           </view>
           <view class='roomDetailInfoContent'>
@@ -281,7 +281,7 @@
 
       </view>
     </scroll-view>
-    <!--价格及预定按钮-->
+    <!--价格及预订按钮-->
     <view class='bookRoom'>
       <!--价格-->
       <view class='roomPrice'>
@@ -289,8 +289,8 @@
         <view class='roomPrice-price'>150</view>
         <view class='roomPrice-discount'>返高端酒店券</view>
       </view>
-      <!--预定按钮-->
-      <view class='roomDetail-bookButton'>
+      <!--预订按钮-->
+      <view class='roomDetail-bookButton' catchtap='toSubmitOrder' data-src='in'>
         预订
       </view>
     </view>

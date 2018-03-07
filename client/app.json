@@ -5,7 +5,8 @@
     "pages/bookKTV/bookKTV",
     "pages/myInfo/myInfo",
     "pages/chooseDate/chooseDate",
-    "pages/hotelDetail/hotelDetail"
+    "pages/hotelDetail/hotelDetail",
+    "pages/submitOrder/submitOrder"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

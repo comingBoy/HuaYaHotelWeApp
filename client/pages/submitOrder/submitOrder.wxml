@@ -1,0 +1,30 @@
+<!--pages/submitOrder/submitOrder.wxml-->
+
+<view class='container'>
+  <!--订单房间信息-->
+  <view class='roomInfo'>
+    <!--房间类型-->
+    <view class='roomType'>
+      {{room.roomType}}
+    </view>
+    <!--预订时间-->
+    <view class='bookDate'>
+      <view class='checkInDate'>
+        入住:{{bookDate.checkInDate.month}}-{{bookDate.checkInDate.day}}({{bookDate.checkInDate.whatDay}})
+      </view>
+      <view class='checkOutDate'>
+        离店:{{bookDate.checkOutDate.month}}-{{bookDate.checkOutDate.day}}({{bookDate.checkOutDate.whatDay}})
+      </view>
+      <view class='manyDays'>
+        {{bookDate.manyDays}}晚
+      </view>
+    </view>
+    <!--房间主要设施-->
+    <view class='facilities-main'>
+      <view class='facilities-main-text'>
+      </view>
+      <view>
+      </view>
+    </view>
+  </view>
+</view>

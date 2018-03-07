@@ -678,6 +678,7 @@ Page({
       latitude: this.data.hotelLatitude,
       longitude: this.data.hotelLongitude,
       name: "华亚大酒店",
+      address: "明光市体育路133号",
       scale: 28
     })
   },
@@ -695,6 +696,27 @@ Page({
   enterHotelDetail: function (e) {
     wx.navigateTo({
       url: '../hotelDetail/hotelDetail',
+    })
+  },
+  /**
+   * 跳转到预定界面
+   */
+  toSubmitOrder: function(e){
+    console.log(e)
+    var roomList = this.data.roomList
+    var src = e.currentTarget.dataset.src
+    var room
+    var index
+    if(src == 'in'){
+      room = this.data.roomBeShowed
+    } else if(src == 'out'){
+      index = e.currentTarget.dataset.index
+      room = roomList[index]
+    }
+    getApp().globalData.room = room
+    getApp().globalData.bookDate = this.data.bookDate
+    wx.navigateTo({
+      url: '../submitOrder/submitOrder',
     })
   }
 
