@@ -26,6 +26,10 @@ var config = {
         uploadHotelPicUrl: `${host}/weapp/uploadHotelPic`,
 
         getHotelPicUrl: `${host}/weapp/getHotelPic`,
+
+        getUserInfoUrl: `${host}/weapp/getUserInfo`,
+
+        newUserUrl: `${host}/weapp/newUser`,
     }
 };
 

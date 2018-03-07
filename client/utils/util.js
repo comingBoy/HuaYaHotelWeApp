@@ -28,7 +28,6 @@ var showSuccess = text => wx.showToast({
     icon: 'success'
 })
 
-// 显示失败提示
 var showModel = (title, content) => {
     wx.hideToast();
 

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/bookRoom/bookRoom",
     "pages/uploadImg/uploadImg",
     "pages/bookKTV/bookKTV",
