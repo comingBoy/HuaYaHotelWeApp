@@ -85,6 +85,7 @@
     </view>
     <view class='howLong'>
       共{{bookDate.manyDays}}晚
+      <image src='../../images/jump.png' class='jumpButton'/>
     </view>
   </view>
 
@@ -296,11 +297,16 @@
   </view>
 </view>
 
+<!--选择日期界面-->
 <view>
   <view class='chooseDateBack' bindtap='hiddenChooseDate' hidden='{{hiddenChooseDate}}'></view>
   <view class='toChooseDate' hidden='{{hiddenChooseDate}}' animation='{{showChooseDateAnimationData}}'>
+    <view class='chooseDateTitle'>
+      选择日期
+    </view>
+    <image src='../../images/cancel2.png' class='cancel2' bindtap='hiddenChooseDate'></image>
     <view class='week'>
-      <view style='font-size: 30rpx; width: {{width/7}}px; text-align:center;' wx:for='{{dayList}}'>
+      <view style='width: {{width/7}}px; text-align:center;' wx:for='{{dayList}}' style='{{item == "日" || item == "六" ? "color:#2db9a9":""}}'>
         {{item}}
       </view>
     </view>
@@ -308,12 +314,12 @@
       <view class='month' wx:for='{{dateRange}}' wx:for-index="mindex">
         <view class='ym'>{{item.year}}年{{item.month}}月</view>
         <view class='days'>
-          <view style='display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: {{width/7}}px; height: {{width/7}}px; border-top: solid #EBEBEB 2rpx; background-color: {{item.background == 0 ? "white" : "#06C1AE"}}' wx:for='{{item.days}}'
+          <view style='display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: {{width/7}}px; height: {{width/7}}px; border-top: solid #EBEBEB 2rpx; background-color: {{item.background == 0 ? "white" : "#06C1AE"}};' wx:for='{{item.days}}'
             wx:for-index="dindex" data-m='{{mindex}}' data-d='{{dindex}}' bindtap='chooseDate'>
-            <view style='height: {{width/14}}px; font-size: 30rpx; color: {{item.background == 0 ? "balck" : "white"}}'>
+            <view style='height: {{width/14}}px; font-size: 30rpx; color: {{item.background == 0 ? "" : "white"}}'>
               {{item.day}}
             </view>
-            <view hidden='{{item.background == 0}}' style='height: {{width/14}}px; font-size: 30rpx; color: {{item.background == 0 ? "balck" : "white"}}'>
+            <view hidden='{{item.background == 0}}' style='height: {{width/14}}px; font-size: 30rpx; color: {{item.background == 0 ? "" : "white"}};'>
               {{choosedList[item.choosed]}}
             </view>
           </view>
@@ -321,7 +327,7 @@
       </view>
     </scroll-view>
     <view hidden='{{!isFinish}}' class='finishChoose'>
-      <button style='color: white; background-color: #06C1AE' bindtap='finishChoose'>完成</button>
+      <button style='color: white; background-color: #06C1AE; width:85%' bindtap='finishChoose'>完成</button>
     </view>
   </view>
 </view>

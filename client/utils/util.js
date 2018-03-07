@@ -85,7 +85,7 @@ var getManyDays = function (bookDate) {
   checkInDate = new Date(checkInDate)
   checkOutDate = new Date(checkOutDate)
   var manyDays = parseInt((checkOutDate - checkInDate) / (24 * 60 * 60 * 1000))
-  manyDays = this.NumberToChinese(manyDays)
+  //manyDays = this.NumberToChinese(manyDays)
   return manyDays
 }
 
