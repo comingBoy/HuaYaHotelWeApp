@@ -1,13 +1,16 @@
 <!--pages/bookRoom/bookRoom.wxml-->
-<view class='container'>
-
+<scroll-view class='container' scroll-y='true' enable-back-to-top='true' scroll-with-animation='true'>
   <!--酒店横幅、点击进入酒店相册-->
   <view class='hotelBanner'>
 
     <!--酒店图片-->
-    <image class='hotelImg' src='../../images/hotelBanner.jpg' mode='aspectFill' bindtap='previewHotelAlbum'>
-    </image>
-
+    <swiper class='hotelImg' autoplay='true' interval='7000'>
+      <swiper-item wx:for='{{albumUrl}}'>
+        <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill' bindtap='previewHotelAlbum' id='{{index}}'></image>
+        <!--相册数量及当前编号-->
+        <view class='albumNum'>{{index+1}}/{{albumUrl.length}}</view>
+      </swiper-item>
+    </swiper>
     <!--酒店名称-->
     <view class='hotelName'>
       华亚大酒店
@@ -33,7 +36,7 @@
   </view>
 
   <!--导航功能-->
-  <view class='navigation'>
+  <view class='navigation' bindtap='openMap'>
 
     <!--地址-->
     <view class='address'>
@@ -87,7 +90,7 @@
 
   <!--房间列表-->
   <view class='roomList'>
-    <view class='room' wx:for='{{roomList}}'>
+    <view class='room' wx:for='{{roomList}}' id='{{index}}' style='{{item.beChoosed ? "background-color:#f0f0f0" : ""}}' bindtouchstart='touchRoomStart' bindtouchend='touchRoomEnd' bindtouchmove='touchRoomMove' bindtap='showRoomDetail'>
       <!--预定信息-->
       <view class='bookInfo'>
         <!--房型-->
@@ -132,6 +135,120 @@
         <view class='payType'>
           在线付
         </view>
+      </view>
+    </view>
+  </view>
+
+  <!--酒店详情-->
+  <view class='hotelDetail' bindtap='enterHotelDetail'>
+    <!--详情-->
+    <view class='detailList'>
+      <!--下面代码用wx:for代替-->
+      <view class='detail'>
+        <image class='detailImg' src='../../images/WiFi.png'>
+        </image>
+        <view class='detailText'>
+          无线上网
+        </view>
+      </view>
+      <view class='detail'>
+        <image class='detailImg' src='../../images/wired.png'>
+        </image>
+        <view class='detailText'>
+          有线上网
+        </view>
+      </view>
+      <view class='detail'>
+        <image class='detailImg' src='../../images/park.png'>
+        </image>
+        <view class='detailText'>
+          停车场
+        </view>
+      </view>
+      <view class='detail'>
+        <image class='detailImg' src='../../images/luggage.png'>
+        </image>
+        <view class='detailText'>
+          行李寄存
+        </view>
+      </view>
+    </view>
+    <!--查看具体-->
+    <view class='toHotelDetail'>
+      <view class='buttonName'>
+        详情/电话
+      </view>
+      <image src='../../images/jump.png' class='jumpButton'>
+      </image>
+    </view>
+  </view>
+</scroll-view>
+
+<!--隐藏界面-->
+
+<!--房间详情界面-->
+<view>
+  <!--背景灰色-->
+  <view class='mask' bindtap='hiddenRoomDetail' hidden='{{hiddenRoomDetail}}'>
+  </view>
+  <!--房间详情-->
+  <view class='roomDetail' hidden='{{hiddenRoomDetail}}' animation='{{showRoomDetailAnimationData}}'>
+    <!--房型名称-->
+    <view class='roomDetail-roomType'>
+      {{roomBeShowed.roomType}}
+    </view>
+    <!--返回按钮-->
+    <image class='roomDetail-return' src='../../images/cancel.png' bindtap='hiddenRoomDetail'></image>
+    <!--房间详细信息-->
+    <scroll-view class='roomDetailInfo' scroll-y='true'>
+      <!--房间相册-->
+      <swiper class='roomAlbum'>
+        <swiper-item wx:for='{{roomBeShowed.album}}'>
+          <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill'></image>
+          <!--相册数量及当前编号-->
+          <view class='albumNum'>{{index+1}}/{{roomBeShowed.album.length}}</view>
+        </swiper-item>
+      </swiper>
+      <!--房间设施信息-->
+      <view hidden='{{!roomDetail_hiddenRoomDetail}}' class='roomDetail-roomInfoList'>
+        <view wx:for='{{roomBeShowed.facilities}}' wx:if='{{item.main}}' class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            {{item.name}}
+          </view>
+          <view class='info-value'>
+            {{item.value}}
+          </view>
+        </view>
+        <view class='showMore' bindtap='showMore'>
+          <view class='showMoreText'>
+            显示更多设备
+          </view>
+          <image class='showMoreImg' src='../../images/dropDown.png'>
+          </image>
+        </view>
+      </view>
+      <view hidden='{{roomDetail_hiddenRoomDetail}}' class='roomDetail-roomInfoList'>
+        <view wx:for='{{roomBeShowed.facilities}}' class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            {{item.name}}
+          </view>
+          <view class='info-value'>
+            {{item.value}}
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <!--价格及预定按钮-->
+    <view class='bookRoom'>
+      <!--价格-->
+      <view class='roomPrice'>
+        <view style='font-size:30rpx;'>￥</view>
+        <view class='roomPrice-price'>150</view>
+        <view class='roomPrice-discount'>返高端酒店券</view>
+      </view>
+      <!--预定按钮-->
+      <view class='roomDetail-bookButton'>
+        预订
       </view>
     </view>
   </view>
