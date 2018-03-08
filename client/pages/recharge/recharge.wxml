@@ -1,0 +1,12 @@
+<!--pages/recharge/recharge.wxml-->
+
+<view class='container'>
+  <view class='recharge'>
+    <view class='rechargeTitle'>
+      充值金额
+    </view>
+    <input class='rechargeAmount' type='digit' maxlength='7' focus='true' bindinput='inputAmount'>
+    </input>
+    <button class='comfirmRecharge'>确认充值</button>
+  </view>
+</view>
