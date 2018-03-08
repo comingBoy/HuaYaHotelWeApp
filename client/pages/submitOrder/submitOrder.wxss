@@ -1,5 +1,11 @@
 /* pages/submitOrder/submitOrder.wxss */
+page{
+  height: 100%;
+}
 
+.frame{
+  height:90%;
+}
 .roomInfoBox {
   display: flex;
   justify-content: center;
@@ -208,7 +214,7 @@
 }
 
 .bookRoom{
-position:absolute;
+position:fixed;
 bottom:0;
 width:100%;
 display:flex;
@@ -453,4 +459,8 @@ z-index: 1000;
   font-size: 30rpx;
 }
 
-
+.orderDetailContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
