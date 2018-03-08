@@ -406,6 +406,14 @@ Page({
     })
   },
 
+  previewRoomAlbum: function (e) {
+    var index = e.currentTarget.id
+    wx.previewImage({
+      current: this.data.roomBeShowed.picture[index],
+      urls: this.data.roomBeShowed.picture
+    })
+  },
+
   toChooseDate: function () {
     wx.navigateTo({
       url: '../chooseDate/chooseDate',

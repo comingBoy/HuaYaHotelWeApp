@@ -204,7 +204,7 @@
   <view class='roomDetail' hidden='{{hiddenRoomDetail}}' animation='{{showRoomDetailAnimationData}}'>
     <!--房型名称-->
     <view class='roomDetail-roomType'>
-      {{roomBeShowed.roomType}}
+      {{roomBeShowed.roomTypeName}}
     </view>
     <!--返回按钮-->
     <image class='roomDetail-return' src='../../images/cancel.png' bindtap='hiddenRoomDetail'></image>
@@ -213,7 +213,7 @@
       <!--房间相册-->
       <swiper class='roomAlbum'>
         <swiper-item wx:for='{{roomBeShowed.picture}}'>
-          <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill'></image>
+          <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill' bindtap='previewRoomAlbum' id='{{index}}'></image>
           <!--相册数量及当前编号-->
           <view class='albumNum'>{{index+1}}/{{roomBeShowed.picture.length}}</view>
         </swiper-item>
