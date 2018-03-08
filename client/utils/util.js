@@ -43,7 +43,7 @@ var getCurrentDateYMD = function () {
   var year = myDate.getFullYear()
   var month = myDate.getMonth() + 1
   var day = myDate.getDate()
-  var ymd = year.toString() + '-' + month.toString() + '-' + day.toString()
+  var ymd = year.toString() + '/' + month.toString() + '/' + day.toString()
   return {year,  month, day, ymd}
 }
 
@@ -56,7 +56,7 @@ var getYesterdayDateYMD = function () {
   year = year.toString()
   month = month < 10 ? '0' + month : month.toString()
   day = day < 10 ? '0' + day : day.toString()
-  return year + '-' + month + '-' + day
+  return year + '/' + month + '/' + day
 }
 
 var getNextdayDateYMD = function () {
@@ -65,7 +65,7 @@ var getNextdayDateYMD = function () {
   var year = myDate.getFullYear()
   var month = myDate.getMonth() + 1
   var day = myDate.getDate()
-  var ymd = year.toString() + '-' + month.toString() + '-' + day.toString()
+  var ymd = year.toString() + '/' + month.toString() + '/' + day.toString()
   return { year, month, day, ymd }
 }
 
@@ -84,15 +84,14 @@ var getManyDays = function (bookDate) {
   checkInDate = new Date(checkInDate)
   checkOutDate = new Date(checkOutDate)
   var manyDays = parseInt((checkOutDate - checkInDate) / (24 * 60 * 60 * 1000))
-  //manyDays = this.NumberToChinese(manyDays)
   return manyDays
 }
 
 var getWhatDay = function (date) {
   var tagList = ["今天","明天","后天"]
   var today = this.getCurrentDateYMD()
-  today = new Date(today.year.toString() + '-' + today.month.toString() + '-' + today.day.toString()) 
-  var date = new Date(date)
+  today = new Date(today.ymd)
+  date = new Date(date)
   var manyDays = parseInt((date - today) / (24 * 60 * 60 * 1000))
   if (manyDays > 2) {
     return "星期" + "日一二三四五六".charAt(date.getDay())
@@ -101,62 +100,12 @@ var getWhatDay = function (date) {
   }
 }
 
-function SectionToChinese(section) {
-  var chnNumChar = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
-  var chnUnitChar = ["", "十", "百", "千"]
-  var strIns = '', chnStr = '';
-  var unitPos = 0;
-  var zero = true;
-  while (section > 0) {
-    var v = section % 10;
-    if (v === 0) {
-      if (!zero) {
-        zero = true;
-        chnStr = chnNumChar[v] + chnStr;
-      }
-    } else {
-      zero = false;
-      strIns = chnNumChar[v];
-      strIns += chnUnitChar[unitPos];
-      chnStr = strIns + chnStr;
-    }
-    unitPos++;
-    section = Math.floor(section / 10);
-  }
-  return chnStr;
-}
-
-function NumberToChinese(num) {
-  var chnNumChar = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
-  var chnUnitSection = ["", "万", "亿", "万亿", "亿亿"]
-  var unitPos = 0;
-  var strIns = '', chnStr = '';
-  var needZero = false;
-  if (num === 0) {
-    return chnNumChar[0];
-  }
-  while (num > 0) {
-    var section = num % 10000;
-    if (needZero) {
-      chnStr = chnNumChar[0] + chnStr;
-    }
-    strIns = this.SectionToChinese(section);
-    strIns += (section !== 0) ? chnUnitSection[unitPos] : chnUnitSection[0];
-    chnStr = strIns + chnStr;
-    needZero = (section < 1000) && (section > 0);
-    num = Math.floor(num / 10000);
-    unitPos++;
-  }
-  return chnStr;
-}
-
 function dealBookDate (bookDate) {
   var bookDate = bookDate
   bookDate.manyDays = this.getManyDays(bookDate)
   bookDate.checkInDate.whatDay = this.getWhatDay(bookDate.checkInDate.ymd)
   bookDate.checkOutDate.whatDay = this.getWhatDay(bookDate.checkOutDate.ymd)
   return bookDate
-  
 }
 
 var getEndDate = function () {
@@ -165,7 +114,7 @@ var getEndDate = function () {
   var year = myDate.getFullYear()
   var month = myDate.getMonth() + 1
   var day = myDate.getDate()
-  var ymd = year.toString() + '-' + month.toString() + '-' + day.toString()
+  var ymd = year.toString() + '/' + month.toString() + '/' + day.toString()
   return { year, month, day, ymd}
 }
 
@@ -185,7 +134,7 @@ var getDateList = function (bookDate) {
   var midDay
   for (var i = 0; i < manyDays; i ++) {
     midDay =new Date (startDate.getTime() + 24 * 60 * 60 * 1000 * i)
-    dateList.push(midDay.getFullYear().toString() + '-' + (midDay.getMonth() + 1).toString() + '-' + midDay.getDate().toString())
+    dateList.push(midDay.getFullYear().toString() + '/' + (midDay.getMonth() + 1).toString() + '/' + midDay.getDate().toString())
   }
   return dateList
 }
@@ -201,9 +150,7 @@ module.exports = {
   getNextdayDateYMD, 
   getCurrentTimeHM, 
   getManyDays, 
-  getWhatDay, 
-  SectionToChinese, 
-  NumberToChinese, 
+  getWhatDay,
   dealBookDate, 
   getEndDate, 
   ifInOrder, 
