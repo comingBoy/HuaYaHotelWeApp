@@ -93,3 +93,52 @@
   margin-right: 18rpx;
   margin-top: 15rpx;
 }
+
+.orderDetail {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roomNum {
+  display: flex;
+  width: 92%;
+  font-size: 35rpx;
+  margin-top: 10rpx;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+
+.roomLabel {
+  width: 16%;
+  color: #a2a2a2;
+}
+
+.roomNumChoose {
+  width: 70%;
+  padding-left: 65rpx;
+}
+
+.chooseImg {
+  width: 43rpx;
+  height: 43rpx;
+}
+
+.customerName {
+  display: flex;
+  width: 92%;
+  font-size: 35rpx;
+  margin-top: 10rpx;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+
+.customerLabel {
+  width: 16%;
+  color: #a2a2a2;
+}
+
+.customerNameWrite {
+  width: 70%;
+  padding-left: 65rpx;
+  color: #d3d3d3;
+}

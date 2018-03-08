@@ -1,6 +1,6 @@
 <!--pages/submitOrder/submitOrder.wxml-->
 
-<view class='container' style='background-color:#F0F0F0;'>
+<view class='container'>
   <!--订单房间信息-->
   <view class='roomInfoBox'>
     <view class='roomInfo'>
@@ -40,10 +40,25 @@
       <image src='../../images/月亮.png' class='label'></image>
       <text class='word' style='color:#FBAA30;'>预定成功后，酒店将为你整晚留房</text>
       <image src='../../images/警告.png' class='label' hidden='{{hiddenOverTime}}'></image>
-      <text class='word' style='color:#78B8EA;'hidden='{{hiddenOverTime}}'>现已过可取消时间，预定成功后不可取消</text>
+      <text class='word' style='color:#78B8EA;' hidden='{{hiddenOverTime}}'>现已过可取消时间，预定成功后不可取消</text>
       <image src='../../images/确认.png' class='label' hidden='{{hiddenInTime}}'></image>
       <text class='word' style='color:#78B8EA;' hidden='{{hiddenInTime}}'>放心订！{{bookDate.checkOutDate.month}}月{{bookDate.checkInDate.day}}日18点前可免费取消</text>
     </view>
   </view>
-
+  <!--订单详情-->
+  <view class='orderDetail'>
+    <!--房间数选择-->
+    <view class='roomNum'>
+      <view class='roomLabel'>房间数</view>
+      <picker class='roomNumChoose' bindchange="chooseRoomNum" value="{{roomIndex}}" range="{{roomNum}}">
+        <view>{{roomNum[roomIndex]}}</view>
+      </picker>
+      <image class='chooseImg' src='../../images/dropDown.png'></image>
+    </view>
+    <!--入住人姓名-->
+    <view class='customerName' wx:for="{{customerName}}">
+      <view class='customerLabel'>入住人</view>
+      <input class='customerNameWrite' placeholder='{{item}}' bindinput='enterNmae' id='{{index}}' ></input>
+    </view>
+  </view>
 </view>
