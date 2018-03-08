@@ -36,4 +36,10 @@ router.post('/uploadHotelPic', controllers.hotel.uploadHotelPic)
 
 router.post('/getHotelPic', controllers.hotel.getHotelPic)
 
+router.post('/getUserInfo', controllers.userInfo.getUserInfo)
+
+router.post('/newUser', controllers.userInfo.newUser)
+
+router.post('/getCanBookRoom', controllers.book.getCanBookRoom)
+
 module.exports = router

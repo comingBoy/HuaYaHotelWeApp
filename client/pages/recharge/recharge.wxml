@@ -1,0 +1,15 @@
+<!--pages/recharge/recharge.wxml-->
+
+<view class='container'>
+  <view class='recharge'>
+    <view class='rechargeTitle'>
+      充值金额
+    </view>
+    <view class='rechargeAmountBox'>
+      ￥
+      <input class='rechargeAmount' type='digit' maxlength='{{maxLength}}' focus='true' bindinput='inputAmount'>
+      </input>
+    </view>
+  </view>
+  <button class='comfirmRecharge'>确认充值</button>
+</view>

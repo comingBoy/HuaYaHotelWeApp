@@ -1,4 +1,7 @@
 <!--pages/bookRoom/bookRoom.wxml-->
+<!--白色载入等待界面-->
+<view hidden='{{!ready}}'>
+
 <scroll-view class='container' scroll-y='true' enable-back-to-top='true' scroll-with-animation='true'>
   <!--酒店横幅、点击进入酒店相册-->
   <view class='hotelBanner'>
@@ -91,26 +94,26 @@
 
   <!--房间列表-->
   <view class='roomList'>
-    <view class='room' wx:for='{{roomList}}' id='{{index}}' style='{{item.beChoosed ? "background-color:#f0f0f0" : ""}}' bindtouchstart='touchRoomStart' bindtouchend='touchRoomEnd' bindtouchmove='touchRoomMove' bindtap='showRoomDetail'>
+    <view class='room' wx:for='{{roomList}}' id='{{index}}' style='{{item.beChoosed ? "background-color:#f0f0f0" : ""}}' bindtouchstart='touchRoomStart' bindtouchend='touchRoomEnd' bindtouchmove='touchRoomMove' bindtap='showRoomDetail' wx:if='{{item.canBookNum > 0}}'>
       <!--预订信息-->
       <view class='bookInfo'>
         <!--房型-->
         <view class='roomType'>
-          {{item.roomType}}
+          {{item.roomTypeName}}
         </view>
         <!--房间信息-->
         <view class='roomInfo'>
           <view class='area'>
-            {{item.area}}
+            {{item.facilities.area.outside}}
           </view>
           <view class='bedType'>
-            {{item.bedType}}
+            {{item.facilities.bed.outside}}
           </view>
           <view class='window'>
-            {{item.window}}
+            {{item.facilities.window.outside}}
           </view>
           <view class='breakfast'>
-            {{item.breakfast}}
+            {{item.facilities.breakfast.outside}}
           </view>
         </view>
         <!--取消规则-->
@@ -122,7 +125,7 @@
           <!--真实价格-->
           <view style='color:#FB501D'>￥</view>
           <view class='realPrice'>
-            150
+            {{item.price}}
           </view>
           <!--优惠方式-->
           <view class='discontType'>
@@ -131,10 +134,15 @@
         </view>
       </view>
       <!--预订按钮-->
-      <view class='bookButton' catchtap='toSubmitOrder' data-index='{{index}}' data-src='out'>
-        <view class='book'>预订</view>
-        <view class='payType'>
-          在线付
+      <view class='ifCanBook'>
+        <view class='canBookNum' wx:if='{{item.canBookNum <= 10}}'>
+          仅剩{{item.canBookNum}}间
+        </view>
+        <view class='bookButton' catchtap='toSubmitOrder' data-index='{{index}}' data-src='out'>
+          <view class='book'>预订</view>
+          <view class='payType'>
+            在线付
+          </view>
         </view>
       </view>
     </view>
@@ -196,7 +204,7 @@
   <view class='roomDetail' hidden='{{hiddenRoomDetail}}' animation='{{showRoomDetailAnimationData}}'>
     <!--房型名称-->
     <view class='roomDetail-roomType'>
-      {{roomBeShowed.roomType}}
+      {{roomBeShowed.roomTypeName}}
     </view>
     <!--返回按钮-->
     <image class='roomDetail-return' src='../../images/cancel.png' bindtap='hiddenRoomDetail'></image>
@@ -204,38 +212,84 @@
     <scroll-view class='roomDetailInfo' scroll-y='true'>
       <!--房间相册-->
       <swiper class='roomAlbum'>
-        <swiper-item wx:for='{{roomBeShowed.album}}'>
-          <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill'></image>
+        <swiper-item wx:for='{{roomBeShowed.picture}}'>
+          <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill' bindtap='previewRoomAlbum' id='{{index}}'></image>
           <!--相册数量及当前编号-->
-          <view class='albumNum'>{{index+1}}/{{roomBeShowed.album.length}}</view>
+          <view class='albumNum'>{{index+1}}/{{roomBeShowed.picture.length}}</view>
         </swiper-item>
       </swiper>
       <!--房间设施信息-->
-      <view hidden='{{!roomDetail_hiddenRoomDetail}}' class='roomDetail-roomInfoList'>
-        <view wx:for='{{roomBeShowed.facilities}}' wx:if='{{item.main}}' class='roomDetail-roomInfo'>
+      <view class='roomDetail-roomInfoList'>
+        <view class='roomDetail-roomInfo'>
           <view class='info-name'>
-            {{item.name}}
+            上网
           </view>
           <view class='info-value'>
-            {{item.value}}
+            {{roomBeShowed.facilities.surf}}
           </view>
         </view>
-        <view class='showMore' bindtap='showMore'>
+        <view class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            卫浴
+          </view>
+          <view class='info-value'>
+            {{roomBeShowed.facilities.bath}}
+          </view>
+        </view>
+        <view class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            窗户
+          </view>
+          <view class='info-value'>
+            {{roomBeShowed.facilities.window.inside}}
+          </view>
+        </view>
+        <view class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            可住
+          </view>
+          <view class='info-value'>
+            {{roomBeShowed.facilities.content}}
+          </view>
+        </view>
+        <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{roomBeShowed.facilities.area.inside != null}}' class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            面积
+          </view>
+          <view class='info-value'>
+            {{roomBeShowed.facilities.area.inside}}
+          </view>
+        </view>
+        <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{roomBeShowed.facilities.floor != null}}' class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            楼层
+          </view>
+          <view class='info-value'>
+            {{roomBeShowed.facilities.floor}}
+          </view>
+        </view>
+        <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{roomBeShowed.facilities.bed.inside != null}}' class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            床型
+          </view>
+          <view class='info-value'>
+            {{roomBeShowed.facilities.bed.inside}}
+          </view>
+        </view>
+        <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{roomBeShowed.facilities.breakfast.inside != null}}' class='roomDetail-roomInfo'>
+          <view class='info-name'>
+            早餐
+          </view>
+          <view class='info-value'>
+            {{roomBeShowed.facilities.breakfast.inside}}
+          </view>
+        </view>
+        <view hidden='{{!roomDetail_hiddenRoomDetail}}' class='showMore' bindtap='showMore'>
           <view class='showMoreText'>
             显示更多设备
           </view>
           <image class='showMoreImg' src='../../images/dropDown.png'>
           </image>
-        </view>
-      </view>
-      <view hidden='{{roomDetail_hiddenRoomDetail}}' class='roomDetail-roomInfoList'>
-        <view wx:for='{{roomBeShowed.facilities}}' class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            {{item.name}}
-          </view>
-          <view class='info-value'>
-            {{item.value}}
-          </view>
         </view>
       </view>
       <!--退款规则-->
@@ -333,4 +387,6 @@
       <button style='color: white; background-color: #06C1AE; width:85%' bindtap='finishChoose'>完成</button>
     </view>
   </view>
+</view>
+
 </view>

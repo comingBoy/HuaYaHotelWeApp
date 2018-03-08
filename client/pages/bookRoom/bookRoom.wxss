@@ -517,3 +517,12 @@ page {
   top: 15rpx;
   left: 15rpx;
 }
+
+.canBookNum {
+  font-size: 30rpx;
+  width: 120rpx;
+  display: flex;
+  justify-content: center;
+  color: #d47674;
+  margin-bottom: 10rpx;
+}

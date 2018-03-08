@@ -1,12 +1,15 @@
 // pages/bookRoom/bookRoom.js
 var hotel = require('../../utils/hotel.js')
 var util = require('../../utils/util.js')
+var book = require('../../utils/book.js')
+var dateList = ''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    ready: false,
     roomList: [
       {
         album: [
@@ -19,41 +22,49 @@ Page({
             name: "上网",
             value: "WIFI",
             main: true,
+            outside: false
           },
           {
             name: "卫浴",
             value: "独立",
             main: true,
+            outside: false
           },
           {
             name: "窗户",
             value: "有",
             main: true,
+            outside: true
           },
           {
             name: "可住",
             value: "2人",
             main: true,
+            outside: false
           },
           {
             name: "面积",
             value: "25㎡",
             main: false,
+            outside: true
           },
           {
             name: "楼层",
             value: "7-9层",
             main: false,
+            outside: false
           },
           {
             name: "床型",
             value: "大床1.8×2.0米1张",
             main: false,
+            outside: true
           },
           {
             name: "早餐",
             value: "含两份早餐",
             main: false,
+            outside: true
           },
         ],
         roomType: "商务大床房",
@@ -65,50 +76,58 @@ Page({
       },
       {
         album: [
-          "../../images/businessBed1.jpg",
-          "../../images/businessBed2.jpg",
-          "../../images/businessBed3.jpg",
+          "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520493962129-HkfqSvCdf.jpg",
+          "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520493977467-rkWjBD0df.jpg",
+          "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520493990310-BJCjSv0dz.jpg",
         ],
         facilities: [
           {
             name: "面积",
             value: "25㎡",
             main: false,
+            outside: true
           },
           {
             name: "床型",
             value: "单人床1.2x2.0米2张",
             main: false,
+            outside: true
           },
           {
             name: "窗户",
             value: "有",
             main: true,
+            outside: true
           },
           {
             name: "早餐",
             value: "含两份早餐",
             main: false,
+            outside: true
           },
           {
             name: "上网",
             value: "WIFI",
             main: true,
+            outside: false
           },
           {
             name: "卫浴",
             value: "独立",
             main: true,
+            outside: false
           },
           {
             name: "可住",
             value: "2人",
             main: true,
+            outside: false
           },
           {
             name: "楼层",
             value: "6-12层",
             main: false,
+            outside: false
           },
         ],
         roomType: "商务标间",
@@ -141,13 +160,16 @@ Page({
     choosedList: ["", "入住", "离店"],
     m: '',
     d: '',
-    isFinish: true
+    isFinish: true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '载入中',
+    })
     var that = this
     hotel.getHotelPic(function (res) {
       if (res.status == 1) {
@@ -180,17 +202,14 @@ Page({
 
     var currentDate = util.getCurrentDateYMD()
     var today = currentDate
-    today.ymd = currentDate.year.toString() + '-' + currentDate.month.toString() + '-' + currentDate.day.toString()
     var bookDate = {
       checkInDate: util.getCurrentDateYMD(),
       checkOutDate: util.getNextdayDateYMD()
     }
     bookDate = util.dealBookDate(bookDate)
-    that.setData({
-      bookDate: bookDate,
-      currentDate: today
-    })
+    dateList = util.getDateList(bookDate)
 
+    that.getCanBookRoom(dateList)
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -203,18 +222,18 @@ Page({
     var startDate = util.getCurrentDateYMD()
     var endDate = util.getEndDate()
     var dateRange = new Array()
-    var i = startDate.year.toString() + '-' + startDate.month.toString()
-    var j = endDate.year.toString() + '-' + endDate.month.toString()
+    var i = startDate.year.toString() + '/' + startDate.month.toString()
+    var j = endDate.year.toString() + '/' + endDate.month.toString()
     var monthStartDay = startDate.day
     do {
       var monthInfo = new Object()
-      var ym = i.split("-")
+      var ym = i.split("/")
       monthInfo.year = parseInt(ym[0])
       monthInfo.month = parseInt(ym[1])
       monthInfo.days = new Array()
-      var thisMonth = monthInfo.year.toString() + '-' + monthInfo.month.toString()
+      var thisMonth = monthInfo.year.toString() + '/' + monthInfo.month.toString()
       var nextMonth, nextYear
-      var startDay = new Date(thisMonth + '-' + monthStartDay.toString())
+      var startDay = new Date(thisMonth + '/' + monthStartDay.toString())
       startDay = startDay.getDay()
       for (var k = 0; k < startDay; k++) {
         var tmp = {
@@ -256,7 +275,7 @@ Page({
           }
         }
       }
-      var endDay = new Date(monthInfo.year.toString() + '-' + monthInfo.month.toString() + '-' + monthInfo.days[monthInfo.days.length - 1].day.toString())
+      var endDay = new Date(monthInfo.year.toString() + '/' + monthInfo.month.toString() + '/' + monthInfo.days[monthInfo.days.length - 1].day.toString())
       endDay = 6 - endDay.getDay()
       for (var k = 0; k < endDay; k++) {
         var tmp = {
@@ -268,7 +287,7 @@ Page({
       }
       monthStartDay = 1
       dateRange.push(monthInfo)
-      i = nextYear.toString() + '-' + nextMonth.toString()
+      i = nextYear.toString() + '/' + nextMonth.toString()
     } while (thisMonth != j)
 
     var originDateRange = JSON.stringify(dateRange)
@@ -297,6 +316,33 @@ Page({
     that.setData({
       originDateRange: originDateRange,
       dateRange: dateRange,
+      bookDate: bookDate,
+      currentDate: today
+    })
+
+  },
+
+  //查询可预订房型接口
+  getCanBookRoom: function (dateList) {
+    var that = this
+    var data = {
+      dateList: dateList
+    }
+    book.getCanBookRoom(data, function (res) {
+      if (res.status == 1) {
+        var roomList = res.roomList
+        for (var i = 0; i < roomList.length; i ++) {
+          roomList[i].picture = JSON.parse(roomList[i].picture)
+          roomList[i].facilities = JSON.parse(roomList[i].facilities)
+        }
+        that.setData({
+          roomList: roomList
+        })
+      } else if (res.status == -1) {
+        util.showModel("提示", "获取房型失败，请重试！")
+      } else {
+        util.showModel("提示", "请求出错！")
+      }
     })
   },
 
@@ -304,7 +350,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideLoading()
+    this.setData({
+      ready: true
+    })
   },
 
   /**
@@ -354,6 +403,14 @@ Page({
     wx.previewImage({
       current: this.data.albumUrl[index],
       urls: this.data.albumUrl
+    })
+  },
+
+  previewRoomAlbum: function (e) {
+    var index = e.currentTarget.id
+    wx.previewImage({
+      current: this.data.roomBeShowed.picture[index],
+      urls: this.data.roomBeShowed.picture
     })
   },
 
@@ -465,6 +522,10 @@ Page({
   },
 
   finishChooseDate: function () {
+    var bookDate = this.data.bookDate
+    dateList = util.getDateList(bookDate)
+    this.getCanBookRoom(dateList)
+
     var hiddenChooseDate = true
     //第1步：创建动画实例
     var animation = wx.createAnimation({
@@ -501,7 +562,7 @@ Page({
   chooseDate: function (e) {
     var that = this
     if (that.data.dateRange[e.currentTarget.dataset.m].days[e.currentTarget.dataset.d].day != "") {
-      var choosedDate = that.data.dateRange[e.currentTarget.dataset.m].year.toString() + '-' + that.data.dateRange[e.currentTarget.dataset.m].month.toString() + '-' + that.data.dateRange[e.currentTarget.dataset.m].days[e.currentTarget.dataset.d].day.toString()
+      var choosedDate = that.data.dateRange[e.currentTarget.dataset.m].year.toString() + '/' + that.data.dateRange[e.currentTarget.dataset.m].month.toString() + '/' + that.data.dateRange[e.currentTarget.dataset.m].days[e.currentTarget.dataset.d].day.toString()
       if (that.data.bookDate.checkInDate.ymd != "" && that.data.bookDate.checkOutDate.ymd != "") {
         var dateRange = JSON.stringify(that.data.originDateRange)
         dateRange = JSON.parse(dateRange)
@@ -765,15 +826,15 @@ Page({
   /**
    * 跳转到预订界面
    */
-  toSubmitOrder: function(e){
+  toSubmitOrder: function (e) {
     console.log(e)
     var roomList = this.data.roomList
     var src = e.currentTarget.dataset.src
     var room
     var index
-    if(src == 'in'){
+    if (src == 'in') {
       room = this.data.roomBeShowed
-    } else if(src == 'out'){
+    } else if (src == 'out') {
       index = e.currentTarget.dataset.index
       room = roomList[index]
     }
