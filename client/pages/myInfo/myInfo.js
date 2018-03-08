@@ -188,4 +188,12 @@ Page({
     }
     this.popDownWindow(hidden)
   },
+  /**
+   * 跳转到充值界面
+   */
+  toRecharge: function(){
+    wx.navigateTo({
+      url: '../recharge/recharge',
+    })
+  }
 })

@@ -18,21 +18,21 @@
   <view class='functionBack'>
     <view class='function'>
       <view class='functionBlock' bindtap='showMyOrder'>
-        <image class='functionImg' src='../../images/订单.png'>
+        <image class='functionImg' src='../../images/order.png'>
         </image>
         <view class='functionName'>
           我的订单
         </view>
       </view>
       <view class='functionBlock' bindtap='showMyCard'>
-        <image class='functionImg' src='../../images/卡包.png'>
+        <image class='functionImg' src='../../images/card.png'>
         </image>
         <view class='functionName'>
           我的卡包
         </view>
       </view>
       <view class='functionBlock' bindtap='showMyBalance'>
-        <image class='functionImg' src='../../images/余额.png'>
+        <image class='functionImg' src='../../images/balance.png'>
         </image>
         <view class='functionName'>
           余额
@@ -83,7 +83,7 @@
         <view class='num'>{{userInfo.balance}}</view>
       </view>
     </view>
-    <button class='recharge'>
+    <button class='recharge' bindtap='toRecharge'>
       <text decode='true'>充&nbsp;值</text> </button>
 
   </view>
