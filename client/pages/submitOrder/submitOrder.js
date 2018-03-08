@@ -10,7 +10,15 @@ Page({
     hiddenOverTime: false,
     roomNum: ['一间', '两间', '三间', '四间', '五间', '六间', '七间', '八间', '九间', '十间'],
     roomIndex: 0,
-    customerName: ["每间需要填写一人姓名"]
+    customerName: ["每间需要填写一人姓名"],
+    tell: "用于接受通知",
+    timeNum: ['18:00之前', '20:00之前', '23:59之前', '次日6：00之前'],
+    timeIndex: 0,
+
+    hiddenOrderDetail: true,
+    hiddenRoomDetail: true,
+    roomBeShowed: null,
+    roomDetail_hiddenRoomDetail: true,
   },
 
   /**
@@ -21,7 +29,7 @@ Page({
       room: getApp().globalData.room,
       bookDate: getApp().globalData.bookDate,
     })
-    console.log(this.data.bookDate)
+    console.log(this.data.room)
     var date1 = util.getCurrentDateYMD().ymd + ' ' + util.getCurrentTimeHM() + ":00"
     var date2 = this.data.bookDate.checkInDate.ymd + ' ' + "18:00:00"
     var IfInTime = util.ifInOrder(date1, date2)
@@ -95,7 +103,7 @@ Page({
     console.log(num1)
     var customerNameArray = new Array(num1)
     console.log(customerNameArray.length)
-    for (var i=0; i< customerNameArray.length;i++){
+    for (var i = 0; i < customerNameArray.length; i++) {
       customerNameArray[i] = "每间需要填写一人姓名"
     }
     console.log(customerNameArray)
@@ -104,10 +112,10 @@ Page({
       customerName: customerNameArray
     })
   },
-/**
- * 输入房间入住人
- */
-  enterNmae:function(e){
+  /**
+   * 输入房间入住人
+   */
+  enterNmae: function (e) {
     console.log(e.currentTarget.id)
     var customerNameArray = this.data.customerName
     console.log(customerNameArray.length)
@@ -117,5 +125,183 @@ Page({
       customerName: customerNameArray
     })
     console.log(customerNameArray.length)
+  },
+  /**
+   * 输入联系电话
+   */
+  enterTell: function (e) {
+    this.setData({
+      tell: e.detail.value
+    })
+    console.log(this.data.tell)
+  },
+  /**
+   * 预计到达时间按选择
+   */
+  chooseTime: function (e) {
+    this.setData({
+      timeIndex: e.detail.value
+    })
+  },
+
+  /**
+   * 打开房间详情界面
+   */
+  showRoomDetail: function (e) {
+    var roomBeShowed = this.data.room
+    var hiddenRoomDetail = false
+
+    //第1步：创建动画实例
+    var animation = wx.createAnimation({
+      duration: 200,
+      transformOrigin: '50% 100% 0'
+    })
+
+    //第2步：这个动画实例赋给当前动画实例
+    this.animation = animation
+
+    //第3步：执行第一组动画
+    animation.opacity(0).scaleY(0).step();
+
+    // 第4步：导出动画对象赋给数据对象储存 
+    this.setData({
+      showRoomDetailAnimationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画 
+    setTimeout(function () {
+      // 执行第二组动画 
+      animation.opacity(1).scaleY(1).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象 
+      this.setData({
+        showRoomDetailAnimationData: animation
+      })
+    }.bind(this), 200)
+    this.setData({
+      roomBeShowed,
+      hiddenRoomDetail,
+    })
+  },
+  /**
+   * 隐藏房间详情界面
+   */
+  hiddenRoomDetail: function () {
+    var hiddenRoomDetail = true
+    //第1步：创建动画实例
+    var animation = wx.createAnimation({
+      duration: 200,
+      transformOrigin: '50% 100% 0'
+    })
+
+    //第2步：这个动画实例赋给当前动画实例
+    this.animation = animation
+
+    //第3步：执行第一组动画
+    animation.opacity(0).scaleY(0).step();
+
+    // 第4步：导出动画对象赋给数据对象储存 
+    this.setData({
+      showRoomDetailAnimationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画 
+    setTimeout(function () {
+      // 执行第二组动画 
+      animation.opacity(1).scaleY(1).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象 
+      this.setData({
+        showRoomDetailAnimationData: animation
+      })
+      this.setData({
+        hiddenRoomDetail,
+        roomDetail_hiddenRoomDetail: true,
+      })
+    }.bind(this), 200)
+  },
+  /**
+  * 显示更多设施
+  */
+  showMore: function (e) {
+    this.setData({
+      roomDetail_hiddenRoomDetail: false,
+    })
+  },
+  /**
+   * 显示订单明细
+   */
+  openOrderDetail: function () {
+    console.log(1111111)
+    var hiddenOrderDetail = !this.data.hiddenOrderDetail
+
+    //第1步：创建动画实例
+    var animation = wx.createAnimation({
+      duration: 200,
+      transformOrigin: '50% 100% 0'
+    })
+
+    //第2步：这个动画实例赋给当前动画实例
+    this.animation = animation
+
+    //第3步：执行第一组动画
+    animation.opacity(0).scaleY(0).step();
+
+    // 第4步：导出动画对象赋给数据对象储存 
+    this.setData({
+      hiddenOrderDetailAnimationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画 
+    setTimeout(function () {
+      // 执行第二组动画 
+      animation.opacity(1).scaleY(1).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象 
+      this.setData({
+        hiddenOrderDetailAnimationData: animation
+      })
+      if (hiddenOrderDetail) {
+        this.setData({
+          hiddenOrderDetail
+        })
+      }
+    }.bind(this), 200)
+    if (!hiddenOrderDetail) {
+      this.setData({
+        hiddenOrderDetail
+      })
+    }
+
+  },
+
+  hiddenOrderDetail: function () {
+    var hiddenOrderDetail = true
+    //第1步：创建动画实例
+    var animation = wx.createAnimation({
+      duration: 200,
+      transformOrigin: '50% 100% 0'
+    })
+
+    //第2步：这个动画实例赋给当前动画实例
+    this.animation = animation
+
+    //第3步：执行第一组动画
+    animation.opacity(0).scaleY(0).step();
+
+    // 第4步：导出动画对象赋给数据对象储存 
+    this.setData({
+      hiddenOrderDetailAnimationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画 
+    setTimeout(function () {
+      // 执行第二组动画 
+      animation.opacity(1).scaleY(1).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象 
+      this.setData({
+        hiddenOrderDetailAnimationData: animation
+      })
+      this.setData({
+        hiddenOrderDetail,
+      })
+    }.bind(this), 200)
   }
 })

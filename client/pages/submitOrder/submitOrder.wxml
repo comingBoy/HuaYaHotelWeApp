@@ -27,7 +27,7 @@
         </text>
         </view>
         <!--房间详情-->
-        <view class='roomDetail' bindtap='enterRoomDetail'>
+        <view class='roomDetail' bindtap='showRoomDetail'>
           <text style='color:#34B8AB;font-size:25rpx;' decode="{{true}}">房间详情</text>
           <image src='../../images/jump.png' class='jumpImg'></image>
         </view>
@@ -45,20 +45,189 @@
       <text class='word' style='color:#78B8EA;' hidden='{{hiddenInTime}}'>放心订！{{bookDate.checkOutDate.month}}月{{bookDate.checkInDate.day}}日18点前可免费取消</text>
     </view>
   </view>
+
   <!--订单详情-->
   <view class='orderDetail'>
     <!--房间数选择-->
     <view class='roomNum'>
       <view class='roomLabel'>房间数</view>
+
       <picker class='roomNumChoose' bindchange="chooseRoomNum" value="{{roomIndex}}" range="{{roomNum}}">
-        <view>{{roomNum[roomIndex]}}</view>
+        <view class='chooseRoomNum'>
+          <view>{{roomNum[roomIndex]}}</view>
+          <image class='chooseImg' src='../../images/dropDown.png'></image>
+        </view>
       </picker>
-      <image class='chooseImg' src='../../images/dropDown.png'></image>
+
+
+
     </view>
     <!--入住人姓名-->
     <view class='customerName' wx:for="{{customerName}}">
       <view class='customerLabel'>入住人</view>
-      <input class='customerNameWrite' placeholder='{{item}}' bindinput='enterNmae' id='{{index}}' ></input>
+      <input class='customerNameWrite' placeholder='{{item}}' bindinput='enterNmae' id='{{index}}'></input>
+    </view>
+    <!--联系方式-->
+    <view class='tellNum'>
+      <view class='tellLabel'>联系方式</view>
+      <input class='tellWrite' placeholder='{{tell}}' bindinput='enterTell' type='number' maxlength='11'></input>
+    </view>
+    <!--预计到达时间-->
+    <view class='reachTime'>
+      <view class='reachTimeLabel'>预计到店</view>
+
+      <picker class='chooseTime' bindchange="chooseTime" value="{{timeIndex}}" range="{{timeNum}}">
+        <view class='timeBox'>
+          <view>{{timeNum[timeIndex]}}</view>
+          <image class='chooseImg' src='../../images/dropDown.png'></image>
+        </view>
+      </picker>
+
+
+
+    </view>
+  </view>
+
+  <!--预定按键-->
+  <view class="bookRoom">
+    <view class="roomPrice" bindtap='openOrderDetail'>
+      <view style="font-size:15px;">￥</view>
+      <view class="roomPrice-price">150</view>
+      <view class="roomPrice-discount">
+        <view class='roomPrice-discount-text'>明细</view>
+        <image src='../../images/dropDownG.png' class='detailImg' hidden='{{!hiddenOrderDetail}}'></image>
+        <image src='../../images/dropUp.png' class='detailImg' hidden='{{hiddenOrderDetail}}'></image>
+      </view>
+    </view>
+    <view class="roomDetail-bookButton" data-src="in"> 预订 </view>
+  </view>
+
+  <!--隐藏界面 房间详情-->
+  <view>
+    <!--背景灰色-->
+    <view class='mask' bindtap='hiddenRoomDetail' hidden='{{hiddenRoomDetail}}'></view>
+    <!--房间详情-->
+    <view class='roomDetailHidden' hidden='{{hiddenRoomDetail}}' animation='{{showRoomDetailAnimationData}}'>
+      <!--房型名称-->
+      <view class='roomDetail-roomType'>
+        {{roomBeShowed.roomType}}
+      </view>
+      <!--返回按钮-->
+      <image class='roomDetail-return' src='../../images/cancel.png' bindtap='hiddenRoomDetail'></image>
+      <!--房间详细信息-->
+      <scroll-view class='roomDetailInfo' scroll-y='true'>
+        <!--房间相册-->
+        <swiper class='roomAlbum'>
+          <swiper-item wx:for='{{roomBeShowed.album}}'>
+            <image src='{{item}}' class='roomImg' height='150' width='100%' mode='aspectFill'></image>
+            <!--相册数量及当前编号-->
+            <view class='albumNum'>{{index+1}}/{{roomBeShowed.album.length}}</view>
+          </swiper-item>
+        </swiper>
+        <!--房间设施信息-->
+        <view hidden='{{!roomDetail_hiddenRoomDetail}}' class='roomDetail-roomInfoList'>
+          <view wx:for='{{roomBeShowed.facilities}}' wx:if='{{item.main}}' class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              {{item.name}}
+            </view>
+            <view class='info-value'>
+              {{item.value}}
+            </view>
+          </view>
+          <view class='showMore' bindtap='showMore'>
+            <view class='showMoreText'>
+              显示更多设备
+            </view>
+            <image class='showMoreImg' src='../../images/dropDown.png'>
+            </image>
+          </view>
+        </view>
+        <view hidden='{{roomDetail_hiddenRoomDetail}}' class='roomDetail-roomInfoList'>
+          <view wx:for='{{roomBeShowed.facilities}}' class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              {{item.name}}
+            </view>
+            <view class='info-value'>
+              {{item.value}}
+            </view>
+          </view>
+        </view>
+        <!--退款规则-->
+        <view class='roomDetailInfoBox'>
+          <view class='roomDetailInfoTitle'>
+            退款规则
+          </view>
+          <view class='roomDetailInfoList'>
+            <view class='roomDetailInfoContent'>
+              <image src='../../images/refund.png' class='refundImg'></image>
+              <view class='refundText'>
+                <text style='color:#2db9a9'>限时取消</text> 入住日当天18点前可免费取消，逾期不可取消/变更，如未入住，酒店将扣除全额房费
+              </view>
+            </view>
+          </view>
+
+        </view>
+        <!--使用规则-->
+        <view class='roomDetailInfoBox'>
+          <view class='roomDetailInfoTitle'>
+            使用规则
+          </view>
+          <view class='roomDetailInfoList'>
+            <view class='roomDetailInfoContent'>
+              <view style="margin-right: 20rpx;">•</view>
+              <view>
+                直接消费，请携带入住人身份证，凭姓名和预订手机号直接办理入住
+              </view>
+            </view>
+            <view class='roomDetailInfoContent'>
+              <view style="margin-right: 20rpx;">•</view>
+              <view>
+                请在12:00之后入住并于次日14:00之前退房；如需提前入住或延时退房请电话咨询
+              </view>
+            </view>
+            <view class='roomDetailInfoContent'>
+              <view style="margin-right: 20rpx;">•</view>
+              <view>
+                入住需要押金，金额以前台为准
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <!--订单明细-->
+
+  </view>
+
+  <!--隐藏界面 订单明细-->
+  <view>
+    <!--背景灰色-->
+    <view class='hiddenOrderDetail' bindtap='hiddenOrderDetail' hidden='{{hiddenOrderDetail}}'>
+      <scroll-view class='orderDetailHidden' hidden='{{hiddenOrderDetail}}' animation='{{hiddenOrderDetailAnimationData}}' scroll-y='true'>
+        <view>
+          <view class='order-label'>明细</view>
+
+        </view>
+        <view class='order-price'>
+          <view class='order-price-label'>房费</view>
+          <view class='order-price-num'>￥108</view>
+        </view>
+        <view class='priceDetail'>
+          <view class='perPriceDetail'>
+            <view class='perDate'>2018-03-08不含早</view>
+            <view class='perPrice'>1 x ￥108</view>
+          </view>
+          <view class='perPriceDetail'>
+            <view class='perDate'>2018-03-08不含早</view>
+            <view class='perPrice'>1 x ￥108</view>
+          </view>
+          <view class='perPriceDetail'>
+            <view class='perDate'>2018-03-08不含早</view>
+            <view class='perPrice'>1 x ￥108</view>
+          </view>
+        </view>
+      </scroll-view>
+
     </view>
   </view>
 </view>

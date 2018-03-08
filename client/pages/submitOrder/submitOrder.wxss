@@ -99,24 +99,28 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
+  margin-top: 30rpx;
 }
 
 .roomNum {
   display: flex;
-  width: 92%;
-  font-size: 35rpx;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  font-size: 30rpx;
   margin-top: 10rpx;
+  padding-bottom: 10rpx;
   border-bottom: solid #f0f0f0 1rpx;
 }
 
 .roomLabel {
-  width: 16%;
+  width: 20%;
   color: #a2a2a2;
 }
 
 .roomNumChoose {
   width: 70%;
-  padding-left: 65rpx;
 }
 
 .chooseImg {
@@ -126,19 +130,327 @@
 
 .customerName {
   display: flex;
-  width: 92%;
-  font-size: 35rpx;
-  margin-top: 10rpx;
+  width: 90%;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+  padding-bottom: 10rpx;
   border-bottom: solid #f0f0f0 1rpx;
+  justify-content: space-between;
 }
 
 .customerLabel {
-  width: 16%;
+  width: 20%;
   color: #a2a2a2;
 }
 
 .customerNameWrite {
   width: 70%;
-  padding-left: 65rpx;
-  color: #d3d3d3;
+
+  color: black;
 }
+
+.tellNum {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+
+.tellLabel {
+  width: 20%;
+  color: #a2a2a2;
+}
+
+.tellWrite {
+  width: 70%;
+ 
+  color: black;
+}
+
+.reachTime {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  padding-bottom: 10rpx;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+
+.reachTimeLabel {
+  width: 20%;
+  color: #a2a2a2;
+}
+
+.chooseTime {
+  width: 70%;
+  
+  color: black;
+}
+
+.chooseRoomNum{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.timeBox{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.bookRoom{
+position:absolute;
+bottom:0;
+width:100%;
+display:flex;
+height:10%;
+}
+
+.roomPrice{
+  width:50%;
+display:flex;
+background-color:#fafafa;
+color:#2db9a9;
+justify-content:center;
+align-items:center;
+font-weight:900;
+
+}
+.roomPrice-price{
+  font-size:50rpx;
+margin-right:20rpx;
+
+}
+
+.roomPrice-discount{
+  display: flex;
+font-size:26rpx;
+color:#8E8E8E;
+
+border-radius:7rpx;
+padding:0 2rpx;
+font-weight:400;
+margin-left:80rpx;
+
+
+}
+
+.roomDetail-bookButton {
+  width: 50%;
+  background-color: #fe9900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.roomPrice-discount-text{
+  display: flex;
+  width: 50%;
+}
+.detailImg{
+display:flex;
+padding-top:3rpx;
+width:53rpx;
+height:35rpx;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+.roomDetailHidden {
+  width: 100%;
+  height: 840rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  z-index: 1001;
+  background: #fff;
+  bottom: 0rpx;
+  display: flex;
+  flex-direction: column;
+}
+.roomDetail-roomType {
+  padding: 20rpx;
+  font-size: 35rpx;
+  font-weight: 800;
+  background-color: #fafafa;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.roomDetail-return {
+  position: absolute;
+  height: 40rpx;
+  width: 40rpx;
+  right: 10px;
+  top: 20rpx;
+}
+.roomDetailInfo {
+  height: 80%;
+}
+.roomImg {
+  width: 100%;
+  height: 500rpx;
+}
+.albumNum {
+  z-index: 1001;
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  color: white;
+  padding: 0rpx 25rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 25rpx;
+}
+.roomDetail-roomInfoList {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: solid 1rpx #f0f0f0;
+  padding: 10rpx;
+}
+.roomDetail-roomInfo {
+  min-width: 50%;
+  display: flex;
+  padding: 5rpx 0;
+}
+.info-name {
+  padding-left: 20rpx;
+  font-size: 30rpx;
+  color: #a2a2a2;
+}
+.info-value {
+  padding-left: 25rpx;
+  font-size: 30rpx;
+}
+.showMoreText {
+  padding-left: 20rpx;
+  font-size: 30rpx;
+  color: #2db9a9;
+}
+.showMoreImg {
+  width: 35rpx;
+  height: 35rpx;
+  margin-left: 10rpx;
+}
+.roomDetailInfoBox {
+  padding: 20rpx 30rpx;
+  font-size: 30rpx;
+  border-bottom: solid 1rpx #f0f0f0;
+}
+.roomDetailInfoContent {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+}
+
+.refundImg {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+.refundText {
+  width: 94%;
+}
+
+.bookRoomHidden{
+position:absolute;
+bottom:0;
+width:100%;
+display:flex;
+height:10%;
+z-index: 1000;
+}
+.hiddenOrderDetail{
+  width: 100%;
+  height:90%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+.orderDetailHidden{
+    width: 100%;
+  height: 270rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  z-index: 1001;
+  background: #fff;
+  bottom: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-label{
+  width: 90%;
+  color: black;
+  font-size: 30rpx;
+}
+
+.order-price{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.order-price-label{
+  color: black;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 30rpx
+}
+
+.order-price-num{
+  color: black;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 35rpx;
+}
+
+.priceDetail{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.perPriceDetail{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.perDate{
+  display: flex;
+  justify-content: flex-start;
+  font-size: 30rpx;
+}
+
+.perPrice{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 30rpx;
+}
+
+
