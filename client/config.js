@@ -30,6 +30,8 @@ var config = {
         getUserInfoUrl: `${host}/weapp/getUserInfo`,
 
         newUserUrl: `${host}/weapp/newUser`,
+
+        getCanBookRoomUrl: `${host}/weapp/getCanBookRoom`,
     }
 };
 

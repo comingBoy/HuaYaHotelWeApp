@@ -80,7 +80,7 @@
       </view>
       <view class='balanceNum'>
         ￥
-        <view class='num'>32.21</view>
+        <view class='num'>{{userInfo.balance}}</view>
       </view>
     </view>
     <button class='recharge'>

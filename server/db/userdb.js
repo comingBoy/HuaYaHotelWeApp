@@ -12,8 +12,8 @@ module.exports = {
 
   //新建用户
   async newUser(args) {
-    let sql = 'INSERT INTO userdb(userName, avatar, openId) VALUE(?,?,?)'
-    let params = [args.userName, args.avatar, args.openId]
+    let sql = 'INSERT INTO userdb(openId, balance) VALUE(?,?)'
+    let params = [args.openId, args.balance]
     let result = mysqlHelper.query(sql, params)
     return result
   },
