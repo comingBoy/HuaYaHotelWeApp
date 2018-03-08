@@ -11,7 +11,7 @@
       </view>
       <view class='memberGrade'>
         黄金会员
-        <image class='memberImg' src='../../images/黄金会员.png'></image>
+        <image class='memberImg' src='../../images/goldVIP.png'></image>
       </view>
     </view>
   </view>
