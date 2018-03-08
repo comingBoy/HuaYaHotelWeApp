@@ -1,1 +1,123 @@
 /* pages/myInfo/myInfo.wxss */
+
+.userInfo {
+  display: flex;
+  background-color: white;
+  margin: 20rpx;
+  padding: 25rpx;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 120rpx;
+  margin-right: 30rpx;
+}
+
+.nickName {
+  font-size: 35rpx;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+}
+
+.memberGrade {
+  color: #a2a2a2;
+  font-size: 35rpx;
+}
+
+.memberImg {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.userInfoBack {
+  width: 100%;
+  background-color: #20b099;
+  border-bottom: solid #f0f0f0 20rpx;
+}
+
+.functionBack {
+  width: 100%;
+  background-color: #20b099;
+  border-bottom: solid #f0f0f0 20rpx;
+}
+
+.function {
+  background-color: white;
+  margin: 20rpx;
+  padding: 35rpx;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.functionBlock {
+  font-size: 25rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  padding: 10px;
+}
+
+.functionImg {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 15rpx;
+}
+
+.popWindowBox {
+  width: 100%;
+  height: 840rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  z-index: 1001;
+  background: #fff;
+  bottom: 0rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25rpx 25rpx 0 0;
+}
+
+.recharge {
+  color: white;
+  background-color: #31bbac;
+  width: 85%;
+}
+
+.balance {
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 35rpx;
+}
+
+.balanceNum {
+  display: flex;
+  font-size: 50rpx;
+  margin: 30rpx;
+  align-items: flex-end;
+  font-weight: 900;
+}
+
+.num {
+  font-size: 80rpx;
+}
+
+.cancel2 {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+}

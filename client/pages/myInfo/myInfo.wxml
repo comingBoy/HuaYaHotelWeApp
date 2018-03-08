@@ -1,2 +1,90 @@
 <!--pages/myInfo/myInfo.wxml-->
-<text>pages/myInfo/myInfo.wxml</text>
+<!--主界面-->
+<view class='container'>
+  <!--个人基本信息-->
+  <view class='userInfoBack'>
+    <view class='userInfo'>
+      <view class='nickName'>
+        <image class='avatar' src='{{userInfo.avatarUrl}}'>
+        </image>
+        {{userInfo.nickName}}
+      </view>
+      <view class='memberGrade'>
+        黄金会员
+        <image class='memberImg' src='../../images/黄金会员.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='functionBack'>
+    <view class='function'>
+      <view class='functionBlock' bindtap='showMyOrder'>
+        <image class='functionImg' src='../../images/订单.png'>
+        </image>
+        <view class='functionName'>
+          我的订单
+        </view>
+      </view>
+      <view class='functionBlock' bindtap='showMyCard'>
+        <image class='functionImg' src='../../images/卡包.png'>
+        </image>
+        <view class='functionName'>
+          我的卡包
+        </view>
+      </view>
+      <view class='functionBlock' bindtap='showMyBalance'>
+        <image class='functionImg' src='../../images/余额.png'>
+        </image>
+        <view class='functionName'>
+          余额
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--隐藏界面-->
+
+<!--我的订单界面-->
+<view class='myOrderBox'>
+  <!--背景灰色-->
+  <view class='mask' bindtap='hiddenMyOrder' hidden='{{hiddenMyOrder}}'>
+  </view>
+  <view class='popWindowBox' hidden='{{hiddenMyOrder}}' animation='{{animationDate}}'>
+    <image class='cancel2' src='../../images/cancel2.png' catchtap='hiddenMyOrder'>
+    </image>
+  </view>
+</view>
+
+<!--我的卡包界面-->
+<view class='myCardBox'>
+  <!--背景灰色-->
+  <view class='mask' bindtap='hiddenMyCard' hidden='{{hiddenMyCard}}'>
+  </view>
+  <view class='popWindowBox' hidden='{{hiddenMyCard}}' animation='{{animationDate}}'>
+    <image class='cancel2' src='../../images/cancel2.png' catchtap='hiddenMyCard'>
+    </image>
+  </view>
+</view>
+
+<!--我的余额界面-->
+<view class='myBalanceBox'>
+  <!--背景灰色-->
+  <view class='mask' bindtap='hiddenMyBalance' hidden='{{hiddenMyBalance}}'>
+  </view>
+  <view class='popWindowBox' hidden='{{hiddenMyBalance}}' animation='{{animationDate}}'>
+    <image class='cancel2' src='../../images/cancel2.png' catchtap='hiddenMyBalance'>
+    </image>
+    <view class='balance'>
+      <view class='balanceTitle'>
+        账户余额
+      </view>
+      <view class='balanceNum'>
+        ￥
+        <view class='num'>32.21</view>
+      </view>
+    </view>
+    <button class='recharge'>
+      <text decode='true'>充&nbsp;值</text> </button>
+
+  </view>
+</view>
