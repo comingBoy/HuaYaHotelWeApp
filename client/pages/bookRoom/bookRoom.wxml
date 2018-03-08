@@ -1,4 +1,7 @@
 <!--pages/bookRoom/bookRoom.wxml-->
+<!--白色载入等待界面-->
+<view hidden='{{!ready}}'>
+
 <scroll-view class='container' scroll-y='true' enable-back-to-top='true' scroll-with-animation='true'>
   <!--酒店横幅、点击进入酒店相册-->
   <view class='hotelBanner'>
@@ -333,4 +336,6 @@
       <button style='color: white; background-color: #06C1AE; width:85%' bindtap='finishChoose'>完成</button>
     </view>
   </view>
+</view>
+
 </view>

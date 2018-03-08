@@ -18,12 +18,15 @@ Page({
       login.login(function (res) {
         var userInfo = res.userInfo
         var data = {
-          openId: userInfo.openId
+          openId: userInfo.openId,
+          balance: 0
         }
         login.getUserInfo(data, function (res) {
           if (res.status == 1) {
             if (res.userInfo.length > 0) {
               userInfo.userId = res.userInfo[0].userId
+              userInfo.balance = res.userInfo[0].balance
+              getApp().globalData.userInfo = userInfo
               util.showSuccess("登录成功")
               setTimeout(function () {
                 wx.reLaunch({
@@ -31,14 +34,11 @@ Page({
                 })
               }, 500)
             } else {
-              data = {
-                userName: userInfo.nickName,
-                avatar: userInfo.avatarUrl,
-                openId: userInfo.openId
-              }
               login.newUser(data, function (res) {
                 if (res.status == 1) {
                   userInfo.userId = res.userInfo[0].userId
+                  userInfo.balance = res.userInfo[0].balance
+                  getApp().globalData.userInfo = userInfo
                   util.showSuccess("登录成功")
                   setTimeout(function () {
                     wx.reLaunch({

@@ -1,12 +1,14 @@
 // pages/bookRoom/bookRoom.js
 var hotel = require('../../utils/hotel.js')
 var util = require('../../utils/util.js')
+var dateList = ''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    ready: false,
     roomList: [
       {
         album: [
@@ -141,13 +143,16 @@ Page({
     choosedList: ["", "入住", "离店"],
     m: '',
     d: '',
-    isFinish: true
+    isFinish: true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '载入中',
+    })
     var that = this
     hotel.getHotelPic(function (res) {
       if (res.status == 1) {
@@ -186,6 +191,9 @@ Page({
       checkOutDate: util.getNextdayDateYMD()
     }
     bookDate = util.dealBookDate(bookDate)
+    dateList = util.getDateList(bookDate)
+    //查询可预订房型接口
+
     that.setData({
       bookDate: bookDate,
       currentDate: today
@@ -304,7 +312,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideLoading()
+    this.setData({
+      ready: true
+    })
   },
 
   /**
@@ -465,6 +476,10 @@ Page({
   },
 
   finishChooseDate: function () {
+    var bookDate = this.data.bookDate
+    dateList = util.getDateList(bookDate)
+    //查询可预订房型接口
+
     var hiddenChooseDate = true
     //第1步：创建动画实例
     var animation = wx.createAnimation({

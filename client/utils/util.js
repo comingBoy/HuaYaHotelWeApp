@@ -173,7 +173,39 @@ var ifInOrder = function (date1, date2) {
   var date1 = new Date(date1)
   var date2 = new Date(date2)
   return date2 - date1 > 0 ? true : false
-} 
+}
+
+var getDateList = function (bookDate) {
+  var startDate = bookDate.checkInDate.ymd
+  var endDate = bookDate.checkOutDate.ymd
+  startDate = new Date(startDate)
+  endDate = new Date(endDate)
+  var manyDays = parseInt((endDate - startDate) / (24 * 60 * 60 * 1000))
+  var dateList = new Array()
+  var midDay
+  for (var i = 0; i < manyDays; i ++) {
+    midDay =new Date (startDate.getTime() + 24 * 60 * 60 * 1000 * i)
+    dateList.push(midDay.getFullYear().toString() + '-' + (midDay.getMonth() + 1).toString() + '-' + midDay.getDate().toString())
+  }
+  return dateList
+}
 
 
-module.exports = { formatTime, showBusy, showSuccess, showModel, getCurrentDateYMD, getYesterdayDateYMD, getNextdayDateYMD, getCurrentTimeHM, getManyDays, getWhatDay, SectionToChinese, NumberToChinese, dealBookDate, getEndDate, ifInOrder}
+module.exports = { 
+  formatTime, 
+  showBusy, 
+  showSuccess, 
+  showModel, 
+  getCurrentDateYMD, 
+  getYesterdayDateYMD, 
+  getNextdayDateYMD, 
+  getCurrentTimeHM, 
+  getManyDays, 
+  getWhatDay, 
+  SectionToChinese, 
+  NumberToChinese, 
+  dealBookDate, 
+  getEndDate, 
+  ifInOrder, 
+  getDateList
+}
