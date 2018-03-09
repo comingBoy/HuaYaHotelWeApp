@@ -36,13 +36,13 @@
       </view>
       <!--提示信息-->
       <view class='waringInfo'>
-        <image src='../../images/赞.png' class='label'></image>
+        <image src='../../images/prase.png' class='label'></image>
         <text class='word' style='color:#FBAA30;'> 赞！您已选择最便宜的客房</text>
-        <image src='../../images/月亮.png' class='label'></image>
+        <image src='../../images/moon.png' class='label'></image>
         <text class='word' style='color:#FBAA30;'>预定成功后，酒店将为你整晚留房</text>
-        <image src='../../images/警告.png' class='label' hidden='{{hiddenOverTime}}'></image>
+        <image src='../../images/warning.png' class='label' hidden='{{hiddenOverTime}}'></image>
         <text class='word' style='color:#78B8EA;' hidden='{{hiddenOverTime}}'>现已过可取消时间，预定成功后不可取消</text>
-        <image src='../../images/确认.png' class='label' hidden='{{hiddenInTime}}'></image>
+        <image src='../../images/confirm.png' class='label' hidden='{{hiddenInTime}}'></image>
         <text class='word' style='color:#78B8EA;' hidden='{{hiddenInTime}}'>放心订！{{bookDate.checkOutDate.month}}月{{bookDate.checkInDate.day}}日18点前可免费取消</text>
       </view>
     </view>
