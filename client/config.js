@@ -32,6 +32,8 @@ var config = {
         newUserUrl: `${host}/weapp/newUser`,
 
         getCanBookRoomUrl: `${host}/weapp/getCanBookRoom`,
+
+        getContactUrl: `${host}/weapp/getContact`,
     }
 };
 

@@ -1,5 +1,6 @@
 // pages/submitOrder/submitOrder.js
 var util = require('../../utils/util.js')
+var book = require('../../utils/book.js')
 Page({
 
   /**
@@ -15,12 +16,12 @@ Page({
     tell: "用于接受通知",
     timeNum: ['18:00之前', '20:00之前', '23:59之前', '次日6：00之前'],
     timeIndex: 0,
-
     hiddenOrderDetail: true,
     hiddenRoomDetail: true,
     roomBeShowed: null,
     roomDetail_hiddenRoomDetail: true,
-    dateList: []
+    dateList: [],
+    contact: []
   },
 
   /**
@@ -322,5 +323,25 @@ Page({
         hiddenOrderDetail,
       })
     }.bind(this), 200)
-  }
+  },
+
+  getConTact: function () {
+    var that = this
+    var data = {
+      userId: getApp().globalData.userInfo.userId
+    }
+    book.getContact(data, function (res) {
+      if (res.status == 1) {
+        that.setData({
+          contact: res.contact
+        })
+      } else if (res.status == -1) {
+        util.showModel("提示","获取联系人失败，请重试！")
+      } else {
+        util.showModel("提示","请求出错！")
+      }
+    })
+  },
+
+  
 })
