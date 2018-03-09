@@ -142,7 +142,7 @@ page {
   font-size: 30rpx;
   margin-top: 20rpx;
   padding-bottom: 10rpx;
-  border-bottom: solid #f0f0f0 1rpx;
+  
   justify-content: space-between;
 }
 
@@ -506,4 +506,22 @@ page {
   display: flex;
   justify-content: flex-end;
   font-size: 35rpx;
+}
+.getCustomerBox{
+  display: flex;
+  width: 90%;
+  align-items: flex-start;
+justify-content: space-between;
+  
+}
+.getCustomerImg{
+  display: flex;
+  width: 35rpx;
+  height: 35rpx;
+}
+.getCustomer{
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid #f0f0f0 1rpx;
+  width: 80%;
 }

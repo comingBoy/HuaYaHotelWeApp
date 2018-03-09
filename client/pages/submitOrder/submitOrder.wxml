@@ -59,9 +59,19 @@
         </picker>
       </view>
       <!--入住人姓名-->
-      <view class='customerName' wx:for="{{customerName}}">
-        <view class='customerLabel'>入住人</view>
-        <input class='customerNameWrite' placeholder='{{item}}' bindinput='enterNmae' id='{{index}}'></input>
+      <view class='getCustomerBox'>
+      <view class='getCustomer'>
+        <view class='customerName' wx:for="{{customerName}}">
+
+          <view class='customerLabel'>入住人</view>
+          <input class='customerNameWrite' placeholder='{{item}}' bindinput='enterNmae' id='{{index}}'></input>
+        </view>
+      </view>
+        
+
+        <image class='getCustomerImg' src='../../images/myInfoNo.png'></image>
+
+
       </view>
       <!--联系方式-->
       <view class='tellNum'>
@@ -120,78 +130,78 @@
         </swiper>
         <!--房间设施信息-->
         <view class='roomDetail-roomInfoList'>
-        <view class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            上网
+          <view class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              上网
+            </view>
+            <view class='info-value'>
+              {{room.facilities.surf}}
+            </view>
           </view>
-          <view class='info-value'>
-            {{room.facilities.surf}}
+          <view class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              卫浴
+            </view>
+            <view class='info-value'>
+              {{room.facilities.bath}}
+            </view>
+          </view>
+          <view class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              窗户
+            </view>
+            <view class='info-value'>
+              {{room.facilities.window.inside}}
+            </view>
+          </view>
+          <view class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              可住
+            </view>
+            <view class='info-value'>
+              {{room.facilities.content}}
+            </view>
+          </view>
+          <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{room.facilities.area.inside != null}}' class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              面积
+            </view>
+            <view class='info-value'>
+              {{room.facilities.area.inside}}
+            </view>
+          </view>
+          <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{room.facilities.floor != null}}' class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              楼层
+            </view>
+            <view class='info-value'>
+              {{room.facilities.floor}}
+            </view>
+          </view>
+          <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{room.facilities.bed.inside != null}}' class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              床型
+            </view>
+            <view class='info-value'>
+              {{room.facilities.bed.inside}}
+            </view>
+          </view>
+          <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{room.facilities.breakfast.inside != null}}' class='roomDetail-roomInfo'>
+            <view class='info-name'>
+              早餐
+            </view>
+            <view class='info-value'>
+              {{room.facilities.breakfast.inside}}
+            </view>
+          </view>
+          <view hidden='{{!roomDetail_hiddenRoomDetail}}' class='showMore' bindtap='showMore'>
+            <view class='showMoreText'>
+              显示更多设备
+            </view>
+            <image class='showMoreImg' src='../../images/dropDown.png'>
+            </image>
           </view>
         </view>
-        <view class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            卫浴
-          </view>
-          <view class='info-value'>
-            {{room.facilities.bath}}
-          </view>
-        </view>
-        <view class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            窗户
-          </view>
-          <view class='info-value'>
-            {{room.facilities.window.inside}}
-          </view>
-        </view>
-        <view class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            可住
-          </view>
-          <view class='info-value'>
-            {{room.facilities.content}}
-          </view>
-        </view>
-        <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{room.facilities.area.inside != null}}' class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            面积
-          </view>
-          <view class='info-value'>
-            {{room.facilities.area.inside}}
-          </view>
-        </view>
-        <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{room.facilities.floor != null}}' class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            楼层
-          </view>
-          <view class='info-value'>
-            {{room.facilities.floor}}
-          </view>
-        </view>
-        <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{room.facilities.bed.inside != null}}' class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            床型
-          </view>
-          <view class='info-value'>
-            {{room.facilities.bed.inside}}
-          </view>
-        </view>
-        <view hidden='{{roomDetail_hiddenRoomDetail}}' wx:if='{{room.facilities.breakfast.inside != null}}' class='roomDetail-roomInfo'>
-          <view class='info-name'>
-            早餐
-          </view>
-          <view class='info-value'>
-            {{room.facilities.breakfast.inside}}
-          </view>
-        </view>
-        <view hidden='{{!roomDetail_hiddenRoomDetail}}' class='showMore' bindtap='showMore'>
-          <view class='showMoreText'>
-            显示更多设备
-          </view>
-          <image class='showMoreImg' src='../../images/dropDown.png'>
-          </image>
-        </view>
-      </view>
         <!--退款规则-->
         <view class='roomDetailInfoBox'>
           <view class='roomDetailInfoTitle'>
