@@ -10,134 +10,7 @@ Page({
    */
   data: {
     ready: false,
-    roomList: [
-      {
-        album: [
-          "../../images/businessBed1.jpg",
-          "../../images/businessBed2.jpg",
-          "../../images/businessBed3.jpg",
-        ],
-        facilities: [
-          {
-            name: "上网",
-            value: "WIFI",
-            main: true,
-            outside: false
-          },
-          {
-            name: "卫浴",
-            value: "独立",
-            main: true,
-            outside: false
-          },
-          {
-            name: "窗户",
-            value: "有",
-            main: true,
-            outside: true
-          },
-          {
-            name: "可住",
-            value: "2人",
-            main: true,
-            outside: false
-          },
-          {
-            name: "面积",
-            value: "25㎡",
-            main: false,
-            outside: true
-          },
-          {
-            name: "楼层",
-            value: "7-9层",
-            main: false,
-            outside: false
-          },
-          {
-            name: "床型",
-            value: "大床1.8×2.0米1张",
-            main: false,
-            outside: true
-          },
-          {
-            name: "早餐",
-            value: "含两份早餐",
-            main: false,
-            outside: true
-          },
-        ],
-        roomType: "商务大床房",
-        area: "25㎡",
-        bedType: "大床",
-        window: "有窗",
-        breakfast: "含双早",
-        beChoosed: false,
-      },
-      {
-        album: [
-          "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520493962129-HkfqSvCdf.jpg",
-          "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520493977467-rkWjBD0df.jpg",
-          "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520493990310-BJCjSv0dz.jpg",
-        ],
-        facilities: [
-          {
-            name: "面积",
-            value: "25㎡",
-            main: false,
-            outside: true
-          },
-          {
-            name: "床型",
-            value: "单人床1.2x2.0米2张",
-            main: false,
-            outside: true
-          },
-          {
-            name: "窗户",
-            value: "有",
-            main: true,
-            outside: true
-          },
-          {
-            name: "早餐",
-            value: "含两份早餐",
-            main: false,
-            outside: true
-          },
-          {
-            name: "上网",
-            value: "WIFI",
-            main: true,
-            outside: false
-          },
-          {
-            name: "卫浴",
-            value: "独立",
-            main: true,
-            outside: false
-          },
-          {
-            name: "可住",
-            value: "2人",
-            main: true,
-            outside: false
-          },
-          {
-            name: "楼层",
-            value: "6-12层",
-            main: false,
-            outside: false
-          },
-        ],
-        roomType: "商务标间",
-        area: "25㎡",
-        bedType: "双床",
-        window: "有窗",
-        breakfast: "含双早",
-        beChoosed: false,
-      }
-    ],
+    roomList: '',
     bookDate: {
       checkInDate: '',
       checkOutDate: ''
@@ -827,7 +700,6 @@ Page({
    * 跳转到预订界面
    */
   toSubmitOrder: function (e) {
-    console.log(e)
     var roomList = this.data.roomList
     var src = e.currentTarget.dataset.src
     var room

@@ -19,6 +19,7 @@ Page({
       bookDate: getApp().globalData.bookDate,
     })
     console.log(this.data.bookDate)
+    console.log(this.data.room)
     var date1 = util.getCurrentDateYMD().ymd + ' ' + util.getCurrentTimeHM() + ":00"
     var date2 = this.data.bookDate.checkInDate.ymd + ' ' + "18:00:00"
     var IfInTime = util.ifInOrder(date1, date2)

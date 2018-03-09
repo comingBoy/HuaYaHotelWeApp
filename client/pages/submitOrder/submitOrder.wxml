@@ -6,7 +6,7 @@
     <view class='roomInfo'>
       <!--房间类型-->
       <view class='roomType'>
-        {{room.roomType}}
+        {{room.roomTypeName}}
       </view>
       <!--预订时间-->
       <view class='bookDate'>
@@ -23,7 +23,7 @@
         <!--房间主要设施-->
         <view class='roomSimpleDetail'>
           <text style='font-size:25rpx;' decode="{{true}}">
-        {{room.bedType}}&nbsp;|&nbsp;{{room.breakfast}}&nbsp;|&nbsp;{{room.window}}
+        {{room.facilities.bed.outside}}&nbsp;|&nbsp;{{room.facilities.breakfast.outside}}&nbsp;|&nbsp;{{room.facilities.window.outside}}
         </text>
         </view>
         <!--房间详情-->
