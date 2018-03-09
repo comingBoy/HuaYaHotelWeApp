@@ -138,21 +138,30 @@ page {
 
 .customerName {
   display: flex;
-  width: 90%;
+  width: 100%;
   font-size: 30rpx;
   margin-top: 20rpx;
   padding-bottom: 10rpx;
-  
+  justify-content: space-between;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+
+.customerNameNoWire {
+  display: flex;
+  width: 100%;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+  padding-bottom: 10rpx;
   justify-content: space-between;
 }
 
 .customerLabel {
-  width: 20%;
+  width: 22%;
   color: #a2a2a2;
 }
 
 .customerNameWrite {
-  width: 70%;
+  width: 66.6%;
   color: black;
 }
 
@@ -507,21 +516,25 @@ page {
   justify-content: flex-end;
   font-size: 35rpx;
 }
-.getCustomerBox{
+
+.getCustomerBox {
   display: flex;
   width: 90%;
   align-items: flex-start;
-justify-content: space-between;
-  
+  justify-content: space-between;
+  border-bottom: solid #f0f0f0 1rpx;
 }
-.getCustomerImg{
+
+.getCustomerImg {
   display: flex;
-  width: 35rpx;
-  height: 35rpx;
+  width: 55rpx;
+  height: 55rpx;
+  margin-top: 15rpx;
 }
-.getCustomer{
+
+.getCustomer {
   display: flex;
   flex-direction: column;
-  border-bottom: solid #f0f0f0 1rpx;
-  width: 80%;
+  border-bottom: 23px;
+  width: 90%;
 }

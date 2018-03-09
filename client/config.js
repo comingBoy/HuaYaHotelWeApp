@@ -34,6 +34,18 @@ var config = {
         getCanBookRoomUrl: `${host}/weapp/getCanBookRoom`,
 
         getContactUrl: `${host}/weapp/getContact`,
+
+        newContactUrl: `${host}/weapp/newContact`,
+
+        delContactUrl: `${host}/weapp/delContact`,
+
+        getMyRoomBookUrl: `${host}/weapp/getMyRoomBook`,
+
+        delMyRoomBookUrl: `${host}/weapp/delMyRoomBook`,
+
+        cancelMyRoomBookUrl: `${host}/weapp/cancelMyRoomBook`,
+
+        newRoomBookUrl: `${host}/weapp/newRoomBook`,
     }
 };
 

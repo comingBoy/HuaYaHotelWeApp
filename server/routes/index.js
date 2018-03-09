@@ -42,4 +42,18 @@ router.post('/newUser', controllers.userInfo.newUser)
 
 router.post('/getCanBookRoom', controllers.book.getCanBookRoom)
 
+router.post('/getContact', controllers.userInfo.getContact)
+
+router.post('/newContact', controllers.userInfo.newContact)
+
+router.post('/delContact', controllers.userInfo.delContact)
+
+router.post('/getMyRoomBook', controllers.book.getMyRoomBook)
+
+router.post('/delMyRoomBook', controllers.book.delMyRoomBook)
+
+router.post('/cancelMyRoomBook', controllers.book.cancelMyRoomBook)
+
+router.post('/newRoomBook', controllers.book.newRoomBook)
+
 module.exports = router

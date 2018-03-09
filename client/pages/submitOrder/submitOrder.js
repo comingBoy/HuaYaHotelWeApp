@@ -12,7 +12,7 @@ Page({
     roomNum: ['一间', '两间', '三间', '四间', '五间', '六间', '七间', '八间', '九间', '十间'],
     canBookNum: [],
     roomIndex: 0,
-    customerName: ["每间需要填写一人姓名"],
+    customerName: ["请填写入住人姓名"],
     tell: "用于接受通知",
     timeNum: ['18:00之前', '20:00之前', '23:59之前', '次日6：00之前'],
     timeIndex: 0,
@@ -120,13 +120,11 @@ Page({
    * 房间数选择
    */
   chooseRoomNum: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     var num1 = parseInt(e.detail.value) + 1
     var customerNameArray = new Array(num1)
     for (var i = 0; i < customerNameArray.length; i++) {
-      customerNameArray[i] = "每间需要填写一人姓名"
+      customerNameArray[i] = "请填写入住人姓名"
     }
-    console.log(customerNameArray)
     this.setData({
       roomIndex: num1 - 1,
       customerName: customerNameArray
@@ -136,15 +134,11 @@ Page({
    * 输入房间入住人
    */
   enterNmae: function (e) {
-    console.log(e.currentTarget.id)
     var customerNameArray = this.data.customerName
-    console.log(customerNameArray.length)
     customerNameArray[e.currentTarget.id] = e.detail.value
-    console.log(customerNameArray.length)
     this.setData({
       customerName: customerNameArray
     })
-    console.log(customerNameArray.length)
   },
   /**
    * 输入联系电话
@@ -153,7 +147,6 @@ Page({
     this.setData({
       tell: e.detail.value
     })
-    console.log(this.data.tell)
   },
   /**
    * 预计到达时间按选择
@@ -250,7 +243,6 @@ Page({
    * 显示订单明细
    */
   openOrderDetail: function () {
-    console.log(1111111)
     var hiddenOrderDetail = !this.data.hiddenOrderDetail
 
     //第1步：创建动画实例
@@ -325,12 +317,16 @@ Page({
     }.bind(this), 200)
   },
 
-  getConTact: function () {
+  /**
+   * 获取联系人信息
+   */
+  getContact: function () {
     var that = this
     var data = {
       userId: getApp().globalData.userInfo.userId
     }
     book.getContact(data, function (res) {
+      console.log(res)
       if (res.status == 1) {
         that.setData({
           contact: res.contact
@@ -344,4 +340,6 @@ Page({
   },
 
   
+
+
 })
