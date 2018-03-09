@@ -1,6 +1,7 @@
 <!--pages/submitOrder/submitOrder.wxml-->
 
 <view class='container'>
+  <!--主界面-->
   <scroll-view class='frame' scroll-y='true'>
     <!--订单房间信息-->
     <view class='roomInfoBox'>
@@ -60,16 +61,15 @@
       </view>
       <!--入住人姓名-->
       <view class='getCustomerBox'>
-      <view class='getCustomer'>
-        <view class='customerName' wx:for="{{customerName}}">
+        <view class='getCustomer'>
+          <view class='customerName' wx:for="{{customerName}}">
 
-          <view class='customerLabel'>入住人</view>
-          <input class='customerNameWrite' placeholder='{{item}}' bindinput='enterNmae' id='{{index}}'></input>
+            <view class='customerLabel'>入住人</view>
+            <input class='customerNameWrite' placeholder='{{item}}' bindinput='enterNmae' id='{{index}}'></input>
+          </view>
         </view>
-      </view>
-        
 
-        <image class='getCustomerImg' src='../../images/myInfoNo.png'></image>
+        <image class='getCustomerImg' src='../../images/myInfoNo.png' bindtap='chooseCustomer'></image>
 
 
       </view>
@@ -273,5 +273,33 @@
         </view>
       </view>
     </scroll-view>
+  </view>
+
+  <!--隐藏界面 联系人选择-->
+  <!--背景灰色-->
+  <view class='mask' bindtap='hiddenChooseCustomer' hidden='{{chooseCustomer}}'></view>
+  <view class='chooseCustomer' hidden='{{chooseCustomer}}' animation='{{showRoomDetailAnimationData}}'>
+    <view class='chooseCustomer-label'> 选择联系人</view>
+    <view class='chooseCustomer-infoBox'>
+    <scroll-view scroll-y='true' style='width:90%' >
+
+      
+        <view class='chooseCustomer-info'>
+          
+            <image class='chooseCustomer-img-sure' src='../../images/sure.png'></image>
+          
+          <view class='chooseCustomer-list'>
+            <view class='chooseCustomer-name'>陈歆宇</view>
+            <view class='chooseCustomer-tell'>18949786091</view>
+          </view>
+          
+            <image  class='chooseCustomer-img-pen'src='../../images/pen.png'></image>
+          
+        </view>
+        
+    </scroll-view>
+    </view>
+    
+
   </view>
 </view>

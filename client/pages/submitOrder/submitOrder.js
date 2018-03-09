@@ -15,7 +15,7 @@ Page({
     tell: "用于接受通知",
     timeNum: ['18:00之前', '20:00之前', '23:59之前', '次日6：00之前'],
     timeIndex: 0,
-
+    chooseCustomer:true,
     hiddenOrderDetail: true,
     hiddenRoomDetail: true,
     roomBeShowed: null,
@@ -322,5 +322,80 @@ Page({
         hiddenOrderDetail,
       })
     }.bind(this), 200)
-  }
+  },
+
+  /**
+   * 选择联系人界面控制
+   */
+  chooseCustomer: function (e) {
+    
+    var chooseCustomer = false
+
+    //第1步：创建动画实例
+    var animation = wx.createAnimation({
+      duration: 200,
+      transformOrigin: '50% 100% 0'
+    })
+
+    //第2步：这个动画实例赋给当前动画实例
+    this.animation = animation
+
+    //第3步：执行第一组动画
+    animation.opacity(0).scaleY(0).step();
+
+    // 第4步：导出动画对象赋给数据对象储存 
+    this.setData({
+      showRoomDetailAnimationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画 
+    setTimeout(function () {
+      // 执行第二组动画 
+      animation.opacity(1).scaleY(1).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象 
+      this.setData({
+        showRoomDetailAnimationData: animation
+      })
+    }.bind(this), 200)
+    this.setData({
+      
+      chooseCustomer,
+    })
+  },
+
+  hiddenChooseCustomer: function () {
+    var chooseCustomer = true
+    //第1步：创建动画实例
+    var animation = wx.createAnimation({
+      duration: 200,
+      transformOrigin: '50% 100% 0'
+    })
+
+    //第2步：这个动画实例赋给当前动画实例
+    this.animation = animation
+
+    //第3步：执行第一组动画
+    animation.opacity(0).scaleY(0).step();
+
+    // 第4步：导出动画对象赋给数据对象储存 
+    this.setData({
+      showRoomDetailAnimationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画 
+    setTimeout(function () {
+      // 执行第二组动画 
+      animation.opacity(1).scaleY(1).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象 
+      this.setData({
+        showRoomDetailAnimationData: animation
+      })
+      this.setData({
+        chooseCustomer,
+        
+      })
+    }.bind(this), 200)
+  },
+
+
 })
