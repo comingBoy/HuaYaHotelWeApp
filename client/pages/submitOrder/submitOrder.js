@@ -20,13 +20,15 @@ Page({
     hiddenRoomDetail: true,
     roomBeShowed: null,
     roomDetail_hiddenRoomDetail: true,
-    dateList: []
+    dateList: [],
+    hiddenSureImg:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     var dateList = getApp().globalData.dateList
     for (var i = 0; i < dateList.length; i ++) {
       dateList[i] = dateList[i].split('/')
@@ -397,5 +399,13 @@ Page({
     }.bind(this), 200)
   },
 
-
+/**
+ * 选择已有联系人
+ */
+  chooseCustomerImg:function(e){
+    var hiddenSureImg = !this.data.hiddenSureImg
+    this.setData({
+      hiddenSureImg,
+    })
+  }
 })

@@ -281,25 +281,19 @@
   <view class='chooseCustomer' hidden='{{chooseCustomer}}' animation='{{showRoomDetailAnimationData}}'>
     <view class='chooseCustomer-label'> 选择联系人</view>
     <view class='chooseCustomer-infoBox'>
-    <scroll-view scroll-y='true' style='width:90%' >
-
-      
+      <scroll-view scroll-y='true' style='width:90%'>
         <view class='chooseCustomer-info'>
-          
-            <image class='chooseCustomer-img-sure' src='../../images/sure.png'></image>
-          
-          <view class='chooseCustomer-list'>
-            <view class='chooseCustomer-name'>陈歆宇</view>
-            <view class='chooseCustomer-tell'>18949786091</view>
+          <view class='chooseCustomerBox' bindtap='chooseCustomerImg'>
+            <image class='chooseCustomer-img-sure' src='../../images/sure.png' style='{{ hiddenSureImg ? "background-color: #1296db;" : ""}}'></image>
+            <view class='chooseCustomer-list'>
+              <view class='chooseCustomer-name'>陈歆宇</view>
+              <view class='chooseCustomer-tell'>18949786091</view>
+            </view>
           </view>
-          
-            <image  class='chooseCustomer-img-pen'src='../../images/pen.png'></image>
-          
+          <image class='chooseCustomer-img-pen' src='../../images/pen.png'></image>
         </view>
-        
-    </scroll-view>
+      </scroll-view>
     </view>
-    
 
   </view>
 </view>

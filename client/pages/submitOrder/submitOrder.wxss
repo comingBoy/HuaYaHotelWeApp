@@ -142,7 +142,6 @@ page {
   font-size: 30rpx;
   margin-top: 20rpx;
   padding-bottom: 10rpx;
-  
   justify-content: space-between;
 }
 
@@ -507,26 +506,28 @@ page {
   justify-content: flex-end;
   font-size: 35rpx;
 }
-.getCustomerBox{
+
+.getCustomerBox {
   display: flex;
   width: 90%;
   align-items: flex-start;
-justify-content: space-between;
-  
+  justify-content: space-between;
 }
-.getCustomerImg{
+
+.getCustomerImg {
   display: flex;
   width: 35rpx;
   height: 35rpx;
 }
-.getCustomer{
+
+.getCustomer {
   display: flex;
   flex-direction: column;
   border-bottom: solid #f0f0f0 1rpx;
   width: 80%;
 }
 
-.chooseCustomer{
+.chooseCustomer {
   width: 100%;
   height: 500rpx;
   overflow: hidden;
@@ -536,11 +537,11 @@ justify-content: space-between;
   background: #fff;
   bottom: 0rpx;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
 }
 
-.chooseCustomer-label{
+.chooseCustomer-label {
   display: flex;
   width: 90%;
   justify-content: center;
@@ -551,52 +552,63 @@ justify-content: space-between;
   border-bottom: solid #f0f0f0 1rpx;
 }
 
-.chooseCustomer-list{
+.chooseCustomer-list {
   display: flex;
-  width: 80%;
+  width: 90%;
   font-size: 25rpx;
-  margin-top: 5rpx;
-  
   flex-direction: column;
-  padding-left: 25rpx;
 }
-.chooseCustomer-name{
+
+.chooseCustomer-name {
   display: flex;
   width: 100%;
   margin-bottom: 5rpx;
 }
-.chooseCustomer-tell{
+
+.chooseCustomer-tell {
   display: flex;
   width: 100%;
-  
   margin-bottom: 10rpx;
 }
-.chooseCustomer-infoBox{
+
+.chooseCustomer-infoBox {
   display: flex;
   width: 100%;
   justify-content: center;
-  
 }
-.chooseCustomer-info{
+
+.chooseCustomer-info {
   display: flex;
   width: 100%;
   justify-content: space-between;
-border-bottom: solid #f0f0f0 1rpx;
-}
-.chooseCustomer-img-sure{
-width:30rpx;
-height:30rpx;
-margin-top:22rpx;
-margin-left:20rpx;
-border: solid #f0f0f0 1rpx;
-background-color: #1296DB;
-
+  border-bottom: solid #f0f0f0 1rpx;
+  align-items: center;
 }
 
-.chooseCustomer-img-pen{
- width:30rpx;
-height:30rpx;
-padding-top:22rpx;
-padding-right:20rpx;
+.chooseCustomerBox {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  border-bottom: solid #f0f0f0 1rpx;
+  align-items: center;
+}
 
+.chooseCustomerBoxNoWire {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chooseCustomer-img-sure {
+  width: 25rpx;
+  height: 25rpx;
+  padding: 7rpx;
+  border: solid #f0f0f0 2rpx;
+ 
+}
+
+.chooseCustomer-img-pen {
+  width: 30rpx;
+  height: 30rpx;
 }
