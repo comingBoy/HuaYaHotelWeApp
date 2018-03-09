@@ -10,6 +10,7 @@ App({
     },
 
     globalData: {
-      userInfo: ''
+      userInfo: '',
+      dateList: []
     }
 })

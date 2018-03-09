@@ -704,6 +704,7 @@ Page({
     var src = e.currentTarget.dataset.src
     var room
     var index
+    getApp().globalData.dateList = dateList
     if (src == 'in') {
       room = this.data.roomBeShowed
     } else if (src == 'out') {
