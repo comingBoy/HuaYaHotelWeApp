@@ -70,8 +70,6 @@ Page({
         canBookNum: roomNum
       })
     }
-    console.log(this.data.canBookNum)
-    console.log(this.data.room)
     var date1 = util.getCurrentDateYMD().ymd + ' ' + util.getCurrentTimeHM() + ":00"
     var date2 = this.data.bookDate.checkInDate.ymd + ' ' + "18:00:00"
     var IfInTime = util.ifInOrder(date1, date2)
@@ -600,7 +598,18 @@ Page({
       book.newRoomBook(data, function (res) {
         console.log(res)
         if (res.status == 1) {
-
+          wx.showModal({
+            title: '提示',
+            content: '预订成功',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.reLaunch({
+                  url: '../bookRoom/bookRoom',
+                })
+              }
+            }
+          })
           //显示预定成功
         } else if (res.status == -1) {
           util.showModel("提示","预订失败，请重试！")

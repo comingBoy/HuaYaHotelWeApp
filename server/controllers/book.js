@@ -106,10 +106,9 @@ module.exports = {
     if (typeof(res) == 'object') {
       for (var i = 0; i < req.dateList.length; i++) {
         req0 = {
-          date: req.dateList[i],
           roomTypeId: req.roomBook.roomTypeId
         }
-        res0 = await roomBookedNumdb.getRoomBookedNum(req0)
+        res0 = await roomBookedNumdb.getRoomBookedNum(req0, req.dateList[i])
         if (typeof (res0) == 'object') {
           if (res0.length > 0) {
             bookedNum = res0[0].bookedNum + req.roomBook.bookRoomNum
