@@ -29,6 +29,6 @@
 
   </view>
   <!--返回首页按钮-->
-      
+    <image class='confirmImg' src='../../images/confirm.png'></image>
     <button class='returnFristPage' bindtap='backToIndex'>返回首页</button>
 </view>

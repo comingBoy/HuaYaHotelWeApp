@@ -72,7 +72,13 @@
 }
 .returnFristPage{
   width:50%;
-  margin-top:213rpx;
+  margin-top:150rpx;
   background-color: #fe9900;
   color: white;
+}
+
+.confirmImg{
+  width: 220rpx;
+  height: 220rpx;
+  margin-top:115rpx; 
 }
