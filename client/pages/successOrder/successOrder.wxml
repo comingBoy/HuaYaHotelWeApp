@@ -1,4 +1,4 @@
-<view class='container'>
+<view class='container'  hidden='{{!ready}}'>
   <view class='roomInfoBox'>
     <view class='roomInfo'>
       <!--房间类型-->

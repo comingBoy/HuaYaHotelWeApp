@@ -38,16 +38,17 @@ Page({
     unknownContact: [],
     contactIdList: [],
     contactIndex: [0],
-    contactId: []
+    contactId: [],
+    ready: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var regx = /\d+/;
-    console.log(regx.test("sdfwf")) 
-
+    wx.showLoading({
+      title: '载入中',
+    })
     var dateList = JSON.stringify(getApp().globalData.dateList)
     dateList = JSON.parse(dateList)
     for (var i = 0; i < dateList.length; i++) {
@@ -92,7 +93,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideLoading()
+    this.setData({
+      ready: true
+    })
   },
 
   /**
@@ -380,6 +384,9 @@ Page({
    */
   getContact: function () {
     var that = this
+    var contactIndex = that.data.contactIndex
+    var customerName = that.data.customerName
+    var tell = that.data.tell
     var data = {
       userId: getApp().globalData.userInfo.userId
     }
@@ -392,9 +399,17 @@ Page({
             contact[i].choosed = false
             contactId.push(contact[i].contactId)
           }
+          contact[0].choosed = true
+          contactIndex[0] = contactId[0]
+          customerName[0] = contact[0].contactName
+          if (contact[0].contactTel != 'null') tell = contact[0].contactTel
         }
+
         that.setData({
-          contact: contact
+          contactIndex: contactIndex,
+          customerName: customerName,
+          contact: contact,
+          tell: tell
         })
       } else if (res.status == -1) {
         util.showModel("提示", "获取联系人失败，请重试！")
@@ -541,9 +556,12 @@ Page({
     var contactTel = this.data.tell
     var contactId = this.data.contactId
     var contact = this.data.contact
+    var tell = this.data.tell
 
     if (contactIndex.indexOf(0) != -1) {
       util.showModel("提示", "请填写所有入住人姓名！")
+    } else if (tell == '' || tell.length != 11){
+      util.showModel("提示", "请填写正确的手机号！")
     } else {
       var regx = /\d+/;
       for(var i=0;i < customerName.length;i++){
@@ -616,12 +634,10 @@ Page({
             dateList: getApp().globalData.dateList
           }
           book.newRoomBook(data, function (res) {
-            console.log(res)
             if (res.status == 1) {
-              wx.navigateTo({
+              wx.reLaunch({
                 url: '../successOrder/successOrder',
               })
-              //显示预定成功
             } else if (res.status == -1) {
               util.showModel("提示", "预订失败，请重试！")
             } else if (res.status == 0) {
