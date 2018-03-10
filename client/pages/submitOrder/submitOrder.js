@@ -167,12 +167,15 @@ Page({
   enterName: function (e) {
     var customerName = this.data.customerName
     var contactIndex = this.data.contactIndex
+    var tell = this.data.tell
     if (contactIndex[e.currentTarget.id] > 0) {
-      contactIndex[e.currentTarget.id] = -1
+      contactIndex[e.currentTarget.id] = 0
       customerName[e.currentTarget.id] = ''
+      tell = ''
       this.setData({
         contactIndex: contactIndex,
-        customerName: customerName
+        customerName: customerName,
+        tell: tell
       })
     } else {
       customerName[e.currentTarget.id] = e.detail.value
@@ -520,7 +523,7 @@ Page({
     var roomBook
     var contactIndex = this.data.contactIndex
     var customerName = this.data.customerName
-    var data, status = 1
+    var data
     var userId = getApp().globalData.userInfo.userId
     var contactTel = this.data.tell
     var contactId = this.data.contactId
@@ -541,10 +544,8 @@ Page({
               contactIndex[i] = res.contact[0].contactId
             } else if (res.status == -1) {
               util.showModel("提示", "新建联系人失败，请重试！")
-              status = -1
             } else {
               util.showModel("提示", "请求出错！")
-              status = -1
             }
           })
         } else if (contactIndex[i] == -1 && i > 0) {
@@ -558,10 +559,8 @@ Page({
               contactIndex[i] = res.contact[0].contactId
             } else if (res.status == -1) {
               util.showModel("提示", "新建联系人失败，请重试！")
-              status = -1
             } else {
               util.showModel("提示", "请求出错！")
-              status = -1
             }
           })
         } else if (contactIndex[i] != -1 && i == 0) {
@@ -573,47 +572,44 @@ Page({
             if (res.status == 1) {
             } else if (res.status == -1) {
               util.showModel("提示", "修改联系人失败，请重试！")
-              status = -1
             } else {
               util.showModel("提示", "请求出错！")
-              status = -1
             }
           })
         }
       }
-      if (status == 1) {
-        var contactId = JSON.stringify(contactIndex)
-        roomBook = {
-          userId: userId,
-          contactId: contactId,
-          roomTypeId: that.data.room.roomTypeId,
-          bookRoomNum: that.data.roomIndex + 1,
-          totalPrice: that.data.room.price * that.data.bookDate.manyDays * (that.data.roomIndex + 1),
-          checkInDate: that.data.bookDate.checkInDate.ymd,
-          checkOutDate: that.data.bookDate.checkOutDate.ymd,
-          comeTime: that.data.timeNum[that.data.timeIndex],
-          bookTel: contactTel,
-          ifFinish: 0,
-          userDelete: 0
-        }
-        data = {
-          roomBook: roomBook,
-          dateList: getApp().globalData.dateList
-        }
-        book.newRoomBook(data, function (res) {
-          console.log(res)
-          if (res.status == 1) {
 
-            //显示预定成功
-          } else if (res.status == -1) {
-            util.showModel("提示","预订失败，请重试！")
-          } else if (res.status == 0) {
-            util.showModel("提示", "数据库异常！")
-          } else {
-            util.showModel("提示", "请求出错！")
-          }
-        })
+      var contactName = JSON.stringify(customerName)
+      roomBook = {
+        userId: userId,
+        contactName: contactName,
+        roomTypeId: that.data.room.roomTypeId,
+        bookRoomNum: that.data.roomIndex + 1,
+        totalPrice: that.data.room.price * that.data.bookDate.manyDays * (that.data.roomIndex + 1),
+        checkInDate: that.data.bookDate.checkInDate.ymd,
+        checkOutDate: that.data.bookDate.checkOutDate.ymd,
+        comeTime: that.data.timeNum[that.data.timeIndex],
+        bookTel: contactTel,
+        ifFinish: 0,
+        userDelete: 0
       }
+      data = {
+        roomBook: roomBook,
+        dateList: getApp().globalData.dateList
+      }
+      book.newRoomBook(data, function (res) {
+        console.log(res)
+        if (res.status == 1) {
+
+          //显示预定成功
+        } else if (res.status == -1) {
+          util.showModel("提示","预订失败，请重试！")
+        } else if (res.status == 0) {
+          util.showModel("提示", "数据库异常！")
+        } else {
+          util.showModel("提示", "请求出错！")
+        }
+      })  
     }
 
     
