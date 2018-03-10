@@ -1,0 +1,34 @@
+<view class='container'>
+  <view class='roomInfoBox'>
+    <view class='roomInfo'>
+      <!--房间类型-->
+      <view class='roomType'>
+        商务大床房
+      </view>
+      <!--预订时间-->
+      <view class='bookDate'>
+        <view class='checkInDate'>
+          入住:3-10(今天)
+        </view>
+        <view class='checkOutDate'>
+          离店:3-11(明天)
+        </view>
+        <view class='manyDays'>
+          1晚
+        </view>
+
+        <!--房间主要设施-->
+        <view class='roomSimpleDetail'>
+          <text style='font-size:25rpx;' decode="{{true}}">
+        大床&nbsp;|&nbsp;含双早&nbsp;|&nbsp;有窗
+        </text>
+        </view>
+      </view>
+      
+    </view>
+
+  </view>
+  <!--返回首页按钮-->
+      
+    <button class='returnFristPage' bindtap='backToIndex'>返回首页</button>
+</view>

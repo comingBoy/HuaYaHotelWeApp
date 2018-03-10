@@ -16,7 +16,7 @@ Page({
     tell: '',
     timeNum: ['18:00之前', '20:00之前', '23:59之前', '次日6：00之前'],
     timeIndex: 0,
-    chooseCustomer:true,
+    chooseCustomer: true,
     hiddenOrderDetail: true,
     hiddenRoomDetail: true,
     roomBeShowed: null,
@@ -45,15 +45,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var regx = /\d+/;
+    console.log(regx.test("sdfwf")) 
+
     var dateList = JSON.stringify(getApp().globalData.dateList)
     dateList = JSON.parse(dateList)
-    for (var i = 0; i < dateList.length; i ++) {
+    for (var i = 0; i < dateList.length; i++) {
       dateList[i] = dateList[i].split('/')
     }
 
     this.getContact()
-    
+
     this.setData({
       room: getApp().globalData.room,
       bookDate: getApp().globalData.bookDate,
@@ -143,7 +145,7 @@ Page({
     var contactIndex = this.data.contactIndex
     var num2 = customerNameArray.length
     if (num1 >= num2) {
-      for (var i = 0; i < num1 - num2; i ++) {
+      for (var i = 0; i < num1 - num2; i++) {
         customerNameArray.push("请填写入住人姓名")
         contactIndex.push(0)
       }
@@ -166,22 +168,34 @@ Page({
     var customerName = this.data.customerName
     var contactIndex = this.data.contactIndex
     var tell = this.data.tell
+    var contact = this.data.contact
     if (contactIndex[e.currentTarget.id] > 0) {
       contactIndex[e.currentTarget.id] = 0
       customerName[e.currentTarget.id] = ''
-      tell = ''
+      if (e.currentTarget.id == 0) tell = ''
+      contact[e.currentTarget.id].choosed = false
       this.setData({
         contactIndex: contactIndex,
         customerName: customerName,
-        tell: tell
+        tell: tell,
+        contact: contact
       })
     } else {
-      customerName[e.currentTarget.id] = e.detail.value
-      contactIndex[e.currentTarget.id] = -1
-      this.setData({
-        contactIndex: contactIndex,
-        customerName: customerName
-      })
+      if (e.detail.value == '') {
+        customerName[e.currentTarget.id] = e.detail.value
+        contactIndex[e.currentTarget.id] = 0
+        this.setData({
+          contactIndex: contactIndex,
+          customerName: customerName
+        })
+      } else {
+        customerName[e.currentTarget.id] = e.detail.value
+        contactIndex[e.currentTarget.id] = -1
+        this.setData({
+          contactIndex: contactIndex,
+          customerName: customerName
+        })
+      }
     }
   },
   /**
@@ -374,7 +388,7 @@ Page({
         var contactId = new Array()
         var contact = res.contact
         if (contact.length > 0) {
-          for (var i = 0; i < contact.length; i ++) {
+          for (var i = 0; i < contact.length; i++) {
             contact[i].choosed = false
             contactId.push(contact[i].contactId)
           }
@@ -383,21 +397,21 @@ Page({
           contact: contact
         })
       } else if (res.status == -1) {
-        util.showModel("提示","获取联系人失败，请重试！")
+        util.showModel("提示", "获取联系人失败，请重试！")
       } else {
-        util.showModel("提示","请求出错！")
+        util.showModel("提示", "请求出错！")
       }
     })
   },
 
-  
+
 
 
   /**
    * 选择联系人界面控制
    */
   chooseCustomer: function () {
-    
+
     var chooseCustomer = false
 
     //第1步：创建动画实例
@@ -426,7 +440,7 @@ Page({
         showRoomDetailAnimationData: animation
       })
     }.bind(this), 200)
-    this.setData({    
+    this.setData({
       chooseCustomer,
     })
   },
@@ -460,23 +474,24 @@ Page({
       })
       this.setData({
         chooseCustomer,
-        
+
       })
     }.bind(this), 200)
   },
 
-/**
- * 选择已有联系人
- */
-  chooseCustomerImg:function(e){
+  /**
+   * 选择已有联系人
+   */
+  chooseCustomerImg: function (e) {
     var contact = this.data.contact
     var contactIndex = this.data.contactIndex
     var choosedNum = 1
     var customerName = this.data.customerName
     var tell = this.data.tell
+    var contactId = this.data.contactIndex
     if (contact[e.currentTarget.id].choosed == false) {
-      for (var i = 0; i < contact.length; i++) {
-        if (contact[i].choosed == true) choosedNum++
+      for (var i = 0; i < contactId.length; i++) {
+        if (contactId[i] != 0) choosedNum++
       }
       if (choosedNum <= this.data.roomIndex + 1) {
         contact[e.currentTarget.id].choosed = !contact[e.currentTarget.id].choosed
@@ -489,7 +504,7 @@ Page({
               contact: contact,
               contactIndex: contactIndex,
               customerName: customerName,
-              tell :tell
+              tell: tell
             })
             break
           }
@@ -500,7 +515,7 @@ Page({
     } else {
       contact[e.currentTarget.id].choosed = !contact[e.currentTarget.id].choosed
       var index = contactIndex.indexOf(contact[e.currentTarget.id].contactId)
-      contactIndex[index] = -1
+      contactIndex[index] = 0
       customerName[index] = "请填写入住人姓名"
       var tell = this.data.tell
       if (index == 0) tell = ''
@@ -510,7 +525,7 @@ Page({
         customerName: customerName,
         tell: tell
       })
-    } 
+    }
   },
 
   /**
@@ -528,100 +543,95 @@ Page({
     var contact = this.data.contact
 
     if (contactIndex.indexOf(0) != -1) {
-      util.showModel("提示","请填写所有入住人姓名！")
+      util.showModel("提示", "请填写所有入住人姓名！")
     } else {
-      for (var i = 0; i < contactIndex.length; i++) {
-        if (contactIndex[i] == -1 && i == 0) {
-          data = {
-            contactName: customerName[i],
-            userId: userId,
-            contactTel: contactTel
-          }
-          book.newContact(data, function (res) {
-            if (res.status == 1) {
-              contactIndex[i] = res.contact[0].contactId
-            } else if (res.status == -1) {
-              util.showModel("提示", "新建联系人失败，请重试！")
-            } else {
-              util.showModel("提示", "请求出错！")
-            }
-          })
-        } else if (contactIndex[i] == -1 && i > 0) {
-          data = {
-            contactName: customerName[i],
-            userId: userId,
-            contactTel: 'null'
-          }
-          book.newContact(data, function (res) {
-            if (res.status == 1) {
-              contactIndex[i] = res.contact[0].contactId
-            } else if (res.status == -1) {
-              util.showModel("提示", "新建联系人失败，请重试！")
-            } else {
-              util.showModel("提示", "请求出错！")
-            }
-          })
-        } else if (contactIndex[i] != -1 && i == 0) {
-          data = {
-            contactId: contactIndex[i],
-            contactTel: contactTel
-          }
-          book.modifyContact(data, function (res) {
-            if (res.status == 1) {
-            } else if (res.status == -1) {
-              util.showModel("提示", "修改联系人失败，请重试！")
-            } else {
-              util.showModel("提示", "请求出错！")
-            }
-          })
-        }
-      }
-
-      var contactName = JSON.stringify(customerName)
-      roomBook = {
-        userId: userId,
-        contactName: contactName,
-        roomTypeId: that.data.room.roomTypeId,
-        bookRoomNum: that.data.roomIndex + 1,
-        totalPrice: that.data.room.price * that.data.bookDate.manyDays * (that.data.roomIndex + 1),
-        checkInDate: that.data.bookDate.checkInDate.ymd,
-        checkOutDate: that.data.bookDate.checkOutDate.ymd,
-        comeTime: that.data.timeNum[that.data.timeIndex],
-        bookTel: contactTel,
-        ifFinish: 0,
-        userDelete: 0
-      }
-      data = {
-        roomBook: roomBook,
-        dateList: getApp().globalData.dateList
-      }
-      book.newRoomBook(data, function (res) {
-        console.log(res)
-        if (res.status == 1) {
-          wx.showModal({
-            title: '提示',
-            content: '预订成功',
-            showCancel: false,
-            success: function (res) {
-              if (res.confirm) {
-                wx.reLaunch({
-                  url: '../bookRoom/bookRoom',
-                })
+      var regx = /\d+/;
+      for(var i=0;i < customerName.length;i++){
+        if (regx.test(customerName[i])){
+          util.showModel("提示","请输入正确的姓名！")
+        } else if (i == customerName.length - 1 && !regx.test(customerName[i])){
+          for (var i = 0; i < contactIndex.length; i++) {
+            if (contactIndex[i] == -1 && i == 0) {
+              data = {
+                contactName: customerName[i],
+                userId: userId,
+                contactTel: contactTel
               }
+              book.newContact(data, function (res) {
+                if (res.status == 1) {
+                  contactIndex[i] = res.contact[0].contactId
+                } else if (res.status == -1) {
+                  util.showModel("提示", "新建联系人失败，请重试！")
+                } else {
+                  util.showModel("提示", "请求出错！")
+                }
+              })
+            } else if (contactIndex[i] == -1 && i > 0) {
+              data = {
+                contactName: customerName[i],
+                userId: userId,
+                contactTel: 'null'
+              }
+              book.newContact(data, function (res) {
+                if (res.status == 1) {
+                  contactIndex[i] = res.contact[0].contactId
+                } else if (res.status == -1) {
+                  util.showModel("提示", "新建联系人失败，请重试！")
+                } else {
+                  util.showModel("提示", "请求出错！")
+                }
+              })
+            } else if (contactIndex[i] != -1 && i == 0) {
+              data = {
+                contactId: contactIndex[i],
+                contactTel: contactTel
+              }
+              book.modifyContact(data, function (res) {
+                if (res.status == 1) {
+                } else if (res.status == -1) {
+                  util.showModel("提示", "修改联系人失败，请重试！")
+                } else {
+                  util.showModel("提示", "请求出错！")
+                }
+              })
+            }
+          }
+          var contactName = JSON.stringify(customerName)
+          roomBook = {
+            userId: userId,
+            contactName: contactName,
+            roomTypeId: that.data.room.roomTypeId,
+            bookRoomNum: that.data.roomIndex + 1,
+            totalPrice: that.data.room.price * that.data.bookDate.manyDays * (that.data.roomIndex + 1),
+            checkInDate: that.data.bookDate.checkInDate.ymd,
+            checkOutDate: that.data.bookDate.checkOutDate.ymd,
+            comeTime: that.data.timeNum[that.data.timeIndex],
+            bookTel: contactTel,
+            ifFinish: 0,
+            userDelete: 0
+          }
+
+          data = {
+            roomBook: roomBook,
+            dateList: getApp().globalData.dateList
+          }
+          book.newRoomBook(data, function (res) {
+            console.log(res)
+            if (res.status == 1) {
+              wx.navigateTo({
+                url: '../successOrder/successOrder',
+              })
+              //显示预定成功
+            } else if (res.status == -1) {
+              util.showModel("提示", "预订失败，请重试！")
+            } else if (res.status == 0) {
+              util.showModel("提示", "数据库异常！")
+            } else {
+              util.showModel("提示", "请求出错！")
             }
           })
-          //显示预定成功
-        } else if (res.status == -1) {
-          util.showModel("提示","预订失败，请重试！")
-        } else if (res.status == 0) {
-          util.showModel("提示", "数据库异常！")
-        } else {
-          util.showModel("提示", "请求出错！")
         }
-      })  
+      } 
     }
-
-    
-
   }
 })
