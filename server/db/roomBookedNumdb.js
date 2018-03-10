@@ -11,9 +11,17 @@ module.exports = {
   },
 
   //修改订单数
-  async modifyRoomBook(args) {
+  async modifyRoomBookedNum(args) {
     let sql = 'UPDATE roomBookedNumdb SET bookedNum = ? where date = ? and roomTypeId = ?'
-    let params = [args.bookedNum , args.date, args.roomTypeId]
+    let params = [args.bookedNum, args.date, args.roomTypeId]
+    let result = mysqlHelper.query(sql, params)
+    return result
+  },
+
+  //新建订单数
+  async newRoomBookedNum(args) {
+    let sql = 'INSERT INTO roomBookedNumdb(roomTypeId, date, bookedNum) VALUE(?,?,?)'
+    let params = [args.roomTypeId, args.date, args.bookedNum]
     let result = mysqlHelper.query(sql, params)
     return result
   },

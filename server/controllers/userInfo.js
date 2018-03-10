@@ -54,6 +54,27 @@ module.exports = {
   newContact: async ctx => {
     var req = ctx.request.body
     var res = await contactdb.newContact(req)
+    var status 
+    if (typeof (res) == 'object') {
+      status = 1
+      res = await contactdb.getNewContact(req)
+      status = typeof(res) == 'object' ? 1 : 0
+    } else {
+      status = -1
+    }
+
+    ctx.body = {
+      status: status,
+      contact: res
+    }
+  },
+
+  /**
+   * 删除联系人
+   */
+  delContact: async ctx => {
+    var req = ctx.request.body
+    var res = await contactdb.delContact(req)
     var status = typeof (res) == 'object' ? 1 : -1
     ctx.body = {
       status: status
@@ -61,11 +82,11 @@ module.exports = {
   },
 
   /**
-   * 删除联系人
+   * 修改联系人
    */
-  newContact: async ctx => {
+  modifyContact: async ctx => {
     var req = ctx.request.body
-    var res = await contactdb.delContact(req)
+    var res = await contactdb.modifyContact(req)
     var status = typeof (res) == 'object' ? 1 : -1
     ctx.body = {
       status: status

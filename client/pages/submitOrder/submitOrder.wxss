@@ -538,3 +538,90 @@ page {
   border-bottom: 23px;
   width: 90%;
 }
+
+.chooseCustomer {
+  width: 100%;
+  height: 500rpx;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  z-index: 1001;
+  background: #fff;
+  bottom: 0rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chooseCustomer-label {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  font-size: 35rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  padding-bottom: 20rpx;
+  border-bottom: solid #f0f0f0 1rpx;
+}
+
+.chooseCustomer-list {
+  display: flex;
+  width: 90%;
+  font-size: 25rpx;
+  flex-direction: column;
+}
+
+.chooseCustomer-name {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5rpx;
+}
+
+.chooseCustomer-tell {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10rpx;
+}
+
+.chooseCustomer-infoBox {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.chooseCustomer-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: solid #f0f0f0 1rpx;
+  align-items: center;
+  flex-direction:column;
+}
+
+.chooseCustomerBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: solid #f0f0f0 1rpx;
+  align-items: center;
+}
+
+.chooseCustomerBoxNoWire {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chooseCustomer-img-sure {
+  width: 25rpx;
+  height: 25rpx;
+  padding: 7rpx;
+  border: solid #f0f0f0 2rpx;
+ 
+}
+
+.chooseCustomer-img-pen {
+  width: 30rpx;
+  height: 30rpx;
+}

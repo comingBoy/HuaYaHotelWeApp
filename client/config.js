@@ -39,6 +39,8 @@ var config = {
 
         delContactUrl: `${host}/weapp/delContact`,
 
+        modifyContactUrl: `${host}/weapp/modifyContact`,
+
         getMyRoomBookUrl: `${host}/weapp/getMyRoomBook`,
 
         delMyRoomBookUrl: `${host}/weapp/delMyRoomBook`,

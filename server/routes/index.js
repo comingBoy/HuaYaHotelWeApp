@@ -48,6 +48,8 @@ router.post('/newContact', controllers.userInfo.newContact)
 
 router.post('/delContact', controllers.userInfo.delContact)
 
+router.post('/modifyContact', controllers.userInfo.modifyContact)
+
 router.post('/getMyRoomBook', controllers.book.getMyRoomBook)
 
 router.post('/delMyRoomBook', controllers.book.delMyRoomBook)

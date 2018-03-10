@@ -31,6 +31,13 @@ module.exports = {
     })
   },
 
+  //修改联系人
+  modifyContact(data, callback) {
+    net.request(data, config.service.modifyContactUrl, function (res) {
+      callback(res.data)
+    })
+  },
+
   //获取我的住宿订单
   getMyRoomBook(data, callback) {
     net.request(data, config.service.getMyRoomBookUrl, function (res) {

@@ -25,4 +25,21 @@ module.exports = {
     let result = mysqlHelper.query(sql, params)
     return result
   },
+
+  //获取新建的联系人
+  async getNewContact(args) {
+    let sql = 'SELECT * FROM contactdb where contactId in(select max(contactId) from contactdb WHERE userId = ?)'
+    let params = [args.userId]
+    let result = mysqlHelper.query(sql, params)
+    return result
+  },
+
+  //修改联系人
+  async modifyContact(args) {
+    let sql = 'UPDATE contactdb SET contactTel = ? where contactId = ?'
+    let params = [args.contactTel, args.contactId]
+    let result = mysqlHelper.query(sql, params)
+    return result
+  },
+
 }

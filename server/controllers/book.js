@@ -111,16 +111,30 @@ module.exports = {
         }
         res0 = await roomBookedNumdb.getRoomBookedNum(req0)
         if (typeof (res0) == 'object') {
-          bookedNum = res0[0].bookedNum + req.roomBook.bookRoomNum
-          req0 = {
-            roomBookedNumId: res0[0].roomBookedNumId,
-            bookedNum: bookedNum
+          if (res0.length > 0) {
+            bookedNum = res0[0].bookedNum + req.roomBook.bookRoomNum
+            req0 = {
+              roomBookedNumId: res0[0].roomBookedNumId,
+              bookedNum: bookedNum
+            }
+            res0 = await roomBookedNumdb.modifyRoomBookedNum(req0)
+            if (typeof (res0) != 'object') {
+              status = 0
+              break
+            }
+          } else {
+            req0 = {
+              roomTypeId: req.roomBook.roomTypeId,
+              date: req.roomBook.checkInDate,
+              bookedNum: req.roomBook.bookRoomNum
+            }
+            res0 = await roomBookedNumdb.newRoomBookedNum(req0)
+            if (typeof (res0) != 'object') {
+              status = 0
+              break
+            }
           }
-          res0 = await roomBookdb.modifyMyRoomBook(req0)
-          if (typeof (res0) != 'object') {
-            status = 0
-            break
-          }
+          
         } else {
           status = -1
           break

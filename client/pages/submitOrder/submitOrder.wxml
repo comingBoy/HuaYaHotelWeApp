@@ -1,6 +1,7 @@
 <!--pages/submitOrder/submitOrder.wxml-->
 
 <view class='container'>
+  <!--主界面-->
   <scroll-view class='frame' scroll-y='true'>
     <!--订单房间信息-->
     <view class='roomInfoBox'>
@@ -24,7 +25,7 @@
           <!--房间主要设施-->
           <view class='roomSimpleDetail'>
             <text style='font-size:25rpx;' decode="{{true}}">
-        {{room.facilities.bedType.outside}}&nbsp;|&nbsp;{{room.facilities.breakfast.outside}}&nbsp;|&nbsp;{{room.facilities.window.outside}}
+        {{room.facilities.bed.outside}}&nbsp;|&nbsp;{{room.facilities.breakfast.outside}}&nbsp;|&nbsp;{{room.facilities.window.outside}}
         </text>
           </view>
           <!--房间详情-->
@@ -63,15 +64,15 @@
         <view class='getCustomer'>
           <view class='{{index != (customerName.length - 1) ? "customerName" : "customerNameNoWire"}}' wx:for="{{customerName}}" >
             <view class='customerLabel'>入住人</view>
-            <input class='customerNameWrite' placeholder='{{item}}' bindinput='enterNmae' id='{{index}}'></input>
+            <input class='customerNameWrite' placeholder='请填写入住人姓名' value='{{item != "请填写入住人姓名" ? item : null}}' bindinput='enterName' id='{{index}}'></input>
           </view>
         </view>
-        <image class='getCustomerImg' src='../../images/myInfoNo.png' bindtap='getContact'></image>
+        <image class='getCustomerImg' src='../../images/myInfoNo.png' bindtap='chooseCustomer'></image>
       </view>
       <!--联系方式-->
       <view class='tellNum'>
         <view class='tellLabel'>联系方式</view>
-        <input class='tellWrite' placeholder='{{tell}}' bindinput='enterTell' type='number' maxlength='11'></input>
+        <input class='tellWrite' placeholder='用于接受通知' value='{{tell}}' bindinput='enterTell' type='number' maxlength='11'></input>
       </view>
       <!--预计到达时间-->
       <view class='reachTime'>
@@ -91,14 +92,14 @@
   <view class="bookRoom">
     <view class="roomPrice" bindtap='openOrderDetail'>
       <view style="font-size:15px;">￥</view>
-      <view class="roomPrice-price">150</view>
+      <view class="roomPrice-price">{{room.price * bookDate.manyDays * (roomIndex + 1)}}</view>
       <view class="roomPrice-discount">
         <view class='roomPrice-discount-text'>明细</view>
         <image src='../../images/dropDownG.png' class='detailImg' hidden='{{!hiddenOrderDetail}}'></image>
         <image src='../../images/dropUp.png' class='detailImg' hidden='{{hiddenOrderDetail}}'></image>
       </view>
     </view>
-    <view class="roomDetail-bookButton" data-src="in"> 预订 </view>
+    <view class="roomDetail-bookButton" data-src="in" bindtap='bookRoom'> 预订 </view>
   </view>
 
   <!--隐藏界面 房间详情-->
@@ -268,5 +269,27 @@
         </view>
       </view>
     </scroll-view>
+  </view>
+
+  <!--隐藏界面 联系人选择-->
+  <!--背景灰色-->
+  <view class='mask' bindtap='hiddenChooseCustomer' hidden='{{chooseCustomer}}'></view>
+  <view class='chooseCustomer' hidden='{{chooseCustomer}}' animation='{{showRoomDetailAnimationData}}'>
+    <view class='chooseCustomer-label'> 选择联系人</view>
+    <view class='chooseCustomer-infoBox'>
+      <scroll-view scroll-y='true' style='width:90%'>
+        <view class='chooseCustomer-info'>
+          <view class='chooseCustomerBox' bindtap='chooseCustomerImg' wx:for='{{contact}}' id='{{index}}'>
+            <image class='chooseCustomer-img-sure' src='../../images/sure.png' style='{{ item.choosed ? "background-color: #1296db;" : ""}}'></image>
+            <view class='chooseCustomer-list'>
+              <view class='chooseCustomer-name'>{{item.contactName}}</view>
+              <view class='chooseCustomer-tell'>{{item.contactTel == 'null' ? "未存号码" : item.contactTel}}</view>
+            </view>
+            <image class='chooseCustomer-img-pen' src='../../images/pen.png'></image>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
   </view>
 </view>
