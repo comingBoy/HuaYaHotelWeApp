@@ -10,6 +10,8 @@
     "pages/hotelDetail/hotelDetail",
     "pages/submitOrder/submitOrder",
     "pages/recharge/recharge",
+    "pages/homePage/homePage",
+    "pages/myOrder/myOrder",
     "pages/successOrder/successOrder"
   ],
   "window": {
@@ -24,16 +26,16 @@
     "selectedColor": "#333333",
     "list": [
       {
-        "pagePath": "pages/bookRoom/bookRoom",
-        "text": "订房",
-        "iconPath": "images/hotelNo.png",
-        "selectedIconPath": "images/hotelYes.png"
+        "pagePath": "pages/homePage/homePage",
+        "text": "首页",
+        "iconPath": "images/homePageNo.png",
+        "selectedIconPath": "images/homePageYes.png"
       },
       {
-        "pagePath": "pages/bookKTV/bookKTV",
-        "text": "KTV",
-        "iconPath": "images/KTVNo.png",
-        "selectedIconPath": "images/KTVYes.png"
+        "pagePath": "pages/myOrder/myOrder",
+        "text": "订单",
+        "iconPath": "images/myOrderNo.png",
+        "selectedIconPath": "images/myOrderYes.png"
       },
       {
         "pagePath": "pages/myInfo/myInfo",

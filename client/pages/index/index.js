@@ -30,7 +30,7 @@ Page({
               util.showSuccess("登录成功")
               setTimeout(function () {
                 wx.reLaunch({
-                  url: '../bookRoom/bookRoom',
+                  url: '../homePage/homePage',
                 })
               }, 500)
             } else {
@@ -42,7 +42,7 @@ Page({
                   util.showSuccess("登录成功")
                   setTimeout(function () {
                     wx.reLaunch({
-                      url: '../bookRoom/bookRoom',
+                      url: '../homePage/homePage',
                     })
                   }, 500)
                 } else if (res.status == -1) {

@@ -1,0 +1,46 @@
+<!--pages/homePage/homePage.wxml-->
+<scroll-view class='container' scroll-y="true">
+  <!--轮播图片-->
+  <view class='hotelBanner'>
+    <!--酒店图片-->
+    <swiper class='hotelImg' autoplay='true' interval='7000'>
+      <swiper-item wx:for='{{albumUrl}}'>
+        <image src='{{item}}' class='roomImg' mode='aspectFill' bindtap='previewHotelAlbum' id='{{index}}'></image>
+        <!--相册数量及当前编号-->
+        <view class='albumNum'>{{index+1}}/{{albumUrl.length}}</view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!--企业简介-->
+  <view class='businessIntroduction'>
+    <view class='serviceType'>
+      <view class='serviceBox' wx:for="{{serviceList}}">
+        <image class='serviceImg' src='{{item.image}}'></image>
+        <view class='serviceName'>{{item.name}}</view>
+      </view>
+    </view>
+    <!--跳转到企业详情-->
+    <view class='toBusinessInfoButton'>
+      <view class='buttonName'>
+        企业详情
+      </view>
+      <image src='../../images/jump.png' class='jumpButton'>
+      </image>
+    </view>
+  </view>
+  <!--服务导航按钮-->
+  <view class='toServiceButton'>
+    <view class='serviceButtonBox' wx:for="{{serviceList}}" bindtap='jumpTo' data-url='{{item.navigateTo}}'>
+      <view style='background-color:{{item.backgroundColor}}' class='serviceButtonImgBack'>
+        <image class='serviceButtonImg' src='{{item.buttonImg}}'></image>
+      </view>    
+      <view class='serviceButtonName'>
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+  <!--活动推送-->
+  <view class='activity'>
+    暂无活动上线
+  </view>
+</scroll-view>
