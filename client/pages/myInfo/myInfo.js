@@ -156,6 +156,7 @@ Page({
  * 显示订单
  */
   showMyOrder: function () {
+    
     var hidden = {
       hiddenMyOrder: false
     }

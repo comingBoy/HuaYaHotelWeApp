@@ -12,8 +12,8 @@ module.exports = {
 
   //修改订单数
   async modifyRoomBookedNum(args) {
-    let sql = 'UPDATE roomBookedNumdb SET bookedNum = ? where date = ? and roomTypeId = ?'
-    let params = [args.bookedNum, args.date, args.roomTypeId]
+    let sql = 'UPDATE roomBookedNumdb SET bookedNum = ? where roomBookedNumId = ?'
+    let params = [args.bookedNum, args.roomBookedNumId]
     let result = mysqlHelper.query(sql, params)
     return result
   },

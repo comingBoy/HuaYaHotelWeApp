@@ -1,6 +1,6 @@
 <!--pages/submitOrder/submitOrder.wxml-->
 
-<view class='container'>
+<view class='container' hidden='{{!ready}}'>
   <!--主界面-->
   <scroll-view class='frame' scroll-y='true'>
     <!--订单房间信息-->

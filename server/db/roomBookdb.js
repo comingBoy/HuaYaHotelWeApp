@@ -28,8 +28,8 @@ module.exports = {
 
   //新建住宿订单
   async newRoomBook(args) {
-    let sql = 'INSERT INTO roomBookdb(userId, contactId, RoomTypeId, bookRoomNum, totalPrice, checkInDate, checkOutDate, comeTime, bookTel, ifFinish, userDelete) VALUE(?,?,?,?,?,?,?,?,?,?,?)'
-    let params = [args.userId, args.contactId, args.roomTypeId, args.bookRoomNum, args.totalPrice, args.checkInDate, args.checkOutDate, args.comeTime, args.bookTel, args.ifFinish, args.userDelete]
+    let sql = 'INSERT INTO roomBookdb(userId, contactName, RoomTypeId, bookRoomNum, totalPrice, checkInDate, checkOutDate, comeTime, bookTel, ifFinish, userDelete) VALUE(?,?,?,?,?,?,?,?,?,?,?)'
+    let params = [args.userId, args.contactName, args.roomTypeId, args.bookRoomNum, args.totalPrice, args.checkInDate, args.checkOutDate, args.comeTime, args.bookTel, args.ifFinish, args.userDelete]
     let result = mysqlHelper.query(sql, params)
     return result
   },
