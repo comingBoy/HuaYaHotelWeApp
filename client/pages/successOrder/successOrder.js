@@ -24,7 +24,7 @@ Page({
 
   backToIndex: function() {
     wx.reLaunch({
-      url: '../bookRoom/bookRoom',
+      url: '../homePage/homePage',
     })
   },
 

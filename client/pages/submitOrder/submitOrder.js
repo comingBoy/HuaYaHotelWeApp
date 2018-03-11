@@ -549,12 +549,12 @@ Page({
     if (contactIndex.indexOf(0) != -1) {
       util.showModel("提示", "请填写所有入住人姓名！")
     } else {
-      if (tell == '' || tell.length != 11) {
-        var regx = /\d+/;
+      if (tell != null && tell.length == 11) {
+        var regx = /^[\u4e00-\u9fa5]+$/
         for (var i = 0; i < customerName.length; i++) {
-          if (regx.test(customerName[i])) {
+          if (!regx.test(customerName[i])) {
             util.showModel("提示", "请输入正确的姓名！")
-          } else if (i == customerName.length - 1 && !regx.test(customerName[i])) {
+          } else if (i == customerName.length - 1 && regx.test(customerName[i])) {
             for (var i = 0; i < contactIndex.length; i++) {
               if (contactIndex[i] == -1 && i == 0) {
                 data = {
