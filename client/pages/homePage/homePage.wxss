@@ -1,0 +1,120 @@
+/* pages/homePage/homePage.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.hotelBanner {
+  width: 100%;
+  height: 300rpx;
+}
+
+.hotelImg {
+  width: 100%;
+  height: 300rpx;
+}
+
+.roomImg {
+  width: 100%;
+  height: 300rpx;
+}
+
+.albumNum {
+  z-index: 1001;
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  color: white;
+  padding: 0rpx 25rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 25rpx;
+}
+
+.toBusinessInfoButton {
+  display: flex;
+  font-size: 26rpx;
+  color: #2abeaf;
+  align-items: center;
+}
+
+.jumpButton {
+  height: 25rpx;
+  width: 25rpx;
+  margin-left: 10rpx;
+}
+
+.serviceImg {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.serviceName {
+  font-size: 25rpx;
+  color: #a2a2a2;
+}
+
+.serviceBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10rpx 20rpx;
+}
+
+.serviceType {
+  display: flex;
+}
+
+.businessIntroduction {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid #f0f0f0 20rpx;
+  padding: 0 20rpx;
+}
+
+.toServiceButton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20rpx;
+  border-bottom: solid #f0f0f0 20rpx;
+}
+
+.serviceButtonBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  color: #808080;
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.serviceButtonImgBack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+}
+
+.serviceButtonImg {
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.activity {
+  display: flex;
+  justify-content: center;
+  font-size: 35rpx;
+  color: #808080;
+  margin-top: 50rpx;
+}
