@@ -1,4 +1,4 @@
-// pages/submitOrder/submitOrder.js
+  // pages/submitOrder/submitOrder.js
 var util = require('../../utils/util.js')
 var book = require('../../utils/book.js')
 Page({

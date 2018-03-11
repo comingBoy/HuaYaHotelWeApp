@@ -5,7 +5,10 @@
     <!--酒店图片-->
     <swiper class='hotelImg' autoplay='true' interval='7000'>
       <swiper-item wx:for='{{albumUrl}}'>
-        <image src='{{item}}' class='roomImg' mode='aspectFill' bindtap='previewHotelAlbum' id='{{index}}'></image>
+        <image src='{{item.image}}' class='roomImg' mode='aspectFill' bindtap='previewHotelAlbum' id='{{index}}'></image>
+        <view class='imageName'>
+          {{item.name}}
+        </view>
         <!--相册数量及当前编号-->
         <view class='albumNum'>{{index+1}}/{{albumUrl.length}}</view>
       </swiper-item>

@@ -5,9 +5,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    albumUrl: [     "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520262497305-BktD6R9uM.jpg",
-    "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520262501374-BJaDpAquf.jpg",
-    "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520694049803-BJ5QXOZKM.jpg"
+    albumUrl: [
+      {
+        image: "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520262497305-BktD6R9uM.jpg",
+        name: "华亚大酒店"
+      },
+      {
+        image: "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520262501374-BJaDpAquf.jpg",
+        name: "华亚大酒店"
+      },
+      {
+        image: "http://qcloudtest-1255391591.cn-south.myqcloud.com/1520694049803-BJ5QXOZKM.jpg",
+        name: "摇麦KTV"
+      }  
+
+
     ],
     serviceList:[
       {
