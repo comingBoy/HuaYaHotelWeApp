@@ -545,97 +545,99 @@ Page({
     var contactTel = this.data.tell
     var contactId = this.data.contactId
     var contact = this.data.contact
-
+    var tell = this.data.tell
     if (contactIndex.indexOf(0) != -1) {
       util.showModel("提示", "请填写所有入住人姓名！")
     } else {
-      var regx = /\d+/;
-      for(var i=0;i < customerName.length;i++){
-        if (regx.test(customerName[i])){
-          util.showModel("提示","请输入正确的姓名！")
-        } else if (i == customerName.length - 1 && !regx.test(customerName[i])){
-          for (var i = 0; i < contactIndex.length; i++) {
-            if (contactIndex[i] == -1 && i == 0) {
-              data = {
-                contactName: customerName[i],
-                userId: userId,
-                contactTel: contactTel
-              }
-              book.newContact(data, function (res) {
-                if (res.status == 1) {
-                  contactIndex[i] = res.contact[0].contactId
-                } else if (res.status == -1) {
-                  util.showModel("提示", "新建联系人失败，请重试！")
-                } else {
-                  util.showModel("提示", "请求出错！")
+      if (tell == '' || tell.length != 11) {
+        var regx = /\d+/;
+        for (var i = 0; i < customerName.length; i++) {
+          if (regx.test(customerName[i])) {
+            util.showModel("提示", "请输入正确的姓名！")
+          } else if (i == customerName.length - 1 && !regx.test(customerName[i])) {
+            for (var i = 0; i < contactIndex.length; i++) {
+              if (contactIndex[i] == -1 && i == 0) {
+                data = {
+                  contactName: customerName[i],
+                  userId: userId,
+                  contactTel: contactTel
                 }
-              })
-            } else if (contactIndex[i] == -1 && i > 0) {
-              data = {
-                contactName: customerName[i],
-                userId: userId,
-                contactTel: 'null'
-              }
-              book.newContact(data, function (res) {
-                if (res.status == 1) {
-                  contactIndex[i] = res.contact[0].contactId
-                } else if (res.status == -1) {
-                  util.showModel("提示", "新建联系人失败，请重试！")
-                } else {
-                  util.showModel("提示", "请求出错！")
+                book.newContact(data, function (res) {
+                  if (res.status == 1) {
+                    contactIndex[i] = res.contact[0].contactId
+                  } else if (res.status == -1) {
+                    util.showModel("提示", "新建联系人失败，请重试！")
+                  } else {
+                    util.showModel("提示", "请求出错！")
+                  }
+                })
+              } else if (contactIndex[i] == -1 && i > 0) {
+                data = {
+                  contactName: customerName[i],
+                  userId: userId,
+                  contactTel: 'null'
                 }
-              })
-            } else if (contactIndex[i] != -1 && i == 0) {
-              data = {
-                contactId: contactIndex[i],
-                contactTel: contactTel
-              }
-              book.modifyContact(data, function (res) {
-                if (res.status == 1) {
-                } else if (res.status == -1) {
-                  util.showModel("提示", "修改联系人失败，请重试！")
-                } else {
-                  util.showModel("提示", "请求出错！")
+                book.newContact(data, function (res) {
+                  if (res.status == 1) {
+                    contactIndex[i] = res.contact[0].contactId
+                  } else if (res.status == -1) {
+                    util.showModel("提示", "新建联系人失败，请重试！")
+                  } else {
+                    util.showModel("提示", "请求出错！")
+                  }
+                })
+              } else if (contactIndex[i] != -1 && i == 0) {
+                data = {
+                  contactId: contactIndex[i],
+                  contactTel: contactTel
                 }
-              })
+                book.modifyContact(data, function (res) {
+                  if (res.status == 1) {
+                  } else if (res.status == -1) {
+                    util.showModel("提示", "修改联系人失败，请重试！")
+                  } else {
+                    util.showModel("提示", "请求出错！")
+                  }
+                })
+              }
             }
-          }
-          var contactName = JSON.stringify(customerName)
-          roomBook = {
-            userId: userId,
-            contactName: contactName,
-            roomTypeId: that.data.room.roomTypeId,
-            bookRoomNum: that.data.roomIndex + 1,
-            totalPrice: that.data.room.price * that.data.bookDate.manyDays * (that.data.roomIndex + 1),
-            checkInDate: that.data.bookDate.checkInDate.ymd,
-            checkOutDate: that.data.bookDate.checkOutDate.ymd,
-            comeTime: that.data.timeNum[that.data.timeIndex],
-            bookTel: contactTel,
-            ifFinish: 0,
-            userDelete: 0
-          }
+            var contactName = JSON.stringify(customerName)
+            roomBook = {
+              userId: userId,
+              contactName: contactName,
+              roomTypeId: that.data.room.roomTypeId,
+              bookRoomNum: that.data.roomIndex + 1,
+              totalPrice: that.data.room.price * that.data.bookDate.manyDays * (that.data.roomIndex + 1),
+              checkInDate: that.data.bookDate.checkInDate.ymd,
+              checkOutDate: that.data.bookDate.checkOutDate.ymd,
+              comeTime: that.data.timeNum[that.data.timeIndex],
+              bookTel: contactTel,
+              ifFinish: 0,
+              userDelete: 0
+            }
 
-          data = {
-            roomBook: roomBook,
-            dateList: getApp().globalData.dateList
-          }
-          book.newRoomBook(data, function (res) {
-            console.log(res)
-            if (res.status == 1) {
-              wx.navigateTo({
-                url: '../successOrder/successOrder',
-              })
-              //显示预定成功
-            } else if (res.status == -1) {
-              util.showModel("提示", "预订失败，请重试！")
-            } else if (res.status == 0) {
-              util.showModel("提示", "数据库异常！")
-            } else {
-              util.showModel("提示", "请求出错！")
+            data = {
+              roomBook: roomBook,
+              dateList: getApp().globalData.dateList
             }
-          })
-        }
-      } 
+            book.newRoomBook(data, function (res) {
+              if (res.status == 1) {
+                wx.reLaunch({
+                  url: '../successOrder/successOrder',
+                })
+              } else if (res.status == -1) {
+                util.showModel("提示", "预订失败，请重试！")
+              } else if (res.status == 0) {
+                util.showModel("提示", "数据库异常！")
+              } else {
+                util.showModel("提示", "请求出错！")
+              }
+            })
+          }
+        } 
+      } else {
+        util.showModel("提示","请输入正确的手机号！")
+      }
     }
   }
 })
