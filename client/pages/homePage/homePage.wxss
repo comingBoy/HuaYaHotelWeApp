@@ -35,7 +35,8 @@ page {
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 25rpx;
 }
-.imageName{
+
+.imageName {
   z-index: 1001;
   position: absolute;
   bottom: 20rpx;
@@ -45,6 +46,7 @@ page {
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 25rpx;
 }
+
 .toBusinessInfoButton {
   display: flex;
   font-size: 26rpx;

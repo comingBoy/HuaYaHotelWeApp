@@ -555,7 +555,7 @@ page {
 
 .chooseCustomer-label {
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: center;
   font-size: 35rpx;
   margin-top: 20rpx;
@@ -569,6 +569,7 @@ page {
   width: 90%;
   font-size: 25rpx;
   flex-direction: column;
+  margin-left: 20rpx;
 }
 
 .chooseCustomer-name {
@@ -587,15 +588,15 @@ page {
   display: flex;
   width: 100%;
   justify-content: center;
+  margin-top: 20rpx;
 }
 
 .chooseCustomer-info {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  border-bottom: solid #f0f0f0 1rpx;
   align-items: center;
-  flex-direction:column;
+  flex-direction: column;
 }
 
 .chooseCustomerBox {
@@ -618,7 +619,6 @@ page {
   height: 25rpx;
   padding: 7rpx;
   border: solid #f0f0f0 2rpx;
- 
 }
 
 .chooseCustomer-img-pen {
