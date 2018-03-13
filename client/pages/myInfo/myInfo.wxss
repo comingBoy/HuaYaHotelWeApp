@@ -36,40 +36,38 @@
 
 .userInfoBack {
   width: 100%;
-  background-color: #20b099;
   border-bottom: solid #f0f0f0 20rpx;
 }
 
 .functionBack {
   width: 100%;
-  background-color: #20b099;
   border-bottom: solid #f0f0f0 20rpx;
 }
 
 .function {
   background-color: white;
-  margin: 20rpx;
-  padding: 35rpx;
   border-radius: 20rpx;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .functionBlock {
-  font-size: 25rpx;
+  font-size: 30rpx;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 40%;
-  padding: 10px;
+  align-items:center;
+  width: 100%;
+  padding: 20rpx 30rpx;
+  border-bottom:solid 1rpx #f0f0f0;
 }
 
 .functionImg {
   width: 80rpx;
   height: 80rpx;
   margin-bottom: 15rpx;
+}
+
+.functionName{
+  margin-left: 30rpx;
 }
 
 .popWindowBox {

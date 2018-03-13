@@ -3,23 +3,23 @@
   <!--轮播图片-->
   <view class='hotelBanner'>
     <!--酒店图片-->
-    <swiper class='hotelImg' autoplay='true' interval='7000'>
+    <swiper class='hotelImg' autoplay='true' indicator-dots='true' interval='7000'>
       <swiper-item wx:for='{{albumUrl}}'>
         <image src='{{item.image}}' class='roomImg' mode='aspectFill' bindtap='previewHotelAlbum' id='{{index}}'></image>
         <view class='imageName'>
           {{item.name}}
         </view>
-        <!--相册数量及当前编号-->
-        <view class='albumNum'>{{index+1}}/{{albumUrl.length}}</view>
       </swiper-item>
     </swiper>
   </view>
   <!--企业简介-->
   <view class='businessIntroduction'>
-    <view class='serviceType'>
-      <view class='serviceBox' wx:for="{{serviceList}}">
-        <image class='serviceImg' src='{{item.image}}'></image>
-        <view class='serviceName'>{{item.name}}</view>
+    <view class='businessInfo'>
+      <view class='address'>
+        地址: 明光市体育路133号
+      </view>
+      <view class='telNum'>
+        电话: 13544486649
       </view>
     </view>
     <!--跳转到企业详情-->
