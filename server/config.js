@@ -3,7 +3,7 @@ const CONF = {
     rootPathname: '',
 
     // 微信小程序 App ID
-    appId: 'wx3e607f6381680554',
+    appId: 'wxaf8344b6f294ff2d',
 
     // 微信小程序 App Secret
     appSecret: '',
@@ -17,11 +17,11 @@ const CONF = {
      * 开发环境下，MySQL 的初始密码为您的微信小程序 appid
      */
     mysql: {
-        host: 'localhost',
+        host: 'gz-cdb-95jq70nn.sql.tencentcdb.com:63053',
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        pass: 'wx3e607f6381680554',
+        pass: 'huayahotel001huayahotel001',
         char: 'utf8mb4'
     },
 

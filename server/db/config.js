@@ -23,9 +23,9 @@ const development = {
   mysql: {
     host: "localhost",
     user: "root",
-    password: "wx3e607f6381680554",
+    password: "wxaf8344b6f294ff2d",
     port: "3306",
-    database: "HuYaHotel",
+    database: "HuaYaHotel",
     charset: 'utf8mb4',
   }
 
@@ -37,16 +37,16 @@ const product = {
 
   //MYSQL数据库配置
   mysql: {
-    host: "172.16.164.124",
+    host: "gz-cdb-95jq70nn.sql.tencentcdb.com:63053",
     user: "root",
-    password: "li0DllWC33890",
+    password: "huayahotel001huayahotel001",
     port: "3306",
-    database: "workshopManage",
+    database: "HuaYaHotel",
     charset: 'utf8mb4',
   }
 
 }
 
-const config = development
+const config = product
 
 module.exports = config

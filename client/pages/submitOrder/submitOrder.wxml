@@ -84,6 +84,14 @@
           </view>
         </picker>
       </view>
+      <view class='promotion'>
+        <view class='promotion-icon'>促</view>
+        <view class='promotion-title'>促销活动</view>
+        <view class=''></view>
+      </view>
+      <view class='coupon'>
+
+      </view>
     </view>
   </scroll-view>
 
