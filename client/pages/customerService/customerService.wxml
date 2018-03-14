@@ -1,0 +1,5 @@
+<!--pages/customerService/customerService.wxml-->
+<button open-type="contact" class='contact'>
+  联系客服
+</button>
+

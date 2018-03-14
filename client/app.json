@@ -12,7 +12,9 @@
     "pages/homePage/homePage",
     "pages/myOrder/myOrder",
     "pages/successOrder/successOrder",
-    "pages/bookFeast/bookFeast"
+    "pages/bookFeast/bookFeast",
+    "pages/showFeast/showFeast",
+    "pages/customerService/customerService"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -33,9 +35,15 @@
       },
       {
         "pagePath": "pages/myOrder/myOrder",
-        "text": "订单",
-        "iconPath": "images/myOrderNo.png",
-        "selectedIconPath": "images/myOrderYes.png"
+        "text": "活动",
+        "iconPath": "images/activeNo.png",
+        "selectedIconPath": "images/activeYes.png"
+      },
+      {
+        "pagePath": "pages/customerService/customerService",
+        "text": "客服",
+        "iconPath": "images/customerServiceNo.png",
+        "selectedIconPath": "images/customerServiceYes.png"
       },
       {
         "pagePath": "pages/myInfo/myInfo",

@@ -34,16 +34,29 @@
   <!--服务导航按钮-->
   <view class='toServiceButton'>
     <view class='serviceButtonBox' wx:for="{{serviceList}}" bindtap='jumpTo' data-url='{{item.navigateTo}}'>
-      <view style='background-color:{{item.backgroundColor}}' class='serviceButtonImgBack'>
+      <view style='border:{{item.backgroundColor}} solid 1rpx;' class='serviceButtonImgBack'>
         <image class='serviceButtonImg' src='{{item.buttonImg}}'></image>
-      </view>    
+      </view>
       <view class='serviceButtonName'>
         {{item.name}}
       </view>
     </view>
   </view>
+  <!--功能Block-->
+  <view class='functionTitle'>
+    炫酷功能
+  </view>
+  <view class='functionListBlock'>
+    <view class='functionList' wx:for='{{functionList}}' data-to='{{item.navigateTo}}' bindtap='toFunction'>
+      <image src='{{item.image}}' style='width:100%;height:250rpx;' mode='aspectFill'>
+      </image>
+      <view class='functionName'>
+        {{item.name}}
+      </view>
+    </view>
+  </view>
   <!--活动推送-->
-  <view class='activity'>
-    暂无活动上线
+  <view class='functionTitle'>
+    热门活动
   </view>
 </scroll-view>

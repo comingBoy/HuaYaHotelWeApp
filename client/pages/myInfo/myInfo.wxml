@@ -38,6 +38,13 @@
           余额
         </view>
       </view>
+      <view class='functionBlock' bindtap='showMyBalance'>
+        <image class='functionImg' src='../../images/information.png'>
+        </image>
+        <view class='functionName'>
+          消息
+        </view>
+      </view>
     </view>
   </view>
 </view>

@@ -43,6 +43,22 @@ Page({
         backgroundColor: "#46A5FC",
         navigateTo: "../bookFeast/bookFeast",
       }
+    ],
+    functionList:[
+      {
+        name: "宴会大厅预览",
+        image: "../../images/showFeast.png",
+        buttonImg: "../../images/huaYaHotel.png",
+        backgroundColor: "#855D4D",
+        navigateTo: "../showFeast/showFeast",
+      },
+      {
+        name: "挑选吉日",
+        image: "../../images/chooseDate.png",
+        buttonImg: "../../images/yaoMaiKTV.png",
+        backgroundColor: "#18C6B0",
+        navigateTo: "../bookKTV/bookKTV",
+      },
     ]
   },
 
@@ -106,6 +122,16 @@ Page({
    */
   jumpTo: function(e){
     var url = e.currentTarget.dataset.url
+    wx.navigateTo({
+      url: url,
+    })
+  },
+  /**
+   * 跳转到酒席展示
+   */
+  toFunction: function(e){
+    console.log(e)
+    var url = e.currentTarget.dataset.to
     wx.navigateTo({
       url: url,
     })
